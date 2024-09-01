@@ -1,0 +1,28 @@
+{
+    "name": "maantje/phpviz",
+    "description": "SVG Charts in PHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Maantje\\Phpviz\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jamie Schouten",
+            "email": "j4mie@hey.com"
+        }
+    ],
+    "require": {
+        "laravel/pint": "^1.17"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.35"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
