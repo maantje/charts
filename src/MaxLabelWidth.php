@@ -11,7 +11,7 @@ trait MaxLabelWidth
         for ($i = 0; $i <= 5; $i++) {
             $value = ($i / 5) * $maxValue;
             $labelText = number_format($value, 2);
-            $textWidth = strlen($labelText) * 6;
+            $textWidth = strlen($labelText) * 5;
             if ($textWidth > $maxLabelWidth) {
                 $maxLabelWidth = $textWidth;
             }

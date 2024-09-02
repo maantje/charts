@@ -2,46 +2,49 @@
 
 namespace Maantje\Phpviz\Line;
 
-class Line
+use Maantje\Phpviz\Chart;
+use Maantje\Phpviz\Renderable;
+
+class Line implements Renderable
 {
     public function __construct(
         public readonly array $points = [],
-        public readonly int $size = 3,
+        public readonly int $size = 5,
+        public readonly ?string $yAxis = null,
         public readonly string $lineColor = 'black',
         public readonly string $fillColor = 'rgba(0, 0, 0, 0)'
     ) {}
 
-    public function render(int $height, int $width, float $leftMargin, float $minValue, float $maxValue): string
+    public function render(Chart $chart): string
     {
-        $xSpacing = ($width - $leftMargin) / (count($this->points) - 1);
+        $xSpacing = ($chart->end() - $chart->leftMargin) / (count($this->points) - 1);
 
-        $svg = '';
+        $pointsSvg = '';
         $points = [];
 
         /** @var Point $point * */
         foreach ($this->points as $index => $point) {
-            $x = $leftMargin + $index * $xSpacing;
+            $x = $chart->leftMargin + $index * $xSpacing;
 
-            $y = $height - 20 - (($point->value - $minValue) / ($maxValue - $minValue)) * ($height - 50);
+            $y = $chart->yForAxis($point->y, $this->yAxis);
 
             $points[] = "$x,$y";
 
-            $svg .= $point->render($x, $y);
+            $pointsSvg .= $point->render($x, $y);
         }
 
         $fillPoints = $points;
-        $fillPoints[] = "$width,".$height - 20;
-        $fillPoints[] = "$leftMargin,".$height - 20;
-        $fillPoints[] = "$leftMargin,".($height - 20 - (($this->points[0]->value - $minValue) / ($maxValue - $minValue)) * ($height - 50));
+        $fillPoints[] = "$chart->width,".$chart->height;
+        $fillPoints[] = "$chart->leftMargin,".$chart->height;
+        $fillPoints[] = "$chart->leftMargin,".($chart->height - $chart->yForAxis($this->points[0]->y, $this->yAxis));
 
         $linePath = implode(' ', $points);
         $fillPath = implode(' ', $fillPoints);
 
-        $svg .= <<<SVG
+        return <<<SVG
                 <polygon points="$fillPath" fill="$this->fillColor" stroke="none"/>
                 <polyline points="$linePath" fill="none" stroke="$this->lineColor" stroke-width="$this->size"/>
+                $pointsSvg
             SVG;
-
-        return $svg;
     }
 }
