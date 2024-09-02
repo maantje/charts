@@ -4,7 +4,6 @@ namespace Maantje\Phpviz;
 
 use Closure;
 use DateTime;
-use NumberFormatter;
 
 class Formatter
 {
@@ -16,7 +15,7 @@ class Formatter
     public static function currency(string $locale, string $currency): Closure
     {
         return function (float $value) use ($currency, $locale) {
-            $fmt = new NumberFormatter($locale, NumberFormatter::CURRENCY );
+            $fmt = new \NumberFormatter($locale, \NumberFormatter::CURRENCY );
             return $fmt->formatCurrency($value, $currency);
         };
     }

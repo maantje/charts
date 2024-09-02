@@ -3,6 +3,7 @@
 namespace Maantje\Phpviz;
 
 use Closure;
+use Maantje\Phpviz\Bar\Bar;
 
 class XAxis implements Renderable
 {
@@ -11,11 +12,22 @@ class XAxis implements Renderable
     public function __construct(
         public array $data = [],
         public string $title = '',
+        public array $annotations = [],
         public ?Closure $formatter = null
     ) {
         if (is_null($formatter)) {
             $this->formatter = fn (mixed $label) => number_format($label);
         }
+    }
+
+    public function maxValue(): float
+    {
+        return max(array_map(fn (float $data) => $data, $this->data));
+    }
+
+    public function minValue(): float
+    {
+        return min(array_map(fn (float $data) => $data, $this->data));
     }
 
     public function render(Chart $chart): string
@@ -34,8 +46,12 @@ class XAxis implements Renderable
             $y = $chart->height + 25;
 
             $label = $this->formatter->call($this, $this->data[$i]);
+            $lineY = $chart->height - 5;
+
             $svg .= <<<SVG
-                <text x="$x" y="$y" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$label</text>'
+                <text x="$x" y="$y" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$label</text>
+                <line x1="$x" x2="$x"  y1="$chart->height" y2="$lineY" stroke="black"/>
+
                 SVG;
         }
 
@@ -43,7 +59,7 @@ class XAxis implements Renderable
         $titleY = $chart->height + 30;
 
         $svg .= <<<SVG
-                <text x="$titleX" y="$titleY" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$this->title</text>'
+                <text x="$titleX" y="$titleY" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$this->title</text>
             SVG;
 
         return $svg;

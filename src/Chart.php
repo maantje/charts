@@ -2,6 +2,7 @@
 
 namespace Maantje\Phpviz;
 
+use Maantje\Phpviz\Annotations\XAxis\XAxisLineAnnotation;
 use Maantje\Phpviz\Annotations\YAxis\YAxisLineAnnotation;
 use Maantje\Phpviz\Annotations\YAxis\YAxisRangeAnnotation;
 use Maantje\Phpviz\Line\Lines;
@@ -27,7 +28,7 @@ class Chart
     public function __construct(
         public float $width = 800,
         public float $height = 600,
-        public ?string $background = null,
+        public ?string $background = 'white',
         public int $paddingY = 40,
         public int $paddingX = 20,
         public int $fontSize = 14,
@@ -69,7 +70,7 @@ class Chart
                 {$this->grid->render($this)}
                 {$this->renderAnnotations([YAxisRangeAnnotation::class])}
                 {$this->renderSeries()}
-                {$this->renderAnnotations([YAxisLineAnnotation::class])}
+                {$this->renderAnnotations([YAxisLineAnnotation::class, XAxisLineAnnotation::class])}
             </svg>
             SVG;
     }
@@ -105,8 +106,8 @@ class Chart
     {
         $svg = '';
 
-        foreach ($this->yAxis as $yAxis) {
-            foreach ($yAxis->annotations as $annotation) {
+        foreach ([...$this->yAxis, $this->xAxis] as $axis) {
+            foreach ($axis->annotations as $annotation) {
                 if (in_array(get_class($annotation), $types)) {
                     $svg .= $annotation->render($this);
                 }

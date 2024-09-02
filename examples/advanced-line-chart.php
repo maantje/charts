@@ -1,5 +1,7 @@
 <?php
 
+use Maantje\Phpviz\Annotations\XAxis\XAxisLineAnnotation;
+use Maantje\Phpviz\Annotations\XAxis\XAxisRangeAnnotation;
 use Maantje\Phpviz\Annotations\YAxis\YAxisLineAnnotation;
 use Maantje\Phpviz\Annotations\YAxis\YAxisRangeAnnotation;
 use Maantje\Phpviz\Chart;
@@ -70,7 +72,20 @@ $chart = new Chart(
     ],
     xAxis: new XAxis(
         title: 'Time',
-        formatter: Formatter::timestamp()
+        annotations: [
+            new XAxisLineAnnotation(
+                x: (new DateTime('now +4 hours'))->getTimestamp(),
+                color: 'green',
+                label: 'Target',
+            ),
+//            new XAxisRangeAnnotation(
+//                x1: 150000,
+//                x2: 150000,
+//                color: 'red',
+//                label: 'Loss',
+//            )
+        ],
+        formatter: Formatter::timestamp(),
     ),
     series: [
         new Lines(
