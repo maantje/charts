@@ -2,12 +2,12 @@
 
 require '../vendor/autoload.php';
 
-use Maantje\Phpviz\Annotations\YAxis\YAxisLineAnnotation;
-use Maantje\Phpviz\Bar\Bar;
-use Maantje\Phpviz\Bar\Bars;
-use Maantje\Phpviz\Chart;
-use Maantje\Phpviz\Formatter;
-use Maantje\Phpviz\YAxis;
+use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
+use Maantje\Charts\Bar\Bar;
+use Maantje\Charts\Bar\Bars;
+use Maantje\Charts\Chart;
+use Maantje\Charts\Formatter;
+use Maantje\Charts\YAxis;
 
 $chart = new Chart(
     yAxis: new YAxis(

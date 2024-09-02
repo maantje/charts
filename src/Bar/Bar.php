@@ -1,8 +1,8 @@
 <?php
 
-namespace Maantje\Phpviz\Bar;
+namespace Maantje\Charts\Bar;
 
-use Maantje\Phpviz\Chart;
+use Maantje\Charts\Chart;
 
 class Bar
 {

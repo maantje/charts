@@ -1,11 +1,11 @@
 {
-    "name": "maantje/phpviz",
+    "name": "maantje/charts",
     "description": "SVG Charts in PHP",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Maantje\\Phpviz\\": "src/"
+            "Maantje\\Charts\\": "src/"
         }
     },
     "authors": [

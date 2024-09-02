@@ -1,12 +1,12 @@
 <?php
 
-use Maantje\Phpviz\Annotations\XAxis\XAxisLineAnnotation;
-use Maantje\Phpviz\Chart;
-use Maantje\Phpviz\Formatter;
-use Maantje\Phpviz\Line\Line;
-use Maantje\Phpviz\Line\Lines;
-use Maantje\Phpviz\Line\Point;
-use Maantje\Phpviz\XAxis;
+use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
+use Maantje\Charts\Chart;
+use Maantje\Charts\Formatter;
+use Maantje\Charts\Line\Line;
+use Maantje\Charts\Line\Lines;
+use Maantje\Charts\Line\Point;
+use Maantje\Charts\XAxis;
 
 require '../vendor/autoload.php';
 

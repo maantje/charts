@@ -1,9 +1,9 @@
 <?php
 
-namespace Maantje\Phpviz\Annotations\YAxis;
+namespace Maantje\Charts\Annotations\YAxis;
 
-use Maantje\Phpviz\Chart;
-use Maantje\Phpviz\Renderable;
+use Maantje\Charts\Chart;
+use Maantje\Charts\Renderable;
 
 class YAxisRangeAnnotation implements Renderable
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Maantje\Phpviz\Bar;
+namespace Maantje\Charts\Bar;
 
-use Maantje\Phpviz\Chart;
-use Maantje\Phpviz\Element;
+use Maantje\Charts\Chart;
+use Maantje\Charts\Element;
 
 class Bars extends Element
 {

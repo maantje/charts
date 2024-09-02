@@ -1,9 +1,9 @@
 <?php
 
-namespace Maantje\Phpviz\Annotations\XAxis;
+namespace Maantje\Charts\Annotations\XAxis;
 
-use Maantje\Phpviz\Chart;
-use Maantje\Phpviz\Renderable;
+use Maantje\Charts\Chart;
+use Maantje\Charts\Renderable;
 
 class XAxisLineAnnotation implements Renderable
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Maantje\Phpviz\Line;
+namespace Maantje\Charts\Line;
 
 class Point
 {

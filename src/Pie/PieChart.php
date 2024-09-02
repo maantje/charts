@@ -1,6 +1,6 @@
 <?php
 
-namespace Maantje\Phpviz\Pie;
+namespace Maantje\Charts\Pie;
 
 class PieChart
 {

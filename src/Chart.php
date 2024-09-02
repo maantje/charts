@@ -1,12 +1,12 @@
 <?php
 
-namespace Maantje\Phpviz;
+namespace Maantje\Charts;
 
-use Maantje\Phpviz\Annotations\XAxis\XAxisLineAnnotation;
-use Maantje\Phpviz\Annotations\YAxis\YAxisLineAnnotation;
-use Maantje\Phpviz\Annotations\YAxis\YAxisRangeAnnotation;
-use Maantje\Phpviz\Line\Lines;
-use Maantje\Phpviz\Line\Point;
+use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
+use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
+use Maantje\Charts\Annotations\YAxis\YAxisRangeAnnotation;
+use Maantje\Charts\Line\Lines;
+use Maantje\Charts\Line\Point;
 
 class Chart
 {

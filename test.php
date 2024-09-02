@@ -2,21 +2,21 @@
 
 require 'vendor/autoload.php';
 
-use Maantje\Phpviz\Annotations\YAxis\YAxisLineAnnotation;
-use Maantje\Phpviz\Annotations\YAxis\YAxisRangeAnnotation;
-use Maantje\Phpviz\Bar\Alignment;
-use Maantje\Phpviz\Bar\Bar;
-use Maantje\Phpviz\Bar\Bars;
-use Maantje\Phpviz\Chart;
-use Maantje\Phpviz\Formatter;
-use Maantje\Phpviz\Line\Line;
-use Maantje\Phpviz\Line\Lines;
-use Maantje\Phpviz\Line\Point;
-use Maantje\Phpviz\Pie\PieChart;
-use Maantje\Phpviz\Pie\PieOptions;
-use Maantje\Phpviz\Pie\Slice;
-use Maantje\Phpviz\XAxis;
-use Maantje\Phpviz\YAxis;
+use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
+use Maantje\Charts\Annotations\YAxis\YAxisRangeAnnotation;
+use Maantje\Charts\Bar\Alignment;
+use Maantje\Charts\Bar\Bar;
+use Maantje\Charts\Bar\Bars;
+use Maantje\Charts\Chart;
+use Maantje\Charts\Formatter;
+use Maantje\Charts\Line\Line;
+use Maantje\Charts\Line\Lines;
+use Maantje\Charts\Line\Point;
+use Maantje\Charts\Pie\PieChart;
+use Maantje\Charts\Pie\PieOptions;
+use Maantje\Charts\Pie\Slice;
+use Maantje\Charts\XAxis;
+use Maantje\Charts\YAxis;
 
 $chart = new PieChart(
     options: new PieOptions(

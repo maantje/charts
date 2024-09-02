@@ -2,9 +2,9 @@
 
 require '../vendor/autoload.php';
 
-use Maantje\Phpviz\Bar\Bar;
-use Maantje\Phpviz\Bar\Bars;
-use Maantje\Phpviz\Chart;
+use Maantje\Charts\Bar\Bar;
+use Maantje\Charts\Bar\Bars;
+use Maantje\Charts\Chart;
 
 $chart = new Chart(
     series: [

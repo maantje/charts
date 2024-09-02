@@ -1,6 +1,6 @@
 <?php
 
-namespace Maantje\Phpviz;
+namespace Maantje\Charts;
 
 class Grid implements Renderable
 {

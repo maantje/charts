@@ -1,9 +1,9 @@
 <?php
 
-namespace Maantje\Phpviz;
+namespace Maantje\Charts;
 
 use Closure;
-use Maantje\Phpviz\Bar\Bar;
+use Maantje\Charts\Bar\Bar;
 
 class XAxis implements Renderable
 {

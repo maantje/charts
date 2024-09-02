@@ -1,6 +1,6 @@
 <?php
 
-namespace Maantje\Phpviz;
+namespace Maantje\Charts;
 
 use Closure;
 use DateTime;

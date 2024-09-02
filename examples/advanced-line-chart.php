@@ -1,16 +1,16 @@
 <?php
 
-use Maantje\Phpviz\Annotations\XAxis\XAxisLineAnnotation;
-use Maantje\Phpviz\Annotations\XAxis\XAxisRangeAnnotation;
-use Maantje\Phpviz\Annotations\YAxis\YAxisLineAnnotation;
-use Maantje\Phpviz\Annotations\YAxis\YAxisRangeAnnotation;
-use Maantje\Phpviz\Chart;
-use Maantje\Phpviz\Formatter;
-use Maantje\Phpviz\Line\Line;
-use Maantje\Phpviz\Line\Lines;
-use Maantje\Phpviz\Line\Point;
-use Maantje\Phpviz\XAxis;
-use Maantje\Phpviz\YAxis;
+use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
+use Maantje\Charts\Annotations\XAxis\XAxisRangeAnnotation;
+use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
+use Maantje\Charts\Annotations\YAxis\YAxisRangeAnnotation;
+use Maantje\Charts\Chart;
+use Maantje\Charts\Formatter;
+use Maantje\Charts\Line\Line;
+use Maantje\Charts\Line\Lines;
+use Maantje\Charts\Line\Point;
+use Maantje\Charts\XAxis;
+use Maantje\Charts\YAxis;
 
 require '../vendor/autoload.php';
 

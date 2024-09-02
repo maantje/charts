@@ -1,9 +1,9 @@
 <?php
 
-namespace Maantje\Phpviz\Line;
+namespace Maantje\Charts\Line;
 
-use Maantje\Phpviz\Chart;
-use Maantje\Phpviz\Renderable;
+use Maantje\Charts\Chart;
+use Maantje\Charts\Renderable;
 
 class Line implements Renderable
 {
