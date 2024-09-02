@@ -50,7 +50,6 @@ class PieChart
 
             $pathData = "M $adjustedCx,$adjustedCy L $x1,$y1 A $radius,$radius 0 $largeArcFlag,1 $x2,$y2 Z";
 
-
             $labelX = $adjustedCx + ($radius / 1.5) * cos($midAngle); // 1.5 factor to place label inside the slice
             $labelY = $adjustedCy + ($radius / 1.5) * sin($midAngle);
 

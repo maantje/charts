@@ -4,14 +4,11 @@ namespace Maantje\Phpviz;
 
 use Closure;
 
-class Grid
+class YAxis implements Renderable
 {
     use MaxLabelWidth;
 
     public function __construct(
-        public readonly int $lines = 5,
-        public readonly string $lineColor = '#ccc',
-        public readonly string $labelColor = '#333',
         public ?Closure $labelFormatter = null
     ) {
         if (is_null($labelFormatter)) {
@@ -19,25 +16,23 @@ class Grid
         }
     }
 
-    public function render(float $height, float $width, float $leftMargin, float $minValue, float $maxValue): string
+    public function render(Chart $chart): string
     {
-        $numLines = $this->lines;
-        $lineSpacing = ($height - 50) / $numLines;
+        $numLines = $chart->grid->lines;
+        $lineSpacing = ($chart->height - 50) / $numLines;
         $svg = '';
 
         $labelPadding = 10;
         $leftMargin = $leftMargin + $labelPadding + 10;
 
         for ($i = 0; $i <= $numLines; $i++) {
-            $y = $height - 20 - ($i * $lineSpacing);
-            $value = $minValue + (($i / $numLines) * ($maxValue - $minValue));
+            $value = $chart->minValue + (($i / $numLines) * ($chart->maxValue - $chart->minValue));
 
             $labelText = $this->labelFormatter->call($this, $value);
             $labelX = $leftMargin - $labelPadding;
 
-            $labelY = $y + 5;
+            $labelY = $chart->height - 20 - ($i * $lineSpacing) + 5;
             $line = <<<SVG
-            <line x1="$leftMargin" y1="$y" x2="$width" y2="$y" stroke="$this->lineColor" stroke-width="1"/>
             <text x="$labelX" y="$labelY" font-size="12" fill="$this->labelColor" text-anchor="end">$labelText</text>
             SVG;
             $svg .= $line;

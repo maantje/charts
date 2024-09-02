@@ -1,10 +1,22 @@
-<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
-    <line x1="50" y1="380" x2="600" y2="380" stroke="#ccc" stroke-width="1"/>
-<text x="40" y="385" font-size="12" fill="#333" text-anchor="end">0</text><line x1="50" y1="310" x2="600" y2="310" stroke="#ccc" stroke-width="1"/>
-<text x="40" y="315" font-size="12" fill="#333" text-anchor="end">6</text><line x1="50" y1="240" x2="600" y2="240" stroke="#ccc" stroke-width="1"/>
-<text x="40" y="245" font-size="12" fill="#333" text-anchor="end">12</text><line x1="50" y1="170" x2="600" y2="170" stroke="#ccc" stroke-width="1"/>
-<text x="40" y="175" font-size="12" fill="#333" text-anchor="end">18</text><line x1="50" y1="100" x2="600" y2="100" stroke="#ccc" stroke-width="1"/>
-<text x="40" y="105" font-size="12" fill="#333" text-anchor="end">24</text><line x1="50" y1="30" x2="600" y2="30" stroke="#ccc" stroke-width="1"/>
-<text x="40" y="35" font-size="12" fill="#333" text-anchor="end">30</text>
-    <circle cx="50" cy="263.33333333333" r="3" fill="#FF0000" /><circle cx="187.5" cy="146.66666666667" r="3" fill="#FF0000" /><circle cx="325" cy="205" r="3" fill="#FF0000" /><circle cx="462.5" cy="88.333333333333" r="3" fill="#FF0000" /><circle cx="600" cy="30" r="3" fill="#FF0000" /><polyline points="50,263.33333333333 187.5,146.66666666667 325,205 462.5,88.333333333333 600,30" fill="none" stroke="#FF0000" stroke-width="2"/><circle cx="50" cy="321.66666666667" r="3" fill="#0000FF" /><circle cx="187.5" cy="205" r="3" fill="#0000FF" /><circle cx="325" cy="263.33333333333" r="3" fill="#0000FF" /><circle cx="462.5" cy="146.66666666667" r="3" fill="#0000FF" /><circle cx="600" cy="88.333333333333" r="3" fill="#0000FF" /><polyline points="50,321.66666666667 187.5,205 325,263.33333333333 462.5,146.66666666667 600,88.333333333333" fill="none" stroke="#0000FF" stroke-width="2"/>
+<svg width="1000" height="500" xmlns="http://www.w3.org/2000/svg">
+    <line x1="50" y1="480" x2="1000" y2="480" stroke="#ccc" stroke-width="1"/>
+<text x="40" y="485" font-size="12" fill="#333" text-anchor="end">0</text><line x1="50" y1="390" x2="1000" y2="390" stroke="#ccc" stroke-width="1"/>
+<text x="40" y="395" font-size="12" fill="#333" text-anchor="end">10</text><line x1="50" y1="300" x2="1000" y2="300" stroke="#ccc" stroke-width="1"/>
+<text x="40" y="305" font-size="12" fill="#333" text-anchor="end">20</text><line x1="50" y1="210" x2="1000" y2="210" stroke="#ccc" stroke-width="1"/>
+<text x="40" y="215" font-size="12" fill="#333" text-anchor="end">30</text><line x1="50" y1="120" x2="1000" y2="120" stroke="#ccc" stroke-width="1"/>
+<text x="40" y="125" font-size="12" fill="#333" text-anchor="end">40</text><line x1="50" y1="30" x2="1000" y2="30" stroke="#ccc" stroke-width="1"/>
+<text x="40" y="35" font-size="12" fill="#333" text-anchor="end">50</text>
+    <line x1="50" y1="300"  stroke-dasharray="20,15" x2="1000" y2="300" stroke="green" stroke-width="3"/>
+<text x="55" y="292" font-size="14"  fill="green" text-anchor="start">Break even</text><rect x="50" y="210" width="1000" height="90" fill="yellow" fill-opacity="0.3" />
+<text x="55" y="205" font-size="14" fill="black" text-anchor="start">Medium</text><rect x="50" y="120" width="1000" height="90" fill="green" fill-opacity="0.3" />
+<text x="55" y="115" font-size="14" fill="green" text-anchor="start">Good</text>
+        <rect x="300" y="300" width="100" height="180" fill="pink">
+        <title>20</title>
+    </rect>
+    <text x="350" y="495" font-size="12" fill="#333" text-anchor="middle">moneys</text>    <rect x="650" y="30" width="100" height="450" fill="blue">
+        <title>50</title>
+    </rect>
+    <text x="700" y="495" font-size="12" fill="#333" text-anchor="middle">more moneys</text><circle cx="50" cy="390" r="5" fill="#FF0000" /><circle cx="366.66666666667" cy="300" r="5" fill="#FF0000" /><circle cx="683.33333333333" cy="345" r="5" fill="#FF0000" /><circle cx="1000" cy="255" r="5" fill="#FF0000" />    <polygon points="50,390 366.66666666667,300 683.33333333333,345 1000,255 1000,480 50,480 50,390" fill="rgba(255, 0, 0, 0.4)" stroke="none"/>
+    <polyline points="50,390 366.66666666667,300 683.33333333333,345 1000,255" fill="none" stroke="#FF0000" stroke-width="3"/><circle cx="50" cy="435" r="3" fill="#0000FF" /><circle cx="366.66666666667" cy="345" r="3" fill="#0000FF" /><circle cx="683.33333333333" cy="390" r="3" fill="#0000FF" /><circle cx="1000" cy="300" r="3" fill="#0000FF" />    <polygon points="50,435 366.66666666667,345 683.33333333333,390 1000,300 1000,480 50,480 50,435" fill="rgba(0, 0, 255, 0.4)" stroke="none"/>
+    <polyline points="50,435 366.66666666667,345 683.33333333333,390 1000,300" fill="none" stroke="#0000FF" stroke-width="3"/>
 </svg>
