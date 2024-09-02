@@ -10,7 +10,6 @@ class Bars extends Element
     public function __construct(
         private readonly array $bars = [],
         public ?string $yAxis = null,
-        public readonly Alignment $alignment = Alignment::JUSTIFY_AROUND
     ) {
         parent::__construct($yAxis);
     }
@@ -28,24 +27,11 @@ class Bars extends Element
     public function render(Chart $chart): string
     {
         $numBars = count($this->bars);
-        $xOffset = $chart->leftMargin;
-        $barSpacing = 0;
+        $availableWidth = $chart->width - $chart->leftMargin;
 
-        switch ($this->alignment) {
-            case Alignment::FILL:
-                $totalBarWidth = array_sum(array_map(fn (Bar $bar) => $bar->width, $this->bars));
-                $barSpacing = ($chart->width - $chart->leftMargin - $totalBarWidth) / ($numBars - 1);
-                break;
-            case Alignment::JUSTIFY_BETWEEN:
-                $totalBarWidth = array_sum(array_map(fn (Bar $bar) => $bar->width, $this->bars));
-                $barSpacing = ($chart->width - $chart->leftMargin - $totalBarWidth) / ($numBars - 1);
-                break;
-            case Alignment::JUSTIFY_AROUND:
-                $totalBarWidth = array_sum(array_map(fn (Bar $bar) => $bar->width, $this->bars));
-                $barSpacing = ($chart->width - $chart->leftMargin - $totalBarWidth) / ($numBars + 1);
-                $xOffset += $barSpacing;
-                break;
-        }
+        $maxBarWidth = $availableWidth / $numBars;
+
+        $xOffset = $chart->leftMargin;
 
         $x = $xOffset;
 
@@ -53,9 +39,9 @@ class Bars extends Element
 
         /** @var Bar $bar */
         foreach ($this->bars as $bar) {
-            $svg .= $bar->render($chart, $x);
+            $svg .= $bar->render($chart, $x, $maxBarWidth);
 
-            $x += $bar->width + $barSpacing;
+            $x += $maxBarWidth;
         }
 
         return $svg;

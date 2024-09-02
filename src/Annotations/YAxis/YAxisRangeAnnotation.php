@@ -35,7 +35,7 @@ class YAxisRangeAnnotation implements Renderable
 
         return <<<SVG
         <rect x="$rectX" y="$rectY" width="$width" height="$rectHeight" fill="$this->color" fill-opacity="$this->opacity" />
-        <text x="$labelX" y="$labelY" font-size="$fontSize" fill="$labelColor" text-anchor="start">$this->label</text>
+        <text x="$labelX" y="$labelY" font-family="$chart->fontFamily" font-size="$fontSize" fill="$labelColor" text-anchor="start">$this->label</text>
         SVG;
     }
 }

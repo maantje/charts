@@ -7,8 +7,11 @@ use Maantje\Phpviz\Element;
 
 class Lines extends Element
 {
+    /**
+     * @param Line[] $lines
+     */
     public function __construct(
-        private readonly array $lines,
+        public readonly array $lines,
         public ?string $yAxis = null,
     ) {
         parent::__construct($yAxis);
@@ -18,7 +21,6 @@ class Lines extends Element
     {
         $svg = '';
 
-        /** @var Line $line */
         foreach ($this->lines as $line) {
             $svg .= $line->render($chart);
         }

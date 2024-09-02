@@ -8,11 +8,11 @@ use Maantje\Phpviz\Renderable;
 class YAxisLineAnnotation implements Renderable
 {
     public function __construct(
-        public float $y = 0,
+        public float $y,
+        public string $color,
         public ?string $yAxis = null,
         public int $size = 2,
         public ?int $fontSize = null,
-        public string $color = '',
         public string $dash = '',
         public string $label = '',
         public string $labelColor = '',
@@ -30,8 +30,8 @@ class YAxisLineAnnotation implements Renderable
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return <<<SVG
-        <line x1="$lineX" y1="$y"  stroke-dasharray="20,15" x2="{$chart->end()}" y2="$y" stroke="$this->color" stroke-width="$this->size"/>
-        <text x="$labelX" y="$labelY" font-size="$fontSize"  fill="$labelColor" text-anchor="start">$this->label</text>
+        <line x1="$lineX" y1="$y" stroke-dasharray="$this->dash" x2="{$chart->end()}" y2="$y" stroke="$this->color" stroke-width="$this->size"/>
+        <text x="$labelX" y="$labelY" font-family="$chart->fontFamily" font-size="$fontSize"  fill="$labelColor" text-anchor="start">$this->label</text>
         SVG;
 
     }

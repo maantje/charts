@@ -2,19 +2,14 @@
 
 namespace Maantje\Phpviz;
 
-use Closure;
-
 class Grid implements Renderable
 {
     public function __construct(
         public readonly int $lines = 5,
         public readonly string $lineColor = '#ccc',
         public readonly string $labelColor = '#333',
-        public ?Closure $labelFormatter = null
     ) {
-        if (is_null($labelFormatter)) {
-            $this->labelFormatter = fn (mixed $label) => number_format($label);
-        }
+        //
     }
 
     public function render(Chart $chart): string

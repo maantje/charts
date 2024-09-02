@@ -10,11 +10,11 @@ class XAxis implements Renderable
 
     public function __construct(
         public array $data = [],
-        public string $title = 'Meters',
-        public ?Closure $labelFormatter = null
+        public string $title = '',
+        public ?Closure $formatter = null
     ) {
-        if (is_null($labelFormatter)) {
-            $this->labelFormatter = fn (mixed $label) => number_format($label);
+        if (is_null($formatter)) {
+            $this->formatter = fn (mixed $label) => number_format($label);
         }
     }
 
@@ -31,9 +31,11 @@ class XAxis implements Renderable
 
         for ($i = 0; $i < $labelCount; $i++) {
             $x = $chart->leftMargin + $i * $xSpacing;
-            $y = $chart->height + 15;
+            $y = $chart->height + 25;
+
+            $label = $this->formatter->call($this, $this->data[$i]);
             $svg .= <<<SVG
-                <text x="$x" y="$y" font-size="$chart->fontSize" text-anchor="middle">{$this->data[$i]}</text>'
+                <text x="$x" y="$y" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$label</text>'
                 SVG;
         }
 
@@ -41,7 +43,7 @@ class XAxis implements Renderable
         $titleY = $chart->height + 30;
 
         $svg .= <<<SVG
-                <text x="$titleX" y="$titleY" font-size="$chart->fontSize" text-anchor="middle">{$this->title}</text>'
+                <text x="$titleX" y="$titleY" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$this->title</text>'
             SVG;
 
         return $svg;

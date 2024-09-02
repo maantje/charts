@@ -1,58 +1,23 @@
 <?php
 
-require 'vendor/autoload.php';
-
 use Maantje\Phpviz\Annotations\YAxis\YAxisLineAnnotation;
 use Maantje\Phpviz\Annotations\YAxis\YAxisRangeAnnotation;
-use Maantje\Phpviz\Bar\Alignment;
-use Maantje\Phpviz\Bar\Bar;
-use Maantje\Phpviz\Bar\Bars;
 use Maantje\Phpviz\Chart;
 use Maantje\Phpviz\Formatter;
 use Maantje\Phpviz\Line\Line;
 use Maantje\Phpviz\Line\Lines;
 use Maantje\Phpviz\Line\Point;
-use Maantje\Phpviz\Pie\PieChart;
-use Maantje\Phpviz\Pie\PieOptions;
-use Maantje\Phpviz\Pie\Slice;
 use Maantje\Phpviz\XAxis;
 use Maantje\Phpviz\YAxis;
 
-$chart = new PieChart(
-    options: new PieOptions(
-        size: 1000,
-    ),
-    data: [
-        new Slice(
-            value: 2000,
-            color: 'blue',
-            label: 'Kaas',
-            labelColor: 'white',
-            explodeDistance: 50
-        ),
-        new Slice(
-            value: 2000,
-            color: 'yellow',
-            label: 'Baas',
-        ),
-        new Slice(
-            value: 2000,
-            color: 'green',
-            label: 'Naas'
-        ),
-        new Slice(
-            value: 2000,
-            color: 'red',
-            label: 'Laas',
-        ),
-    ]
-);
+require '../vendor/autoload.php';
 
 $chart = new Chart(
     yAxis: [
         new YAxis(
             name: 'celsius',
-            title: 'Celsius',
+            title: 'Temperature',
+            color: 'red',
             minValue: 30,
             maxValue: 50,
             annotations: [
@@ -68,14 +33,14 @@ $chart = new Chart(
                     y2: 48,
                     yAxis: 'celsius',
                     color: 'red',
-                    label: 'Hot',
+                    label: 'Too hot',
                 ),
                 new YAxisRangeAnnotation(
                     y1: 36,
                     y2: 39,
                     yAxis: 'celsius',
                     color: 'green',
-                    label: 'Good',
+                    label: 'Ideal',
                     labelColor: 'green',
                 ),
                 new YAxisRangeAnnotation(
@@ -83,7 +48,7 @@ $chart = new Chart(
                     y2: 32,
                     yAxis: 'celsius',
                     color: 'blue',
-                    label: 'Cold',
+                    label: 'Too cold',
                 ),
                 new YAxisLineAnnotation(
                     y: 32,
@@ -96,18 +61,15 @@ $chart = new Chart(
         ),
         new YAxis(
             name: 'elevation',
-            title: 'Meters',
+            title: 'Elevation',
             minValue: 0,
             maxValue: 3000,
+            labelMargin: 10,
+            formatter: Formatter::template(':value m')
         ),
     ],
     xAxis: new XAxis(
-        data: [
-            (new DateTime('now +2 hours'))->getTimestamp(),
-            (new DateTime('now +4 hours'))->getTimestamp(),
-            (new DateTime('now +6 hours'))->getTimestamp(),
-            (new DateTime('now +8 hours'))->getTimestamp(),
-        ],
+        title: 'Time',
         formatter: Formatter::timestamp()
     ),
     series: [
@@ -131,10 +93,10 @@ $chart = new Chart(
                         new Point(y: 2200, x:(new DateTime('now +8 hours'))->getTimestamp()),
                     ],
                     yAxis: 'elevation',
-                    lineColor: '#0000FF',
                 ),
             ]
         ),
     ],
 );
 
+echo $chart->render();
