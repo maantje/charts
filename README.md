@@ -9,10 +9,10 @@ Create SVG charts with PHP
 [View source](./examples/simple-line-chart.php)
 
 ![alt text](./examples/output/simple-bar-chart.svg)
-[View source](./examples/simple-line-chart.php)
+[View source](./examples/simple-bar-chart.php)
 
 ![alt text](./examples/output/advanced-line-chart.svg)
-[View source](./examples/simple-line-chart.php)
+[View source](./examples/advanced-line-chart.php)
 
 ![alt text](./examples/output/advanced-bar-chart.svg)
-[View source](./examples/simple-line-chart.php)
+[View source](./examples/advanced-bar-chart.php)

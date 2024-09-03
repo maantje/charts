@@ -6,8 +6,6 @@ use Closure;
 
 class YAxis implements Renderable
 {
-    use MaxLabelWidth;
-
     /**
      * @param  Renderable[]  $annotations
      */
@@ -19,6 +17,7 @@ class YAxis implements Renderable
         public ?float $maxValue = null,
         public int $labelMargin = 0,
         public array $annotations = [],
+        public int $characterSize = 5,
         public ?Closure $formatter = null
     ) {
         if (is_null($formatter)) {
@@ -33,7 +32,7 @@ class YAxis implements Renderable
         $svg = '';
 
         $titleMargin = 10;
-        $labelWidth = $this->maxLabelWidth($chart->maxValue($this->name)) + $this->labelMargin;
+        $labelWidth = strlen($this->formatter->call($this, $chart->maxValue($this->name))) * $this->characterSize + $this->labelMargin;
 
         $chart->leftMargin += $labelWidth + $titleMargin;
 

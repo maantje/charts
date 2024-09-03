@@ -12,32 +12,25 @@ use Maantje\Charts\XAxis;
 require '../vendor/autoload.php';
 
 $chart = new Chart(
-    xAxis: new XAxis(
-        title: 'Time',
-        annotations: [
-            new XAxisLineAnnotation(
-                x: 100,
-                color: 'green',
-                label: 'Target',
-            ),
-            new XAxisRangeAnnotation(
-                x1: 100,
-                x2: 200,
-                color: 'blue',
-                label: 'Range',
-            ),
-        ],
-    ),
     series: [
         new Lines(
             lines: [
                 new Line(
-                    [
+                    points: [
                         new Point(y: 0, x: 0),
                         new Point(y: 4, x: 100),
                         new Point(y: 12, x: 200),
                         new Point(y: 8, x: 300),
                     ],
+                ),
+                new Line(
+                    points: [
+                        new Point(y: 4, x: 0),
+                        new Point(y: 12, x: 100),
+                        new Point(y: 24, x: 200),
+                        new Point(y: 7, x: 300),
+                    ],
+                    lineColor: 'blue'
                 ),
             ]
         ),

@@ -6,8 +6,6 @@ use Closure;
 
 class XAxis implements Renderable
 {
-    use MaxLabelWidth;
-
     public function __construct(
         public array $data = [],
         public string $title = '',
