@@ -6,11 +6,17 @@ use Closure;
 
 class XAxis implements Renderable
 {
+    public Closure $formatter;
+
+    /**
+     * @param float[] $data
+     * @param Renderable[] $annotations
+     */
     public function __construct(
         public array $data = [],
         public string $title = '',
         public array $annotations = [],
-        public ?Closure $formatter = null
+        ?Closure $formatter = null
     ) {
         if (is_null($formatter)) {
             $this->formatter = fn (mixed $label) => number_format($label);
@@ -30,7 +36,7 @@ class XAxis implements Renderable
     public function render(Chart $chart): string
     {
         $labelCount = count($this->data);
-//        $xSpacing = ($chart->end() - $chart->leftMargin) / ($labelCount - 1);
+        //        $xSpacing = ($chart->end() - $chart->leftMargin) / ($labelCount - 1);
 
         $x1 = $chart->leftMargin;
 

@@ -4,9 +4,6 @@ require 'vendor/autoload.php';
 
 use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
 use Maantje\Charts\Annotations\YAxis\YAxisRangeAnnotation;
-use Maantje\Charts\Bar\Alignment;
-use Maantje\Charts\Bar\Bar;
-use Maantje\Charts\Bar\Bars;
 use Maantje\Charts\Chart;
 use Maantje\Charts\Formatter;
 use Maantje\Charts\Line\Line;
@@ -125,10 +122,10 @@ $chart = new Chart(
                 ),
                 new Line(
                     [
-                        new Point(y: 0, x:(new DateTime('now +2 hours'))->getTimestamp()),
-                        new Point(y: 900, x:(new DateTime('now +4 hours'))->getTimestamp()),
-                        new Point(y: 1800, x:(new DateTime('now +6 hours'))->getTimestamp()),
-                        new Point(y: 2200, x:(new DateTime('now +8 hours'))->getTimestamp()),
+                        new Point(y: 0, x: (new DateTime('now +2 hours'))->getTimestamp()),
+                        new Point(y: 900, x: (new DateTime('now +4 hours'))->getTimestamp()),
+                        new Point(y: 1800, x: (new DateTime('now +6 hours'))->getTimestamp()),
+                        new Point(y: 2200, x: (new DateTime('now +8 hours'))->getTimestamp()),
                     ],
                     yAxis: 'elevation',
                     lineColor: '#0000FF',
@@ -137,4 +134,3 @@ $chart = new Chart(
         ),
     ],
 );
-

@@ -7,6 +7,9 @@ use Maantje\Charts\Element;
 
 class Bars extends Element
 {
+    /**
+     * @param  Bar[]  $bars
+     */
     public function __construct(
         private readonly array $bars = [],
         public ?string $yAxis = null,
@@ -37,7 +40,6 @@ class Bars extends Element
 
         $svg = '';
 
-        /** @var Bar $bar */
         foreach ($this->bars as $bar) {
             $svg .= $bar->render($chart, $x, $maxBarWidth);
 

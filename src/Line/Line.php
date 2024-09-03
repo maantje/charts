@@ -7,6 +7,9 @@ use Maantje\Charts\Renderable;
 
 class Line implements Renderable
 {
+    /**
+     * @param Point[] $points
+     */
     public function __construct(
         public readonly array $points = [],
         public readonly int $size = 5,
@@ -22,7 +25,6 @@ class Line implements Renderable
         $pointsSvg = '';
         $points = [];
 
-        /** @var Point $point * */
         foreach ($this->points as $index => $point) {
             $x = $chart->leftMargin + $index * $xSpacing;
 

@@ -13,12 +13,14 @@ class Chart
 {
     public float $leftMargin = 0;
 
+    /** @var array<string, float> */
     public array $maxValue = [];
 
+    /** @var array<string, float> */
     public array $minValue = [];
 
     /**
-     * @var YAxis[]  $yAxis
+     * @var YAxis[]
      */
     public array $yAxis = [];
 
@@ -38,7 +40,7 @@ class Chart
         YAxis|array $yAxis = new YAxis(
             minValue: 0,
         ),
-        public XAxis $xAxis = new XAxis(),
+        public XAxis $xAxis = new XAxis,
         public array $series = [],
     ) {
         $this->yAxis = is_array($yAxis) ? $yAxis : [$yAxis];
@@ -52,8 +54,8 @@ class Chart
             $this->yAxis['default'] = new YAxis('default');
         }
 
-        if (sizeof($this->xAxis->data) === 0) {
-          $this->guessXAxisData();
+        if (count($this->xAxis->data) === 0) {
+            $this->guessXAxisData();
         }
     }
 
@@ -67,7 +69,7 @@ class Chart
             <svg width="$this->width" height="$this->height" viewBox="-$this->paddingX -$this->paddingY $paddedWidth $paddedHeight" xmlns="http://www.w3.org/2000/svg">
                 {$this->background()}
                 {$this->renderYAxis()}
-                {$this->xAxis?->render($this)}
+                {$this->xAxis->render($this)}
                 {$this->grid->render($this)}
                 {$this->renderAnnotations([YAxisRangeAnnotation::class, XAxisRangeAnnotation::class])}
                 {$this->renderSeries()}
@@ -108,6 +110,9 @@ class Chart
         return $svg;
     }
 
+    /**
+     * @param class-string[] $types
+     */
     protected function renderAnnotations(array $types): string
     {
         $svg = '';
@@ -127,7 +132,7 @@ class Chart
     {
         $yAxis = $yAxis ?? 'default';
 
-        if (array_key_exists($yAxis, $this->yAxis) && !is_null($this->yAxis[$yAxis]->maxValue)) {
+        if (array_key_exists($yAxis, $this->yAxis) && ! is_null($this->yAxis[$yAxis]->maxValue)) {
             return $this->yAxis[$yAxis]->maxValue;
         }
 
@@ -135,7 +140,7 @@ class Chart
             return $this->maxValue[$yAxis];
         }
 
-        $filtered = array_filter($this->series, fn ($element) => $element->yAxis ?? $yAxis === 'default');
+        $filtered = array_filter($this->series, fn ($element) => ($element->yAxis ?? 'default') === $yAxis);
 
         return $this->maxValue[$yAxis] = max(array_map(fn ($element) => $element->maxValue(), $filtered));
     }
@@ -144,7 +149,7 @@ class Chart
     {
         $yAxis = $yAxis ?? 'default';
 
-        if (array_key_exists($yAxis, $this->yAxis) && !is_null($this->yAxis[$yAxis]->minValue)) {
+        if (array_key_exists($yAxis, $this->yAxis) && ! is_null($this->yAxis[$yAxis]->minValue)) {
             return $this->yAxis[$yAxis]->minValue;
         }
 
@@ -152,7 +157,7 @@ class Chart
             return $this->minValue[$yAxis];
         }
 
-        $filtered = array_filter($this->series, fn ($element) => $element->yAxis ?? $yAxis === 'default');
+        $filtered = array_filter($this->series, fn ($element) => ($element->yAxis ?? 'default') === $yAxis);
 
         return $this->minValue[$yAxis] = min(array_map(fn ($element) => $element->minValue(), $filtered));
     }
@@ -175,7 +180,7 @@ class Chart
 
     private function guessXAxisData(): void
     {
-        if (sizeof($this->series) === 0) {
+        if (count($this->series) === 0) {
             return;
         }
 

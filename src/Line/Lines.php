@@ -8,7 +8,7 @@ use Maantje\Charts\Element;
 class Lines extends Element
 {
     /**
-     * @param Line[] $lines
+     * @param  Line[]  $lines
      */
     public function __construct(
         public readonly array $lines,

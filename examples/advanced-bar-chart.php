@@ -23,7 +23,7 @@ $chart = new Chart(
                 y: 150000,
                 color: 'red',
                 label: 'Loss',
-            )
+            ),
         ],
         formatter: Formatter::currency('nl_NL', 'EUR')
     ),

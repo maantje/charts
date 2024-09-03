@@ -104,10 +104,10 @@ $chart = new Chart(
                 ),
                 new Line(
                     [
-                        new Point(y: 0, x:  1725331334),
-                        new Point(y: 900, x:  1725331334 + 3600),
-                        new Point(y: 1800, x:  1725331334 + 3600 + 3600),
-                        new Point(y: 2200, x:  1725331334 + 3600 + 3600 + 3600),
+                        new Point(y: 0, x: 1725331334),
+                        new Point(y: 900, x: 1725331334 + 3600),
+                        new Point(y: 1800, x: 1725331334 + 3600 + 3600),
+                        new Point(y: 2200, x: 1725331334 + 3600 + 3600 + 3600),
                     ],
                     yAxis: 'elevation',
                 ),

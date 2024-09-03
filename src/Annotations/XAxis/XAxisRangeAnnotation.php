@@ -8,13 +8,13 @@ use Maantje\Charts\Renderable;
 class XAxisRangeAnnotation implements Renderable
 {
     public function __construct(
-        public float   $x1 = 0,
-        public float   $x2 = 0,
-        public string  $color = 'yellow',
-        public int     $fontSize = 14,
-        public float   $opacity = 0.3,
-        public string  $label = '',
-        public string  $labelColor = ''
+        public float $x1 = 0,
+        public float $x2 = 0,
+        public string $color = 'yellow',
+        public int $fontSize = 14,
+        public float $opacity = 0.3,
+        public string $label = '',
+        public string $labelColor = ''
     ) {}
 
     public function render(Chart $chart): string

@@ -1,13 +1,9 @@
 <?php
 
-use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
-use Maantje\Charts\Annotations\XAxis\XAxisRangeAnnotation;
 use Maantje\Charts\Chart;
-use Maantje\Charts\Formatter;
 use Maantje\Charts\Line\Line;
 use Maantje\Charts\Line\Lines;
 use Maantje\Charts\Line\Point;
-use Maantje\Charts\XAxis;
 
 require '../vendor/autoload.php';
 

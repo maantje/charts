@@ -22,13 +22,12 @@ class Bar
         $y = $chart->yForAxis($this->value, $this->yAxis);
         $barHeight = $chart->height - $y;
 
-        if (!is_null($this->width)) {
+        if (! is_null($this->width)) {
             $x += ($maxBarWidth - $width) / 2;
         }
 
         $labelY = $chart->height + $this->labelMarginY;
         $labelX = $x + $width / 2;
-
 
         return <<<SVG
             <rect x="$x" y="$y" width="$width" height="$barHeight" fill="$this->color">

@@ -6,6 +6,8 @@ use Closure;
 
 class YAxis implements Renderable
 {
+    public Closure $formatter;
+
     /**
      * @param  Renderable[]  $annotations
      */
@@ -18,7 +20,7 @@ class YAxis implements Renderable
         public int $labelMargin = 0,
         public array $annotations = [],
         public int $characterSize = 5,
-        public ?Closure $formatter = null
+        ?Closure $formatter = null
     ) {
         if (is_null($formatter)) {
             $this->formatter = fn (mixed $label) => number_format($label);

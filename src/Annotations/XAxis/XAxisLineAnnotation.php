@@ -8,13 +8,13 @@ use Maantje\Charts\Renderable;
 class XAxisLineAnnotation implements Renderable
 {
     public function __construct(
-        public float   $x,
-        public string  $color,
-        public int     $size = 2,
-        public ?int    $fontSize = null,
-        public string  $dash = '',
-        public string  $label = '',
-        public string  $labelColor = '',
+        public float $x,
+        public string $color,
+        public int $size = 2,
+        public ?int $fontSize = null,
+        public string $dash = '',
+        public string $label = '',
+        public string $labelColor = '',
     ) {}
 
     public function render(Chart $chart): string
