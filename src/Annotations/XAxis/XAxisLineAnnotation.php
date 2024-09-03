@@ -2,10 +2,14 @@
 
 namespace Maantje\Charts\Annotations\XAxis;
 
+use Maantje\Charts\Annotations\RendersAfterSeries;
 use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
+use Maantje\Charts\SVG\Fragment;
+use Maantje\Charts\SVG\Line;
+use Maantje\Charts\SVG\Text;
 
-class XAxisLineAnnotation implements Renderable
+class XAxisLineAnnotation implements Renderable, RendersAfterSeries
 {
     public function __construct(
         public float $x,
@@ -28,10 +32,24 @@ class XAxisLineAnnotation implements Renderable
 
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
-        return <<<SVG
-        <line x1="$x" x2="$x" y1="0" y2="$lineY" stroke-dasharray="$this->dash" stroke="$this->color" stroke-width="$this->size"/>
-        <text x="$labelX" y="$labelY" font-family="$chart->fontFamily" font-size="$fontSize" fill="$labelColor" text-anchor="start">$this->label</text>
-        SVG;
-
+        return new Fragment([
+            new Line(
+                x1: $x,
+                x2: $x,
+                y2: $lineY,
+                strokeDashArray: $this->dash,
+                stroke: $this->color,
+                strokeWidth: $this->size,
+            ),
+            new Text(
+                content: $this->label,
+                x: $labelX,
+                y: $labelY,
+                fontFamily: $chart->fontFamily,
+                fontSize: $fontSize,
+                fill: $labelColor,
+                textAnchor: 'start',
+            ),
+        ]);
     }
 }

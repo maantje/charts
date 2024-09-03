@@ -2,21 +2,31 @@
 
 namespace Maantje\Charts\Annotations\YAxis;
 
+use Maantje\Charts\Annotations\HasYAxis;
+use Maantje\Charts\Annotations\RendersAfterSeries;
+use Maantje\Charts\Annotations\YAxisAnnotation;
 use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
+use Maantje\Charts\SVG\Fragment;
+use Maantje\Charts\SVG\Line;
+use Maantje\Charts\SVG\Text;
 
-class YAxisLineAnnotation implements Renderable
+class YAxisLineAnnotation implements Renderable, RendersAfterSeries, YAxisAnnotation
 {
+    use HasYAxis;
+
     public function __construct(
         public float $y,
-        public string $color,
         public ?string $yAxis = null,
+        public string $color = 'yellow',
         public int $size = 2,
         public ?int $fontSize = null,
         public string $dash = '',
         public string $label = '',
         public string $labelColor = '',
-    ) {}
+    ) {
+        //
+    }
 
     public function render(Chart $chart): string
     {
@@ -29,10 +39,25 @@ class YAxisLineAnnotation implements Renderable
 
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
-        return <<<SVG
-        <line x1="$lineX" y1="$y" stroke-dasharray="$this->dash" x2="{$chart->end()}" y2="$y" stroke="$this->color" stroke-width="$this->size"/>
-        <text x="$labelX" y="$labelY" font-family="$chart->fontFamily" font-size="$fontSize"  fill="$labelColor" text-anchor="start">$this->label</text>
-        SVG;
-
+        return new Fragment([
+            new Line(
+                x1: $lineX,
+                y1: $y,
+                x2: $chart->end(),
+                y2: $y,
+                strokeDashArray: $this->dash,
+                stroke: $this->color,
+                strokeWidth: $this->size,
+            ),
+            new Text(
+                content: $this->label,
+                x: $labelX,
+                y: $labelY,
+                fontFamily: $chart->fontFamily,
+                fontSize: $fontSize,
+                fill: $labelColor,
+                textAnchor: 'start'
+            ),
+        ]);
     }
 }

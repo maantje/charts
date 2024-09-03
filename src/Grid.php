@@ -2,12 +2,14 @@
 
 namespace Maantje\Charts;
 
-class Grid implements Renderable
+use Maantje\Charts\SVG\Line;
+
+readonly class Grid implements Renderable
 {
     public function __construct(
-        public readonly int $lines = 5,
-        public readonly string $lineColor = '#ccc',
-        public readonly string $labelColor = '#333',
+        public int $lines = 5,
+        public string $lineColor = '#ccc',
+        public string $labelColor = '#333',
     ) {
         //
     }
@@ -16,14 +18,20 @@ class Grid implements Renderable
     {
         $numLines = $this->lines;
         $lineSpacing = $chart->height / $numLines;
+
         $svg = '';
 
         for ($i = 0; $i <= $numLines; $i++) {
             $y = $chart->height - ($i * $lineSpacing);
             $x = $chart->leftMargin;
-            $line = <<<SVG
-            <line x1="$x" y1="$y" x2="{$chart->end()}" y2="$y" stroke="$this->lineColor" stroke-width="1"/>
-            SVG;
+            $line = new Line(
+                x1: $x,
+                y1: $y,
+                x2: $chart->end(),
+                y2: $y,
+                stroke: $this->lineColor,
+                strokeWidth: 1
+            );
             $svg .= $line;
         }
 

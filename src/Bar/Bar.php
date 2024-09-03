@@ -3,6 +3,9 @@
 namespace Maantje\Charts\Bar;
 
 use Maantje\Charts\Chart;
+use Maantje\Charts\SVG\Fragment;
+use Maantje\Charts\SVG\Rect;
+use Maantje\Charts\SVG\Text;
 
 class Bar
 {
@@ -29,11 +32,24 @@ class Bar
         $labelY = $chart->height + $this->labelMarginY;
         $labelX = $x + $width / 2;
 
-        return <<<SVG
-            <rect x="$x" y="$y" width="$width" height="$barHeight" fill="$this->color">
-                <title>$this->value</title>
-            </rect>
-            <text x="$labelX" y="$labelY" font-family="$chart->fontFamily" font-size="$chart->fontSize" fill="$this->labelColor" text-anchor="middle">$this->name</text>
-        SVG;
+        return new Fragment([
+            new Rect(
+                x: $x,
+                y: $y,
+                width: $width,
+                height: $barHeight,
+                fill: $this->color,
+                title: $this->value
+            ),
+            new Text(
+                content: $this->name,
+                x: $labelX,
+                y: $labelY,
+                fontFamily: $chart->fontFamily,
+                fontSize: $chart->fontSize,
+                fill: $this->labelColor,
+                textAnchor: 'middle'
+            ),
+        ]);
     }
 }

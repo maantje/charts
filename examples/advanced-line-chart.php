@@ -1,5 +1,6 @@
 <?php
 
+use Maantje\Charts\Annotations\PointAnnotation;
 use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
 use Maantje\Charts\Annotations\XAxis\XAxisRangeAnnotation;
 use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
@@ -25,8 +26,8 @@ $chart = new Chart(
             annotations: [
                 new YAxisLineAnnotation(
                     y: 48,
-                    color: 'red',
                     yAxis: 'celsius',
+                    color: 'red',
                     size: 3,
                     dash: '20,20',
                     label: 'Critical Hot',
@@ -55,8 +56,8 @@ $chart = new Chart(
                 ),
                 new YAxisLineAnnotation(
                     y: 32,
-                    color: 'blue',
                     yAxis: 'celsius',
+                    color: 'blue',
                     size: 3,
                     dash: '20,20',
                     label: 'Critical Cold',
@@ -69,7 +70,19 @@ $chart = new Chart(
             minValue: 0,
             maxValue: 3000,
             labelMargin: 10,
+            annotations: [
+                new PointAnnotation(
+                    x: 1725331334 + 3600,
+                    y: 2000,
+                    markerSize: 10,
+                    markerBackgroundColor: 'white',
+                    markerBorderColor: 'red',
+                    markerBorderWidth: 4,
+                    label: 'Point annotation',
+                ),
+            ],
             formatter: Formatter::template(':value m')
+
         ),
     ],
     xAxis: new XAxis(

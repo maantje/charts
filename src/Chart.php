@@ -2,10 +2,8 @@
 
 namespace Maantje\Charts;
 
-use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
-use Maantje\Charts\Annotations\XAxis\XAxisRangeAnnotation;
-use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
-use Maantje\Charts\Annotations\YAxis\YAxisRangeAnnotation;
+use Maantje\Charts\Annotations\RendersAfterSeries;
+use Maantje\Charts\Annotations\RendersBeforeSeries;
 use Maantje\Charts\Line\Lines;
 use Maantje\Charts\Line\Point;
 
@@ -26,6 +24,7 @@ class Chart
 
     /**
      * @param  Element[]  $series
+     * @param  Renderable[]  $annotations
      * @param  YAxis|YAxis[]  $yAxis
      */
     public function __construct(
@@ -41,6 +40,7 @@ class Chart
             minValue: 0,
         ),
         public XAxis $xAxis = new XAxis,
+        public array $annotations = [],
         public array $series = [],
     ) {
         $this->yAxis = is_array($yAxis) ? $yAxis : [$yAxis];
@@ -71,9 +71,9 @@ class Chart
                 {$this->renderYAxis()}
                 {$this->xAxis->render($this)}
                 {$this->grid->render($this)}
-                {$this->renderAnnotations([YAxisRangeAnnotation::class, XAxisRangeAnnotation::class])}
+                {$this->renderAnnotations(RendersBeforeSeries::class)}
                 {$this->renderSeries()}
-                {$this->renderAnnotations([YAxisLineAnnotation::class, XAxisLineAnnotation::class])}
+                {$this->renderAnnotations(RendersAfterSeries::class)}
             </svg>
             SVG;
     }
@@ -111,15 +111,15 @@ class Chart
     }
 
     /**
-     * @param  class-string[]  $types
+     * @param  class-string  $interface
      */
-    protected function renderAnnotations(array $types): string
+    protected function renderAnnotations(string $interface): string
     {
         $svg = '';
 
         foreach ([...$this->yAxis, $this->xAxis] as $axis) {
             foreach ($axis->annotations as $annotation) {
-                if (in_array(get_class($annotation), $types)) {
+                if (is_a($annotation, $interface)) {
                     $svg .= $annotation->render($this);
                 }
             }

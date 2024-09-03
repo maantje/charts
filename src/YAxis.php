@@ -3,13 +3,14 @@
 namespace Maantje\Charts;
 
 use Closure;
+use Maantje\Charts\Annotations\YAxisAnnotation;
 
 class YAxis implements Renderable
 {
     public Closure $formatter;
 
     /**
-     * @param  Renderable[]  $annotations
+     * @param  array<int, YAxisAnnotation&Renderable>  $annotations
      */
     public function __construct(
         public string $name = 'default',
@@ -23,6 +24,11 @@ class YAxis implements Renderable
         ?Closure $formatter = null
     ) {
         $this->formatter = $formatter ?? fn (mixed $label) => number_format($label);
+        $this->annotations = array_map(function (YAxisAnnotation $annotation) {
+            $annotation->setYAxis($this->name);
+
+            return $annotation;
+        }, $this->annotations);
     }
 
     public function render(Chart $chart): string
@@ -31,7 +37,7 @@ class YAxis implements Renderable
         $lineSpacing = $chart->height / $numLines;
         $svg = '';
 
-        $titleMargin = 10;
+        $titleMargin = 20;
         $labelWidth = strlen($this->formatter->call($this, $chart->maxValue($this->name))) * $this->characterSize + $this->labelMargin;
 
         $chart->leftMargin += $labelWidth + $titleMargin;
@@ -49,7 +55,7 @@ class YAxis implements Renderable
         }
 
         $titleY = ($chart->height) / 2;
-        $titleX = $chart->leftMargin - $labelWidth;
+        $titleX = $chart->leftMargin - $labelWidth - 20;
 
         $svg .= <<<SVG
             <text text-anchor="middle" font-family="$chart->fontFamily" alignment-baseline="middle" transform="rotate(270, $titleX, $titleY)" x="$titleX" y="$titleY" font-size="$chart->fontSize" fill="$this->color">$this->title</text>
