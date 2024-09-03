@@ -27,8 +27,7 @@ it('render bar chart', function () {
         ],
     );
 
-
-    expect($chart->render())->toBe(<<<SVG
+    expect($chart->render())->toBe(<<<'SVG'
 <svg width="800" height="600" viewBox="-20 -40 840 680" xmlns="http://www.w3.org/2000/svg">
     <rect width="100%" height="100%" x="-20" y="-40" fill="white" /> 
     <text x="35" y="605" font-family="arial" font-size="14" fill="black" text-anchor="end">0</text><text x="35" y="485" font-family="arial" font-size="14" fill="black" text-anchor="end">44,460</text><text x="35" y="365" font-family="arial" font-size="14" fill="black" text-anchor="end">88,920</text><text x="35" y="245" font-family="arial" font-size="14" fill="black" text-anchor="end">133,381</text><text x="35" y="125" font-family="arial" font-size="14" fill="black" text-anchor="end">177,841</text><text x="35" y="5" font-family="arial" font-size="14" fill="black" text-anchor="end">222,301</text><text text-anchor="middle" font-family="arial" alignment-baseline="middle" transform="rotate(270, 10, 300)" x="10" y="300" font-size="14" fill="black"></text>
@@ -48,5 +47,5 @@ it('render bar chart', function () {
     
 </svg>
 SVG
-);
+    );
 });

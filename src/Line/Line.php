@@ -8,7 +8,7 @@ use Maantje\Charts\Renderable;
 class Line implements Renderable
 {
     /**
-     * @param Point[] $points
+     * @param  Point[]  $points
      */
     public function __construct(
         public readonly array $points = [],

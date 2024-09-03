@@ -1,7 +1,5 @@
 <?php
 
-use Maantje\Charts\Bar\Bar;
-use Maantje\Charts\Bar\Bars;
 use Maantje\Charts\Chart;
 use Maantje\Charts\Line\Line;
 use Maantje\Charts\Line\Lines;
@@ -34,7 +32,7 @@ it('render line chart', function () {
         ],
     );
 
-    expect($chart->render())->toBe(<<<SVG
+    expect($chart->render())->toBe(<<<'SVG'
 <svg width="800" height="600" viewBox="-20 -40 840 680" xmlns="http://www.w3.org/2000/svg">
     <rect width="100%" height="100%" x="-20" y="-40" fill="white" /> 
     <text x="10" y="605" font-family="arial" font-size="14" fill="black" text-anchor="end">0</text><text x="10" y="485" font-family="arial" font-size="14" fill="black" text-anchor="end">5</text><text x="10" y="365" font-family="arial" font-size="14" fill="black" text-anchor="end">10</text><text x="10" y="245" font-family="arial" font-size="14" fill="black" text-anchor="end">14</text><text x="10" y="125" font-family="arial" font-size="14" fill="black" text-anchor="end">19</text><text x="10" y="5" font-family="arial" font-size="14" fill="black" text-anchor="end">24</text><text text-anchor="middle" font-family="arial" alignment-baseline="middle" transform="rotate(270, 10, 300)" x="10" y="300" font-size="14" fill="black"></text>
@@ -57,5 +55,5 @@ it('render line chart', function () {
     
 </svg>
 SVG
-);
+    );
 });

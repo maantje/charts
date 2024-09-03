@@ -5,8 +5,7 @@ namespace Maantje\Charts\Pie;
 class PieChart
 {
     /**
-     * @param PieOptions $options
-     * @param Slice[] $data
+     * @param  Slice[]  $data
      */
     public function __construct(
         private readonly PieOptions $options,

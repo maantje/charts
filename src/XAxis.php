@@ -9,8 +9,8 @@ class XAxis implements Renderable
     public Closure $formatter;
 
     /**
-     * @param float[] $data
-     * @param Renderable[] $annotations
+     * @param  float[]  $data
+     * @param  Renderable[]  $annotations
      */
     public function __construct(
         public array $data = [],
@@ -18,9 +18,7 @@ class XAxis implements Renderable
         public array $annotations = [],
         ?Closure $formatter = null
     ) {
-        if (is_null($formatter)) {
-            $this->formatter = fn (mixed $label) => number_format($label);
-        }
+        $this->formatter = $formatter ?? fn (mixed $label) => number_format($label);
     }
 
     public function maxValue(): float

@@ -30,7 +30,6 @@ class Formatter
                 return 'invalid';
             }
 
-
             return $dateTime->format($format);
         };
     }

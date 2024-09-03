@@ -111,7 +111,7 @@ class Chart
     }
 
     /**
-     * @param class-string[] $types
+     * @param  class-string[]  $types
      */
     protected function renderAnnotations(array $types): string
     {

@@ -22,9 +22,7 @@ class YAxis implements Renderable
         public int $characterSize = 5,
         ?Closure $formatter = null
     ) {
-        if (is_null($formatter)) {
-            $this->formatter = fn (mixed $label) => number_format($label);
-        }
+        $this->formatter = $formatter ?? fn (mixed $label) => number_format($label);
     }
 
     public function render(Chart $chart): string

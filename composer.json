@@ -14,6 +14,11 @@
             "email": "j4mie@hey.com"
         }
     ],
+    "scripts": {
+        "examples": [
+            "cd examples && for example in *.php; do php \"$example\" > \"./output/$(basename \"${example%.php}.svg\")\"; done"
+        ]
+    },
     "require": {
         "laravel/pint": "^1.17"
     },
