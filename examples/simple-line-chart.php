@@ -1,6 +1,7 @@
 <?php
 
 use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
+use Maantje\Charts\Annotations\XAxis\XAxisRangeAnnotation;
 use Maantje\Charts\Chart;
 use Maantje\Charts\Formatter;
 use Maantje\Charts\Line\Line;
@@ -18,6 +19,12 @@ $chart = new Chart(
                 x: 100,
                 color: 'green',
                 label: 'Target',
+            ),
+            new XAxisRangeAnnotation(
+                x1: 100,
+                x2: 200,
+                color: 'blue',
+                label: 'Range',
             ),
         ],
     ),

@@ -3,6 +3,7 @@
 namespace Maantje\Charts;
 
 use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
+use Maantje\Charts\Annotations\XAxis\XAxisRangeAnnotation;
 use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
 use Maantje\Charts\Annotations\YAxis\YAxisRangeAnnotation;
 use Maantje\Charts\Line\Lines;
@@ -68,7 +69,7 @@ class Chart
                 {$this->renderYAxis()}
                 {$this->xAxis?->render($this)}
                 {$this->grid->render($this)}
-                {$this->renderAnnotations([YAxisRangeAnnotation::class])}
+                {$this->renderAnnotations([YAxisRangeAnnotation::class, XAxisRangeAnnotation::class])}
                 {$this->renderSeries()}
                 {$this->renderAnnotations([YAxisLineAnnotation::class, XAxisLineAnnotation::class])}
             </svg>
@@ -84,6 +85,11 @@ class Chart
         }
 
         return $svg;
+    }
+
+    public function xFor(float $x): float
+    {
+        return $this->leftMargin + (($x - $this->xAxis->minValue()) / ($this->xAxis->maxValue() - $this->xAxis->minValue())) * ($this->width - $this->leftMargin);
     }
 
     public function yForAxis(float $y, ?string $axis = null): float

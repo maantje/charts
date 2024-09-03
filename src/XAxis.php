@@ -3,7 +3,6 @@
 namespace Maantje\Charts;
 
 use Closure;
-use Maantje\Charts\Bar\Bar;
 
 class XAxis implements Renderable
 {
@@ -33,7 +32,7 @@ class XAxis implements Renderable
     public function render(Chart $chart): string
     {
         $labelCount = count($this->data);
-        $xSpacing = ($chart->end() - $chart->leftMargin) / ($labelCount - 1);
+//        $xSpacing = ($chart->end() - $chart->leftMargin) / ($labelCount - 1);
 
         $x1 = $chart->leftMargin;
 
@@ -42,7 +41,7 @@ class XAxis implements Renderable
             SVG;
 
         for ($i = 0; $i < $labelCount; $i++) {
-            $x = $chart->leftMargin + $i * $xSpacing;
+            $x = $chart->xFor($this->data[$i]);
             $y = $chart->height + 25;
 
             $label = $this->formatter->call($this, $this->data[$i]);

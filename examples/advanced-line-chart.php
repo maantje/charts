@@ -28,6 +28,7 @@ $chart = new Chart(
                     color: 'red',
                     yAxis: 'celsius',
                     size: 3,
+                    dash: '20,20',
                     label: 'Critical Hot',
                 ),
                 new YAxisRangeAnnotation(
@@ -57,6 +58,7 @@ $chart = new Chart(
                     color: 'blue',
                     yAxis: 'celsius',
                     size: 3,
+                    dash: '20,20',
                     label: 'Critical Cold',
                 ),
             ],
@@ -74,16 +76,16 @@ $chart = new Chart(
         title: 'Time',
         annotations: [
             new XAxisLineAnnotation(
-                x: (new DateTime('now +4 hours'))->getTimestamp(),
+                x: 1725331334 + 3600 + 1800,
                 color: 'green',
-                label: 'Target',
+                label: 'Halfway',
             ),
-//            new XAxisRangeAnnotation(
-//                x1: 150000,
-//                x2: 150000,
-//                color: 'red',
-//                label: 'Loss',
-//            )
+            new XAxisRangeAnnotation(
+                x1: 1725331334 + 3600 + 3600,
+                x2: 1725331334 + 3600 + 3600 + 3600,
+                color: 'blue',
+                label: 'Last hour',
+            ),
         ],
         formatter: Formatter::timestamp(),
     ),
@@ -92,20 +94,20 @@ $chart = new Chart(
             lines: [
                 new Line(
                     [
-                        new Point(y: 37.3, x: (new DateTime('now +2 hours'))->getTimestamp()),
-                        new Point(y: 37.8, x: (new DateTime('now +4 hours'))->getTimestamp()),
-                        new Point(y: 38, x: (new DateTime('now +6 hours'))->getTimestamp()),
-                        new Point(y: 42.2, x: (new DateTime('now +8 hours'))->getTimestamp()),
+                        new Point(y: 37.3, x: 1725331334),
+                        new Point(y: 37.8, x: 1725331334 + 3600),
+                        new Point(y: 38, x: 1725331334 + 3600 + 3600),
+                        new Point(y: 42.2, x: 1725331334 + 3600 + 3600 + 3600),
                     ],
                     yAxis: 'celsius',
                     lineColor: '#FF0000',
                 ),
                 new Line(
                     [
-                        new Point(y: 0, x:(new DateTime('now +2 hours'))->getTimestamp()),
-                        new Point(y: 900, x:(new DateTime('now +4 hours'))->getTimestamp()),
-                        new Point(y: 1800, x:(new DateTime('now +6 hours'))->getTimestamp()),
-                        new Point(y: 2200, x:(new DateTime('now +8 hours'))->getTimestamp()),
+                        new Point(y: 0, x:  1725331334),
+                        new Point(y: 900, x:  1725331334 + 3600),
+                        new Point(y: 1800, x:  1725331334 + 3600 + 3600),
+                        new Point(y: 2200, x:  1725331334 + 3600 + 3600 + 3600),
                     ],
                     yAxis: 'elevation',
                 ),
