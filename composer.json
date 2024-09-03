@@ -19,12 +19,10 @@
             "cd examples && for example in *.php; do php \"$example\" > \"./output/$(basename \"${example%.php}.svg\")\"; done"
         ]
     },
-    "require": {
-        "laravel/pint": "^1.17"
-    },
     "require-dev": {
         "pestphp/pest": "^2.35",
-        "phpstan/phpstan": "^1.12"
+        "phpstan/phpstan": "^1.12",
+        "laravel/pint": "^1.17"
     },
     "config": {
         "allow-plugins": {
