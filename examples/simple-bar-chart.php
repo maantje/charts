@@ -11,11 +11,11 @@ $chart = new Chart(
         new Bars(
             bars: [
                 new Bar(
-                    name: 'Jan',
+                    name: 'January',
                     value: 222301,
                 ),
                 new Bar(
-                    name: 'Feb',
+                    name: 'February',
                     value: 189242,
                 ),
                 new Bar(

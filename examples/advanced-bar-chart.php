@@ -33,12 +33,12 @@ $chart = new Chart(
         new Bars(
             bars: [
                 new Bar(
-                    name: 'Jan',
+                    name: 'January',
                     value: 222301,
                     color: 'lightgreen'
                 ),
                 new Bar(
-                    name: 'Feb',
+                    name: 'February',
                     value: 189242,
                     color: 'yellow',
                 ),
@@ -48,7 +48,7 @@ $chart = new Chart(
                     color: 'red'
                 ),
                 new Bar(
-                    name: 'Apr',
+                    name: 'April',
                     value: 222301,
                     color: 'lightgreen'
                 ),

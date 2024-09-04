@@ -72,7 +72,7 @@ $chart = new Chart(
         new Bars(
             bars: [
                 new StackedBar(
-                    name: 'Jan',
+                    name: 'January',
                     segments: [
                         new Segment(
                             value: 40,
@@ -88,12 +88,12 @@ $chart = new Chart(
                     formatter: fn (float $value) => number_format($value),
                 ),
                 new Bar(
-                    name: 'Feb',
+                    name: 'February',
                     value: 100,
                     color: 'green'
                 ),
                 new StackedBar(
-                    name: 'Mar',
+                    name: 'March',
                     segments: [
                         new Segment(
                             value: 40,

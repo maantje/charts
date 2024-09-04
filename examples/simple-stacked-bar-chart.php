@@ -12,7 +12,7 @@ $chart = new Chart(
         new Bars(
             bars: [
                 new StackedBar(
-                    name: 'Jan',
+                    name: 'January',
                     segments: [
                         new Segment(
                             value: 40,
@@ -27,7 +27,7 @@ $chart = new Chart(
                     ],
                 ),
                 new StackedBar(
-                    name: 'Feb',
+                    name: 'February',
                     segments: [
                         new Segment(
                             value: 40,
