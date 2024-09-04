@@ -26,7 +26,6 @@ $chart = new Chart(
             annotations: [
                 new YAxisLineAnnotation(
                     y: 48,
-                    yAxis: 'celsius',
                     color: 'red',
                     size: 3,
                     dash: '20,20',
@@ -36,27 +35,23 @@ $chart = new Chart(
                 new YAxisRangeAnnotation(
                     y1: 39,
                     y2: 48,
-                    yAxis: 'celsius',
                     color: 'red',
                     label: 'Too hot',
                 ),
                 new YAxisRangeAnnotation(
                     y1: 36,
                     y2: 39,
-                    yAxis: 'celsius',
                     color: 'green',
                     label: 'Ideal',
                 ),
                 new YAxisRangeAnnotation(
                     y1: 36,
                     y2: 32,
-                    yAxis: 'celsius',
                     color: 'blue',
                     label: 'Too cold',
                 ),
                 new YAxisLineAnnotation(
                     y: 32,
-                    yAxis: 'celsius',
                     color: 'blue',
                     size: 3,
                     dash: '20,20',
