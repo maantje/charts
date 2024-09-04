@@ -1,11 +1,19 @@
+> [!WARNING]  
+> In active development, unstable api, use at own risk.
+
 # Charts
 
 Create SVG charts with PHP
 
-> [!WARNING]  
-> In active development, unstable api, use at own risk.
+## Installation
 
-## Examples
+To get started, install the package via composer:
+
+```bash
+composer require maantje/charts
+```
+
+## Usage
 
 ### Simple line chart
 ![alt text](./examples/output/simple-line-chart.svg)
@@ -30,3 +38,7 @@ Create SVG charts with PHP
 ### Mixed chart
 ![alt text](./examples/output/mixed-chart.svg)
 [View source](./examples/mixed-chart.php)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
