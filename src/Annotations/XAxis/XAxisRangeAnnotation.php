@@ -2,14 +2,14 @@
 
 namespace Maantje\Charts\Annotations\XAxis;
 
-use Maantje\Charts\Annotations\RendersBeforeSeries;
+use Maantje\Charts\Annotations\RendersAfterSeries;
 use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
 use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Rect;
 use Maantje\Charts\SVG\TextResizeableRect;
 
-class XAxisRangeAnnotation implements Renderable, RendersBeforeSeries
+class XAxisRangeAnnotation implements Renderable, RendersAfterSeries
 {
     public function __construct(
         public float $x1 = 0,

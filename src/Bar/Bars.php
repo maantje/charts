@@ -3,12 +3,12 @@
 namespace Maantje\Charts\Bar;
 
 use Maantje\Charts\Chart;
-use Maantje\Charts\Element;
+use Maantje\Charts\Serie;
 
-class Bars extends Element
+class Bars extends Serie
 {
     /**
-     * @param  Bar[]  $bars
+     * @param  BarContract[]  $bars
      */
     public function __construct(
         private readonly array $bars = [],
@@ -19,12 +19,12 @@ class Bars extends Element
 
     public function maxValue(): float
     {
-        return max(array_map(fn (Bar $data) => $data->value, $this->bars));
+        return max(array_map(fn (BarContract $data) => $data->value(), $this->bars));
     }
 
     public function minValue(): float
     {
-        return min(array_map(fn (Bar $data) => $data->value, $this->bars));
+        return min(array_map(fn (BarContract $data) => $data->value(), $this->bars));
     }
 
     public function render(Chart $chart): string

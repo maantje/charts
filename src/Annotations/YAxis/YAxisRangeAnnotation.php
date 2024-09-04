@@ -3,7 +3,7 @@
 namespace Maantje\Charts\Annotations\YAxis;
 
 use Maantje\Charts\Annotations\HasYAxis;
-use Maantje\Charts\Annotations\RendersBeforeSeries;
+use Maantje\Charts\Annotations\RendersAfterSeries;
 use Maantje\Charts\Annotations\YAxisAnnotation;
 use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
@@ -11,7 +11,7 @@ use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Rect;
 use Maantje\Charts\SVG\TextResizeableRect;
 
-class YAxisRangeAnnotation implements Renderable, RendersBeforeSeries, YAxisAnnotation
+class YAxisRangeAnnotation implements Renderable, RendersAfterSeries, YAxisAnnotation
 {
     use HasYAxis;
 

@@ -3,9 +3,9 @@
 namespace Maantje\Charts\Line;
 
 use Maantje\Charts\Chart;
-use Maantje\Charts\Element;
+use Maantje\Charts\Serie;
 
-class Lines extends Element
+class Lines extends Serie
 {
     /**
      * @param  Line[]  $lines

@@ -2,7 +2,7 @@
 
 namespace Maantje\Charts;
 
-abstract class Element implements Renderable
+abstract class Serie implements Renderable
 {
     public function __construct(public ?string $yAxis = null) {}
 

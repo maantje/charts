@@ -4,10 +4,10 @@ namespace Maantje\Charts\SVG;
 
 use Stringable;
 
-readonly class Text implements Stringable
+class Text implements Stringable
 {
     public function __construct(
-        private string $content,
+        private null|int|float|string $content,
         private float $x = 0,
         private float $y = 0,
         private string $fontFamily = 'Arial',
@@ -18,7 +18,11 @@ readonly class Text implements Stringable
         private string $textAnchor = 'start',
         private string $dominantBaseline = 'alphabetic',
         private ?string $transform = null
-    ) {}
+    ) {
+        if (is_null($this->content)) {
+            $this->content = '';
+        }
+    }
 
     public function __toString(): string
     {
@@ -39,6 +43,6 @@ readonly class Text implements Stringable
             $attributes .= sprintf(' transform="%s"', htmlspecialchars($this->transform, ENT_QUOTES));
         }
 
-        return sprintf('<text %s>%s</text>', $attributes, htmlspecialchars($this->content, ENT_QUOTES));
+        return sprintf('<text %s>%s</text>', $attributes, htmlspecialchars((string) $this->content, ENT_QUOTES));
     }
 }

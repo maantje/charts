@@ -17,7 +17,7 @@ class YAxisLineAnnotation implements Renderable, RendersAfterSeries, YAxisAnnota
 
     public function __construct(
         public float $y,
-        public ?string $yAxis = null,
+        public ?string $yAxis = 'default',
         public string $color = 'yellow',
         public int $size = 2,
         public ?int $fontSize = null,

@@ -7,7 +7,7 @@ use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Rect;
 use Maantje\Charts\SVG\Text;
 
-class Bar
+class Bar implements BarContract
 {
     public function __construct(
         public string $name,
@@ -49,5 +49,10 @@ class Bar
                 textAnchor: 'middle'
             ),
         ]);
+    }
+
+    public function value(): float
+    {
+        return $this->value;
     }
 }
