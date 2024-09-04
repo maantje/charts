@@ -9,14 +9,6 @@ use Maantje\Charts\Line\Point;
 
 class Chart
 {
-    protected float $leftMargin = 10;
-
-    protected float $rightMargin = 30;
-
-    protected float $bottomMargin = 50;
-
-    protected float $topMargin = 15;
-
     /** @var array<string, float> */
     public array $maxValue = [];
 
@@ -46,6 +38,10 @@ class Chart
         public XAxis $xAxis = new XAxis,
         public array $annotations = [],
         public array $series = [],
+        protected int $leftMargin = 10,
+        protected int $rightMargin = 30,
+        protected int $bottomMargin = 50,
+        protected int $topMargin = 25,
     ) {
         $this->yAxis = is_array($yAxis) ? $yAxis : [$yAxis];
         $this->yAxis = array_reduce($this->yAxis, function (array $carry, YAxis $yAxis) {
