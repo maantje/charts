@@ -4,6 +4,7 @@ namespace Maantje\Charts;
 
 use Closure;
 use Maantje\Charts\Annotations\YAxisAnnotation;
+use Maantje\Charts\SVG\Text;
 
 class YAxis implements Renderable
 {
@@ -51,17 +52,31 @@ class YAxis implements Renderable
             $labelX = $chart->left() - 10;
             $labelY = $chart->top() + $chart->availableHeight() - ($i * $lineSpacing) + 5;
 
-            $svg .= <<<SVG
-            <text x="$labelX" y="$labelY" font-family="$chart->fontFamily" font-size="$chart->fontSize" fill="$this->color" text-anchor="end">$labelText</text>
-            SVG;
+            $svg .= new Text(
+                content: $labelText,
+                x: $labelX,
+                y: $labelY,
+                fontFamily: $chart->fontFamily,
+                fontSize: $chart->fontSize,
+                fill: $this->color,
+                textAnchor: 'end'
+            );
         }
 
         $titleY = ($chart->availableHeight()) / 2;
         $titleX = $chart->left() - $labelWidth - 25;
 
-        $svg .= <<<SVG
-            <text text-anchor="middle" font-family="$chart->fontFamily" alignment-baseline="middle" transform="rotate(270, $titleX, $titleY)" x="$titleX" y="$titleY" font-size="$chart->fontSize" fill="$this->color">$this->title</text>
-            SVG;
+        $svg .= new Text(
+            content: $this->title,
+            x: $titleX,
+            y: $titleY,
+            fontFamily: $chart->fontFamily,
+            fontSize: $chart->fontSize,
+            fill: $this->color,
+            textAnchor: 'middle',
+            alignmentBaseline: 'middle',
+            transform: "rotate(270, $titleX, $titleY)"
+        );
 
         return $svg;
     }

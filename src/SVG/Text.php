@@ -17,6 +17,7 @@ class Text implements Stringable
         private float $strokeWidth = 0,
         private string $textAnchor = 'start',
         private string $dominantBaseline = 'alphabetic',
+        private string $alignmentBaseline = '',
         private ?string $transform = null
     ) {
         if (is_null($this->content)) {
@@ -27,7 +28,7 @@ class Text implements Stringable
     public function __toString(): string
     {
         $attributes = sprintf(
-            'x="%s" y="%s" font-family="%s" font-size="%s" fill="%s" stroke="%s" stroke-width="%s" text-anchor="%s" dominant-baseline="%s"',
+            'x="%s" y="%s" font-family="%s" font-size="%s" fill="%s" stroke="%s" stroke-width="%s" text-anchor="%s" dominant-baseline="%s" alignment-baseline="%s"',
             $this->x,
             $this->y,
             htmlspecialchars($this->fontFamily, ENT_QUOTES),
@@ -36,7 +37,8 @@ class Text implements Stringable
             htmlspecialchars($this->stroke, ENT_QUOTES),
             $this->strokeWidth,
             htmlspecialchars($this->textAnchor, ENT_QUOTES),
-            htmlspecialchars($this->dominantBaseline, ENT_QUOTES)
+            htmlspecialchars($this->dominantBaseline, ENT_QUOTES),
+            htmlspecialchars($this->alignmentBaseline, ENT_QUOTES),
         );
 
         if ($this->transform) {

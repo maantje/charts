@@ -6,6 +6,7 @@ use Maantje\Charts\Annotations\RendersAfterSeries;
 use Maantje\Charts\Annotations\RendersBeforeSeries;
 use Maantje\Charts\Line\Lines;
 use Maantje\Charts\Line\Point;
+use Maantje\Charts\SVG\Rect;
 
 class Chart
 {
@@ -164,9 +165,11 @@ class Chart
             return '';
         }
 
-        return <<<SVG
-            <rect width="$this->width" height="$this->height"  fill="$this->background" /> 
-            SVG;
+        return new Rect(
+            width: $this->width,
+            height: $this->height,
+            fill: $this->background,
+        );
     }
 
     public function availableHeight(): float
