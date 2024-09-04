@@ -16,6 +16,7 @@ use Maantje\Charts\YAxis;
 require '../vendor/autoload.php';
 
 $chart = new Chart(
+    background: 'beige',
     yAxis: [
         new YAxis(
             name: 'celsius',

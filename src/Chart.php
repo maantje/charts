@@ -168,8 +168,11 @@ class Chart
             return '';
         }
 
+        $paddedWidth = $this->width + $this->paddingX * 2;
+        $paddedHeight = $this->height + $this->paddingY * 2;
+
         return <<<SVG
-            <rect width="100%" height="100%" x="-$this->paddingX" y="-$this->paddingY" fill="$this->background" /> 
+            <rect width="$paddedWidth" height="$paddedHeight" x="-$this->paddingX" y="-$this->paddingY" fill="$this->background" /> 
             SVG;
     }
 
