@@ -9,7 +9,7 @@ use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
 use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Rect;
-use Maantje\Charts\SVG\Text;
+use Maantje\Charts\SVG\TextResizeableRect;
 
 class YAxisRangeAnnotation implements Renderable, RendersBeforeSeries, YAxisAnnotation
 {
@@ -21,9 +21,16 @@ class YAxisRangeAnnotation implements Renderable, RendersBeforeSeries, YAxisAnno
         public ?string $yAxis = null,
         public string $color = 'yellow',
         public int $fontSize = 14,
-        public float $opacity = 0.3,
+        public float $opacity = 0.2,
         public string $label = '',
-        public string $labelColor = ''
+        public string $labelColor = 'white',
+        public string $labelBackgroundColor = '',
+        public string $labelBorderColor = '',
+        public int $labelBorderWidth = 0,
+        public int $labelOffsetY = 8,
+        public int $labelOffsetX = 10,
+        public int $labelPaddingX = 20,
+        public int $textLeftMargin = 0,
     ) {
         //
     }
@@ -35,8 +42,8 @@ class YAxisRangeAnnotation implements Renderable, RendersBeforeSeries, YAxisAnno
 
         $rectHeight = abs($y2 - $y1);
         $rectY = min($y1, $y2);
-        $labelY = $rectY + $rectHeight - 10;
-        $labelColor = $this->labelColor ?: $this->color;
+        $labelY = $rectY + $rectHeight - $this->labelOffsetY;
+        $labelColor = $this->labelBackgroundColor ?: $this->color;
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return new Fragment([
@@ -48,14 +55,18 @@ class YAxisRangeAnnotation implements Renderable, RendersBeforeSeries, YAxisAnno
                 fill: $this->color,
                 fillOpacity: $this->opacity,
             ),
-            new Text(
+            new TextResizeableRect(
                 content: $this->label,
-                x: $chart->left() + 5,
+                x: $chart->left() + $this->labelOffsetX,
                 y: $labelY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,
-                fill: $labelColor,
-                textAnchor: 'start',
+                rectFill: $labelColor,
+                rectStroke: $this->labelBorderColor,
+                rectStrokeWidth: $this->labelBorderWidth,
+                fill: $this->labelColor,
+                labelLeftMargin: $this->textLeftMargin,
+                textAnchor: 'start'
             ),
         ]);
     }

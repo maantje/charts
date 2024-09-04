@@ -9,7 +9,7 @@ use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
 use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Line;
-use Maantje\Charts\SVG\Text;
+use Maantje\Charts\SVG\TextResizeableRect;
 
 class YAxisLineAnnotation implements Renderable, RendersAfterSeries, YAxisAnnotation
 {
@@ -23,7 +23,14 @@ class YAxisLineAnnotation implements Renderable, RendersAfterSeries, YAxisAnnota
         public ?int $fontSize = null,
         public string $dash = '',
         public string $label = '',
-        public string $labelColor = '',
+        public string $labelColor = 'white',
+        public string $labelBackgroundColor = '',
+        public string $labelBorderColor = '',
+        public int $labelBorderWidth = 0,
+        public int $labelOffsetY = -5,
+        public int $labelOffsetX = 10,
+        public int $labelPaddingX = 20,
+        public int $textLeftMargin = 0,
     ) {
         //
     }
@@ -32,9 +39,9 @@ class YAxisLineAnnotation implements Renderable, RendersAfterSeries, YAxisAnnota
     {
         $y = $chart->yForAxis($this->y, $this->yAxis);
 
-        $labelY = $y - $this->size + 20;
+        $labelY = $y - $this->size + $this->labelOffsetY;
 
-        $labelColor = $this->labelColor ?: $this->color;
+        $labelColor = $this->labelBackgroundColor ?: $this->color;
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return new Fragment([
@@ -47,13 +54,18 @@ class YAxisLineAnnotation implements Renderable, RendersAfterSeries, YAxisAnnota
                 stroke: $this->color,
                 strokeWidth: $this->size,
             ),
-            new Text(
+            new TextResizeableRect(
                 content: $this->label,
-                x: $chart->left() + 5,
+                x: $chart->left() + $this->labelOffsetX,
                 y: $labelY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,
-                fill: $labelColor,
+                rectFill: $labelColor,
+                rectStroke: $this->labelBorderColor,
+                rectStrokeWidth: $this->labelBorderWidth,
+                fill: $this->labelColor,
+                labelPaddingX: $this->labelPaddingX,
+                labelLeftMargin: $this->textLeftMargin,
                 textAnchor: 'start'
             ),
         ]);

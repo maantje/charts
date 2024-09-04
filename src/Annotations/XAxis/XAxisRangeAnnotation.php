@@ -7,7 +7,7 @@ use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
 use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Rect;
-use Maantje\Charts\SVG\Text;
+use Maantje\Charts\SVG\TextResizeableRect;
 
 class XAxisRangeAnnotation implements Renderable, RendersBeforeSeries
 {
@@ -16,9 +16,14 @@ class XAxisRangeAnnotation implements Renderable, RendersBeforeSeries
         public float $x2 = 0,
         public string $color = 'yellow',
         public int $fontSize = 14,
-        public float $opacity = 0.3,
+        public float $opacity = 0.2,
         public string $label = '',
-        public string $labelColor = ''
+        public string $labelColor = 'white',
+        public string $labelBackgroundColor = '',
+        public string $labelBorderColor = '',
+        public int $labelBorderWidth = 0,
+        public int $labelOffsetX = 20,
+        public int $labelPaddingX = 20,
     ) {}
 
     public function render(Chart $chart): string
@@ -27,9 +32,8 @@ class XAxisRangeAnnotation implements Renderable, RendersBeforeSeries
         $x2 = $chart->xFor($this->x2);
 
         $rectWidth = abs($x2 - $x1);
-        $rectX = min($x1, $x2);
 
-        $labelColor = $this->labelColor ?: $this->color;
+        $labelColor = $this->labelBackgroundColor ?: $this->color;
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return new Fragment([
@@ -41,13 +45,16 @@ class XAxisRangeAnnotation implements Renderable, RendersBeforeSeries
                 fill: $this->color,
                 fillOpacity: $this->opacity,
             ),
-            new Text(
+            new TextResizeableRect(
                 content: $this->label,
-                x: $rectX + 5,
-                y: $chart->bottom() - 10,
+                x: $x1 + $this->labelOffsetX,
+                y: $chart->bottom() - 15,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,
-                fill: $labelColor,
+                rectFill: $labelColor,
+                rectStroke: $this->labelBorderColor,
+                rectStrokeWidth: $this->labelBorderWidth,
+                fill: $this->labelColor,
                 textAnchor: 'start'
             ),
         ]);

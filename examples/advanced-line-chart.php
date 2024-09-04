@@ -31,6 +31,7 @@ $chart = new Chart(
                     size: 3,
                     dash: '20,20',
                     label: 'Critical Hot',
+                    textLeftMargin: 3
                 ),
                 new YAxisRangeAnnotation(
                     y1: 39,
@@ -45,7 +46,6 @@ $chart = new Chart(
                     yAxis: 'celsius',
                     color: 'green',
                     label: 'Ideal',
-                    labelColor: 'green',
                 ),
                 new YAxisRangeAnnotation(
                     y1: 36,
@@ -61,6 +61,7 @@ $chart = new Chart(
                     size: 3,
                     dash: '20,20',
                     label: 'Critical Cold',
+                    textLeftMargin: 3
                 ),
             ],
         ),
@@ -92,6 +93,7 @@ $chart = new Chart(
                 x: 1725331334 + 3600 + 1800,
                 color: 'green',
                 label: 'Halfway',
+                textLeftMargin: -2
             ),
             new XAxisRangeAnnotation(
                 x1: 1725331334 + 3600 + 3600,

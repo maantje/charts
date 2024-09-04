@@ -6,8 +6,7 @@ use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
 use Maantje\Charts\SVG\Circle;
 use Maantje\Charts\SVG\Fragment;
-use Maantje\Charts\SVG\Rect;
-use Maantje\Charts\SVG\Text;
+use Maantje\Charts\SVG\TextResizeableRect;
 
 class PointAnnotation implements Renderable, RendersAfterSeries, YAxisAnnotation
 {
@@ -41,16 +40,7 @@ class PointAnnotation implements Renderable, RendersAfterSeries, YAxisAnnotation
         $labelY = $y - $this->markerSize - $this->labelOffsetY;
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
-        $characterSize = $fontSize / 2.2;
-        $characterHeight = $fontSize * 1.2;
-
-        $rectWidth = strlen($this->label) * $characterSize + $this->labelPaddingX;
-        $rectHeight = max(30, $characterHeight);
-
-        $rectX = $x - $rectWidth / 2;
-        $rectY = $labelY - $characterSize - $rectHeight / 2;
-
-        return new Fragment([
+        return new Fragment(children: [
             new Circle(
                 cx: $x,
                 cy: $y,
@@ -60,23 +50,16 @@ class PointAnnotation implements Renderable, RendersAfterSeries, YAxisAnnotation
                 strokeWidth: $this->markerBorderWidth,
                 title: $this->y,
             ),
-            new Rect(
-                x: $rectX,
-                y: $rectY,
-                width: $rectWidth,
-                height: $rectHeight,
-                fill: $this->labelBackgroundColor,
-                stroke: $this->labelBorderColor,
-                strokeWidth: $this->labelBorderWidth,
-            ),
-            new Text(
+            new TextResizeableRect(
                 content: $this->label,
                 x: $x,
                 y: $labelY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,
+                rectFill: $this->labelBackgroundColor,
+                rectStroke: $this->labelBorderColor,
+                rectStrokeWidth: $this->labelBorderWidth,
                 fill: $this->labelColor,
-                textAnchor: 'middle',
             ),
         ]);
     }

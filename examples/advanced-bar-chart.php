@@ -18,11 +18,13 @@ $chart = new Chart(
                 y: 200000,
                 color: 'green',
                 label: 'Target',
+                textLeftMargin: -1
             ),
             new YAxisLineAnnotation(
                 y: 150000,
                 color: 'red',
                 label: 'Loss',
+                textLeftMargin: -2
             ),
         ],
         formatter: Formatter::currency('nl_NL', 'EUR')

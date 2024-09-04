@@ -7,7 +7,7 @@ use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
 use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Line;
-use Maantje\Charts\SVG\Text;
+use Maantje\Charts\SVG\TextResizeableRect;
 
 class XAxisLineAnnotation implements Renderable, RendersAfterSeries
 {
@@ -18,14 +18,20 @@ class XAxisLineAnnotation implements Renderable, RendersAfterSeries
         public ?int $fontSize = null,
         public string $dash = '',
         public string $label = '',
-        public string $labelColor = '',
+        public string $labelColor = 'white',
+        public string $labelBackgroundColor = '',
+        public string $labelBorderColor = '',
+        public int $labelBorderWidth = 0,
+        public int $labelOffsetX = 20,
+        public int $labelPaddingX = 20,
+        public int $textLeftMargin = 0,
     ) {}
 
     public function render(Chart $chart): string
     {
         $x = $chart->xFor($this->x);
 
-        $labelColor = $this->labelColor ?: $this->color;
+        $labelColor = $this->labelBackgroundColor ?: $this->color;
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return new Fragment([
@@ -38,14 +44,18 @@ class XAxisLineAnnotation implements Renderable, RendersAfterSeries
                 stroke: $this->color,
                 strokeWidth: $this->size,
             ),
-            new Text(
+            new TextResizeableRect(
                 content: $this->label,
-                x: $x + $this->size + 5,
-                y: $chart->bottom() - 10,
+                x: $x + $this->size + $this->labelOffsetX,
+                y: $chart->bottom() - 15,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,
-                fill: $labelColor,
-                textAnchor: 'start',
+                rectFill: $labelColor,
+                rectStroke: $this->labelBorderColor,
+                rectStrokeWidth: $this->labelBorderWidth,
+                fill: $this->labelColor,
+                labelLeftMargin: $this->textLeftMargin,
+                textAnchor: 'start'
             ),
         ]);
     }
