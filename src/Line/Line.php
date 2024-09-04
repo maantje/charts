@@ -26,12 +26,13 @@ class Line implements Renderable
         $pointsSvg = '';
         $points = [];
 
+        $minY = $chart->yForAxis($chart->minValue($this->yAxis), $this->yAxis); // Get the minimum Y-axis value
+
         foreach ($this->points as $index => $point) {
             $x = $chart->left() + $index * $xSpacing;
             $y = $chart->yForAxis($point->y, $this->yAxis);
 
-            $points[] = [$x, $y];
-
+            $points[] = [$x, min($y, $minY)];
             $pointsSvg .= $point->render($x, $y);
         }
 
