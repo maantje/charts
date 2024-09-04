@@ -2,10 +2,10 @@
     <rect width="800" height="600"  fill="white" /> 
     <text x="45" y="555" font-family="arial" font-size="14" fill="black" text-anchor="end">0</text><text x="45" y="450" font-family="arial" font-size="14" fill="black" text-anchor="end">5</text><text x="45" y="345" font-family="arial" font-size="14" fill="black" text-anchor="end">10</text><text x="45" y="240" font-family="arial" font-size="14" fill="black" text-anchor="end">14</text><text x="45" y="135" font-family="arial" font-size="14" fill="black" text-anchor="end">19</text><text x="45" y="30" font-family="arial" font-size="14" fill="black" text-anchor="end">24</text><text text-anchor="middle" font-family="arial" alignment-baseline="middle" transform="rotate(270, 20, 262.5)" x="20" y="262.5" font-size="14" fill="black"></text>
     <line x1="55" y1="550" x2="770" y2="550" stroke="black"/><text x="55" y="575" font-family="arial" font-size="14" text-anchor="middle">0</text>
-<line x1="55" x2="55" y1="545" y2="545" stroke="black"/><text x="293.33333333333" y="575" font-family="arial" font-size="14" text-anchor="middle">100</text>
-<line x1="293.33333333333" x2="293.33333333333" y1="545" y2="545" stroke="black"/><text x="531.66666666667" y="575" font-family="arial" font-size="14" text-anchor="middle">200</text>
-<line x1="531.66666666667" x2="531.66666666667" y1="545" y2="545" stroke="black"/><text x="770" y="575" font-family="arial" font-size="14" text-anchor="middle">300</text>
-<line x1="770" x2="770" y1="545" y2="545" stroke="black"/>    <text x="412.5" y="590" font-family="arial" font-size="14" text-anchor="middle"></text>
+<line x1="55" x2="55" y1="550" y2="545" stroke="black"/><text x="293.33333333333" y="575" font-family="arial" font-size="14" text-anchor="middle">100</text>
+<line x1="293.33333333333" x2="293.33333333333" y1="550" y2="545" stroke="black"/><text x="531.66666666667" y="575" font-family="arial" font-size="14" text-anchor="middle">200</text>
+<line x1="531.66666666667" x2="531.66666666667" y1="550" y2="545" stroke="black"/><text x="770" y="575" font-family="arial" font-size="14" text-anchor="middle">300</text>
+<line x1="770" x2="770" y1="550" y2="545" stroke="black"/>    <text x="412.5" y="590" font-family="arial" font-size="14" text-anchor="middle"></text>
     <line x1="55" y1="550" x2="770" y2="550" stroke="#ccc" stroke-dasharray="" stroke-width="1" /><line x1="55" y1="445" x2="770" y2="445" stroke="#ccc" stroke-dasharray="" stroke-width="1" /><line x1="55" y1="340" x2="770" y2="340" stroke="#ccc" stroke-dasharray="" stroke-width="1" /><line x1="55" y1="235" x2="770" y2="235" stroke="#ccc" stroke-dasharray="" stroke-width="1" /><line x1="55" y1="130" x2="770" y2="130" stroke="#ccc" stroke-dasharray="" stroke-width="1" /><line x1="55" y1="25" x2="770" y2="25" stroke="#ccc" stroke-dasharray="" stroke-width="1" />
     
     <polyline points="55,550 293.33333333333,462.5 531.66666666667,287.5 770,375" fill="none" stroke="black" stroke-width="5" />

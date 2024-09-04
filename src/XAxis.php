@@ -47,7 +47,7 @@ class XAxis implements Renderable
 
             $svg .= <<<SVG
                 <text x="$x" y="$y" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$label</text>
-                <line x1="$x" x2="$x" y1="$lineY" y2="$lineY" stroke="black"/>
+                <line x1="$x" x2="$x" y1="{$chart->bottom()}" y2="$lineY" stroke="black"/>
                 SVG;
         }
 
