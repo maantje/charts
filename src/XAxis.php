@@ -52,7 +52,7 @@ class XAxis implements Renderable
         }
 
         $titleX = $chart->availableWidth() / 2 + $chart->left();
-        $titleY = $chart->bottom() + 30;
+        $titleY = $chart->bottom() + 40;
 
         $svg .= <<<SVG
                 <text x="$titleX" y="$titleY" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$this->title</text>

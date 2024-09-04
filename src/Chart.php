@@ -13,7 +13,7 @@ class Chart
 
     protected float $rightMargin = 30;
 
-    protected float $bottomMargin = 35;
+    protected float $bottomMargin = 50;
 
     protected float $topMargin = 15;
 
