@@ -34,30 +34,25 @@ class XAxis implements Renderable
     public function render(Chart $chart): string
     {
         $labelCount = count($this->data);
-        //        $xSpacing = ($chart->end() - $chart->leftMargin) / ($labelCount - 1);
-
-        $x1 = $chart->leftMargin;
-
         $svg = <<<SVG
-            <line x1="$x1" y1="$chart->height" x2="{$chart->end()}" y2="$chart->height" stroke="black"/>
+            <line x1="{$chart->left()}" y1="{$chart->bottom()}" x2="{$chart->right()}" y2="{$chart->bottom()}" stroke="black"/>
             SVG;
 
         for ($i = 0; $i < $labelCount; $i++) {
             $x = $chart->xFor($this->data[$i]);
-            $y = $chart->height + 25;
+            $y = $chart->bottom() + 25;
 
             $label = $this->formatter->call($this, $this->data[$i]);
-            $lineY = $chart->height - 5;
+            $lineY = $chart->bottom() - 5;
 
             $svg .= <<<SVG
                 <text x="$x" y="$y" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$label</text>
-                <line x1="$x" x2="$x"  y1="$chart->height" y2="$lineY" stroke="black"/>
-
+                <line x1="$x" x2="$x" y1="$lineY" y2="$lineY" stroke="black"/>
                 SVG;
         }
 
-        $titleX = ($chart->end() + $chart->leftMargin) / 2;
-        $titleY = $chart->height + 30;
+        $titleX = $chart->availableWidth() / 2 + $chart->left();
+        $titleY = $chart->bottom() + 30;
 
         $svg .= <<<SVG
                 <text x="$titleX" y="$titleY" font-family="$chart->fontFamily" font-size="$chart->fontSize" text-anchor="middle">$this->title</text>

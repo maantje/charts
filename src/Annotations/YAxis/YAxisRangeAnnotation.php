@@ -35,26 +35,22 @@ class YAxisRangeAnnotation implements Renderable, RendersBeforeSeries, YAxisAnno
 
         $rectHeight = abs($y2 - $y1);
         $rectY = min($y1, $y2);
-        $rectX = $chart->leftMargin;
-
         $labelY = $rectY + $rectHeight - 10;
-        $labelX = $rectX + 5;
         $labelColor = $this->labelColor ?: $this->color;
-        $width = $chart->end() - $chart->leftMargin;
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return new Fragment([
             new Rect(
-                x: $rectX,
+                x: $chart->left(),
                 y: $rectY,
-                width: $width,
+                width: $chart->availableWidth(),
                 height: $rectHeight,
                 fill: $this->color,
                 fillOpacity: $this->opacity,
             ),
             new Text(
                 content: $this->label,
-                x: $labelX,
+                x: $chart->left() + 5,
                 y: $labelY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,

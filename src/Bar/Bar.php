@@ -23,13 +23,11 @@ class Bar
     {
         $width = min($this->width ?? $maxBarWidth, $maxBarWidth);
         $y = $chart->yForAxis($this->value, $this->yAxis);
-        $barHeight = $chart->height - $y;
 
         if (! is_null($this->width)) {
             $x += ($maxBarWidth - $width) / 2;
         }
 
-        $labelY = $chart->height + $this->labelMarginY;
         $labelX = $x + $width / 2;
 
         return new Fragment([
@@ -37,14 +35,14 @@ class Bar
                 x: $x,
                 y: $y,
                 width: $width,
-                height: $barHeight,
+                height: $chart->bottom() - $y,
                 fill: $this->color,
                 title: $this->value
             ),
             new Text(
                 content: $this->name,
                 x: $labelX,
-                y: $labelY,
+                y: $chart->bottom() + $this->labelMarginY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $chart->fontSize,
                 fill: $this->labelColor,

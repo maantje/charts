@@ -9,7 +9,13 @@ use Maantje\Charts\Line\Point;
 
 class Chart
 {
-    public float $leftMargin = 0;
+    protected float $leftMargin = 10;
+
+    protected float $rightMargin = 30;
+
+    protected float $bottomMargin = 35;
+
+    protected float $topMargin = 15;
 
     /** @var array<string, float> */
     public array $maxValue = [];
@@ -28,11 +34,9 @@ class Chart
      * @param  YAxis|YAxis[]  $yAxis
      */
     public function __construct(
-        public float $width = 800,
-        public float $height = 600,
-        public ?string $background = 'white',
-        public int $paddingY = 40,
-        public int $paddingX = 20,
+        protected float $width = 800,
+        protected float $height = 600,
+        public ?string $background = 'beige',
         public int $fontSize = 14,
         public string $fontFamily = 'arial',
         public readonly Grid $grid = new Grid,
@@ -61,12 +65,8 @@ class Chart
 
     public function render(): string
     {
-
-        $paddedWidth = $this->width + $this->paddingX * 2;
-        $paddedHeight = $this->height + $this->paddingY * 2;
-
         return <<<SVG
-            <svg width="$this->width" height="$this->height" viewBox="-$this->paddingX -$this->paddingY $paddedWidth $paddedHeight" xmlns="http://www.w3.org/2000/svg">
+            <svg width="$this->width" height="$this->height"  xmlns="http://www.w3.org/2000/svg">
                 {$this->background()}
                 {$this->renderYAxis()}
                 {$this->xAxis->render($this)}
@@ -91,12 +91,12 @@ class Chart
 
     public function xFor(float $x): float
     {
-        return $this->leftMargin + (($x - $this->xAxis->minValue()) / ($this->xAxis->maxValue() - $this->xAxis->minValue())) * ($this->width - $this->leftMargin);
+        return $this->leftMargin + (($x - $this->xAxis->minValue()) / ($this->xAxis->maxValue() - $this->xAxis->minValue())) * ($this->width - $this->leftMargin - $this->rightMargin);
     }
 
     public function yForAxis(float $y, ?string $axis = null): float
     {
-        return $this->height - (($y - $this->minValue($axis)) / ($this->maxValue($axis) - $this->minValue($axis))) * $this->height;
+        return $this->topMargin + $this->availableHeight() - (($y - $this->minValue($axis)) / ($this->maxValue($axis) - $this->minValue($axis))) * ($this->availableHeight());
     }
 
     protected function renderSeries(): string
@@ -162,26 +162,53 @@ class Chart
         return $this->minValue[$yAxis] = min(array_map(fn ($element) => $element->minValue(), $filtered));
     }
 
-    private function background(): string
+    protected function background(): string
     {
         if (is_null($this->background)) {
             return '';
         }
 
-        $paddedWidth = $this->width + $this->paddingX * 2;
-        $paddedHeight = $this->height + $this->paddingY * 2;
-
         return <<<SVG
-            <rect width="$paddedWidth" height="$paddedHeight" x="-$this->paddingX" y="-$this->paddingY" fill="$this->background" /> 
+            <rect width="$this->width" height="$this->height"  fill="$this->background" /> 
             SVG;
     }
 
-    public function end(): float
+    public function availableHeight(): float
     {
-        return $this->width;
+        return $this->height - $this->bottomMargin - $this->topMargin;
     }
 
-    private function guessXAxisData(): void
+    public function availableWidth(): float
+    {
+        return $this->width - $this->rightMargin - $this->leftMargin;
+    }
+
+    public function top(): float
+    {
+        return $this->topMargin;
+    }
+
+    public function bottom(): float
+    {
+        return $this->height - $this->bottomMargin;
+    }
+
+    public function left(): float
+    {
+        return $this->leftMargin;
+    }
+
+    public function right(): float
+    {
+        return $this->width - $this->rightMargin;
+    }
+
+    public function incrementLeftMargin(float $value): void
+    {
+        $this->leftMargin += $value;
+    }
+
+    protected function guessXAxisData(): void
     {
         if (count($this->series) === 0) {
             return;

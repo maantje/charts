@@ -32,18 +32,16 @@ class YAxisLineAnnotation implements Renderable, RendersAfterSeries, YAxisAnnota
     {
         $y = $chart->yForAxis($this->y, $this->yAxis);
 
-        $lineX = $chart->leftMargin;
         $labelY = $y - $this->size + 20;
-        $labelX = $lineX + 5;
-        $labelColor = $this->labelColor ?: $this->color;
 
+        $labelColor = $this->labelColor ?: $this->color;
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return new Fragment([
             new Line(
-                x1: $lineX,
+                x1: $chart->left(),
                 y1: $y,
-                x2: $chart->end(),
+                x2: $chart->right(),
                 y2: $y,
                 strokeDashArray: $this->dash,
                 stroke: $this->color,
@@ -51,7 +49,7 @@ class YAxisLineAnnotation implements Renderable, RendersAfterSeries, YAxisAnnota
             ),
             new Text(
                 content: $this->label,
-                x: $labelX,
+                x: $chart->left() + 5,
                 y: $labelY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,

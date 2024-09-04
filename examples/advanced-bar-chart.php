@@ -12,7 +12,7 @@ use Maantje\Charts\YAxis;
 $chart = new Chart(
     yAxis: new YAxis(
         minValue: 120000,
-        maxValue: 220000,
+        maxValue: 230000,
         annotations: [
             new YAxisLineAnnotation(
                 y: 200000,

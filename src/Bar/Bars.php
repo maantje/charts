@@ -30,13 +30,10 @@ class Bars extends Element
     public function render(Chart $chart): string
     {
         $numBars = count($this->bars);
-        $availableWidth = $chart->width - $chart->leftMargin;
 
-        $maxBarWidth = $availableWidth / $numBars;
+        $maxBarWidth = $chart->availableWidth() / $numBars;
 
-        $xOffset = $chart->leftMargin;
-
-        $x = $xOffset;
+        $x = $chart->left();
 
         $svg = '';
 

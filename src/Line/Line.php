@@ -21,14 +21,13 @@ class Line implements Renderable
 
     public function render(Chart $chart): string
     {
-        $xSpacing = ($chart->end() - $chart->leftMargin) / (count($this->points) - 1);
+        $xSpacing = $chart->availableWidth() / (count($this->points) - 1);
 
         $pointsSvg = '';
         $points = [];
 
         foreach ($this->points as $index => $point) {
-            $x = $chart->leftMargin + $index * $xSpacing;
-
+            $x = $chart->left() + $index * $xSpacing;
             $y = $chart->yForAxis($point->y, $this->yAxis);
 
             $points[] = [$x, $y];

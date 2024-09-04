@@ -17,17 +17,17 @@ readonly class Grid implements Renderable
     public function render(Chart $chart): string
     {
         $numLines = $this->lines;
-        $lineSpacing = $chart->height / $numLines;
+        $lineSpacing = $chart->availableHeight() / $numLines;
 
         $svg = '';
 
         for ($i = 0; $i <= $numLines; $i++) {
-            $y = $chart->height - ($i * $lineSpacing);
-            $x = $chart->leftMargin;
+            $y = $chart->bottom() - ($i * $lineSpacing);
+
             $line = new Line(
-                x1: $x,
+                x1: $chart->left(),
                 y1: $y,
-                x2: $chart->end(),
+                x2: $chart->right(),
                 y2: $y,
                 stroke: $this->lineColor,
                 strokeWidth: 1

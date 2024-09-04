@@ -29,23 +29,22 @@ class XAxisRangeAnnotation implements Renderable, RendersBeforeSeries
         $rectWidth = abs($x2 - $x1);
         $rectX = min($x1, $x2);
 
-        $labelY = $chart->height - 10;
-        $labelX = $rectX + 5;
         $labelColor = $this->labelColor ?: $this->color;
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return new Fragment([
             new Rect(
                 x: $x1,
+                y: $chart->top(),
                 width: $rectWidth,
-                height: $chart->height,
+                height: $chart->availableHeight(),
                 fill: $this->color,
                 fillOpacity: $this->opacity,
             ),
             new Text(
                 content: $this->label,
-                x: $labelX,
-                y: $labelY,
+                x: $rectX + 5,
+                y: $chart->bottom() - 10,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,
                 fill: $labelColor,

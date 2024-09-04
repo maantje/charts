@@ -25,26 +25,23 @@ class XAxisLineAnnotation implements Renderable, RendersAfterSeries
     {
         $x = $chart->xFor($this->x);
 
-        $lineY = $chart->height;
-        $labelX = $x + $this->size + 5;
-        $labelY = $lineY - 10;
         $labelColor = $this->labelColor ?: $this->color;
-
         $fontSize = $this->fontSize ?? $chart->fontSize;
 
         return new Fragment([
             new Line(
                 x1: $x,
+                y1: $chart->bottom(),
                 x2: $x,
-                y2: $lineY,
+                y2: $chart->top(),
                 strokeDashArray: $this->dash,
                 stroke: $this->color,
                 strokeWidth: $this->size,
             ),
             new Text(
                 content: $this->label,
-                x: $labelX,
-                y: $labelY,
+                x: $x + $this->size + 5,
+                y: $chart->bottom() - 10,
                 fontFamily: $chart->fontFamily,
                 fontSize: $fontSize,
                 fill: $labelColor,

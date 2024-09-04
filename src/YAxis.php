@@ -34,28 +34,30 @@ class YAxis implements Renderable
     public function render(Chart $chart): string
     {
         $numLines = $chart->grid->lines;
-        $lineSpacing = $chart->height / $numLines;
+        $lineSpacing = $chart->availableHeight() / $numLines;
         $svg = '';
 
-        $titleMargin = 20;
+        $titleMargin = 35;
         $labelWidth = strlen($this->formatter->call($this, $chart->maxValue($this->name))) * $this->characterSize + $this->labelMargin;
 
-        $chart->leftMargin += $labelWidth + $titleMargin;
+        $chart->incrementLeftMargin($labelWidth + $titleMargin);
+
+        $maxValue = $chart->maxValue($this->name) / $numLines;
 
         for ($i = 0; $i <= $numLines; $i++) {
-            $value = $chart->minValue($this->name) + (($i / $numLines) * ($chart->maxValue($this->name) - $chart->minValue($this->name)));
+            $value = $maxValue * $i;
 
             $labelText = $this->formatter->call($this, $value);
-            $labelX = $chart->leftMargin - 10;
-            $labelY = $chart->height - ($i * $lineSpacing) + 5;
+            $labelX = $chart->left() - 10;
+            $labelY = $chart->top() + $chart->availableHeight() - ($i * $lineSpacing) + 5;
 
             $svg .= <<<SVG
             <text x="$labelX" y="$labelY" font-family="$chart->fontFamily" font-size="$chart->fontSize" fill="$this->color" text-anchor="end">$labelText</text>
             SVG;
         }
 
-        $titleY = ($chart->height) / 2;
-        $titleX = $chart->leftMargin - $labelWidth - 20;
+        $titleY = ($chart->availableHeight()) / 2;
+        $titleX = $chart->left() - $labelWidth - 25;
 
         $svg .= <<<SVG
             <text text-anchor="middle" font-family="$chart->fontFamily" alignment-baseline="middle" transform="rotate(270, $titleX, $titleY)" x="$titleX" y="$titleY" font-size="$chart->fontSize" fill="$this->color">$this->title</text>
