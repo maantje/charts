@@ -1,9 +1,18 @@
 > [!WARNING]  
-> In active development, unstable api, use at own risk.
+> This library is under active development. The API is unstable and subject to change. Use at your own risk.
 
-# Charts
+# Charts - SVG Chart Rendering
 
-Create SVG charts with PHP
+**Charts** is a zero-dependency PHP library for generating SVG charts. It enables easy creation of beautiful and responsive SVG-based charts directly from PHP, with no additional dependencies required.
+
+## Features
+
+- Simple, intuitive API for chart creation
+- Lightweight, with no external dependencies
+- Supports various chart types: line charts, bar charts, stacked charts, and mixed charts
+- Fully customizable and extendable
+- Outputs pure SVG, allowing for:
+  - Embedding in PDFs (ideal for reports)
 
 ## Installation
 
@@ -13,7 +22,9 @@ To get started, install the package via composer:
 composer require maantje/charts
 ```
 
-## Usage
+## Usage Examples
+
+Below are some examples of the types of charts you can create using this library. Click on the links to view the source code for each example.
 
 ### Simple line chart
 ![alt text](./examples/output/simple-line-chart.svg)
