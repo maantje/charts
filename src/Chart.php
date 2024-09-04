@@ -36,7 +36,7 @@ class Chart
     public function __construct(
         protected float $width = 800,
         protected float $height = 600,
-        public ?string $background = 'beige',
+        public ?string $background = 'white',
         public int $fontSize = 14,
         public string $fontFamily = 'arial',
         public readonly Grid $grid = new Grid,
