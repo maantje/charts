@@ -3,7 +3,7 @@
 
 # Charts - SVG Chart Rendering
 
-**Charts** is a zero-dependency PHP library for generating SVG charts. It enables easy creation of beautiful and responsive SVG-based charts directly from PHP, with no additional dependencies required.
+**Charts** is a zero-dependency PHP library for generating SVG charts. It enables easy creation of SVG-based charts directly from PHP, with no additional dependencies required.
 
 ## Features
 
