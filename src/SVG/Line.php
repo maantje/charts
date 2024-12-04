@@ -11,7 +11,7 @@ readonly class Line implements Stringable
         private float $y1 = 0,
         private float $x2 = 100,
         private float $y2 = 100,
-        private string $strokeDashArray = '',
+        private string $strokeDashArray = 'none',
         private string $stroke = 'black',
         private float $strokeWidth = 1,
         private ?string $transform = null
