@@ -68,13 +68,12 @@ class XAxis implements Renderable
                     x2: $x,
                     y2: $lineY,
                     stroke: 'black'
-                )
+                ),
             ]);
         }
 
         $titleX = $chart->availableWidth() / 2 + $chart->left();
         $titleY = $chart->bottom() + 40;
-
 
         $svg .= new Text(
             content: $this->title,

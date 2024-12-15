@@ -10,6 +10,7 @@ use Maantje\Charts\Bar\Bars;
 use Maantje\Charts\Bar\Segment;
 use Maantje\Charts\Bar\StackedBar;
 use Maantje\Charts\Chart;
+use Maantje\Charts\Formatter;
 use Maantje\Charts\Line\Line;
 use Maantje\Charts\Line\Lines;
 use Maantje\Charts\Line\Point;
@@ -21,7 +22,7 @@ $chart = new Chart(
         annotations: [
             new PointAnnotation(
                 x: 200,
-                y: 120,
+                y: 12000,
                 markerSize: 10,
                 markerBackgroundColor: 'white',
                 markerBorderColor: 'red',
@@ -29,13 +30,14 @@ $chart = new Chart(
                 label: 'Point annotation',
             ),
             new YAxisLineAnnotation(
-                y: 84,
+                y: 8400,
                 color: 'blue',
                 size: 3,
                 label: 'Y Axis annotation',
                 labelColor: 'white',
             ),
-        ]
+        ],
+        formatter: Formatter::number('nl_NL', 2)
     ),
     xAxis: new XAxis(
         annotations: [
@@ -45,7 +47,7 @@ $chart = new Chart(
                 color: 'pink',
                 label: 'X Axis range annotation'
             ),
-        ]
+        ],
     ),
     series: [
         new Lines(
@@ -53,17 +55,17 @@ $chart = new Chart(
                 new Line(
                     points: [
                         new Point(y: 0, x: 0),
-                        new Point(y: 40, x: 100),
-                        new Point(y: 120, x: 200),
-                        new Point(y: 80, x: 300),
+                        new Point(y: 4000, x: 100),
+                        new Point(y: 12000, x: 200),
+                        new Point(y: 8000, x: 300),
                     ],
                 ),
                 new Line(
                     points: [
                         new Point(y: 0, x: 0),
-                        new Point(y: 120, x: 100),
-                        new Point(y: 140, x: 200),
-                        new Point(y: 70, x: 300),
+                        new Point(y: 12000, x: 100),
+                        new Point(y: 14000, x: 200),
+                        new Point(y: 7000, x: 300),
                     ],
                     lineColor: 'blue'
                 ),
@@ -75,33 +77,33 @@ $chart = new Chart(
                     name: 'January',
                     segments: [
                         new Segment(
-                            value: 40,
+                            value: 4000,
                             color: 'green',
                             labelColor: 'white',
                         ),
                         new Segment(
-                            value: 30,
+                            value: 3000,
                             color: 'red',
                             labelColor: 'white',
                         ),
                     ],
-                    formatter: fn (float $value) => number_format($value),
+                    formatter: Formatter::number('nl_NL', 2),
                 ),
                 new Bar(
                     name: 'February',
-                    value: 100,
+                    value: 10000,
                     color: 'green'
                 ),
                 new StackedBar(
                     name: 'March',
                     segments: [
                         new Segment(
-                            value: 40,
+                            value: 4000,
                             color: 'green',
                             labelColor: 'white',
                         ),
                         new Segment(
-                            value: 30,
+                            value: 3000,
                             color: 'red',
                             labelColor: 'white',
                         ),
