@@ -2,20 +2,27 @@
 
 namespace Maantje\Charts\Pie;
 
+use Closure;
+
 class PieChart
 {
+    public Closure $formatter;
+
     /**
-     * @param  Slice[]  $data
+     * @param  Slice[]  $slices
      */
     public function __construct(
-        private readonly PieOptions $options,
-        private readonly array $data,
-    ) {}
+        private readonly int $size = 400,
+        private readonly array $slices = [],
+        ?Closure $formatter = null
+    ) {
+        $this->formatter = $formatter ?? fn (string $label, float $percentage) => "$label - $percentage%";
+    }
 
     public function render(): string
     {
         return <<<SVG
-            <svg width="{$this->options->size}" height="{$this->options->size}" viewBox="0 0 {$this->options->size} {$this->options->size}" xmlns="http://www.w3.org/2000/svg">
+            <svg width="{$this->size}" height="{$this->size}" xmlns="http://www.w3.org/2000/svg">
                 {$this->renderSlices()}
             </svg>
             SVG;
@@ -23,18 +30,30 @@ class PieChart
 
     private function renderSlices(): string
     {
-        $total = array_sum(array_map(fn ($data) => $data->value, $this->data));
-        $maxExplodeDistance = max(array_map(fn ($data) => $data->explodeDistance, $this->data));
-        $cx = $this->options->size / 2;
-        $cy = $this->options->size / 2;
+        if (empty($this->slices)) {
+            return '';
+        }
 
-        $radius = (min($this->options->size, $this->options->size) / 2) - $maxExplodeDistance;
+        $total = array_sum(array_map(fn ($data) => $data->value, $this->slices));
+
+        if ($total === 0.0) {
+            return '';
+        }
+
+        $maxExplodeDistance = max(array_map(fn ($data) => $data->explodeDistance, $this->slices));
+        $cx = $this->size / 2;
+        $cy = $this->size / 2;
+
+        $radius = ($this->size / 2) - $maxExplodeDistance;
 
         $currentAngle = 0;
         $svg = '';
 
-        /** @var Slice $slice */
-        foreach ($this->data as $slice) {
+        foreach ($this->slices as $slice) {
+            if ($slice->value <= 0) {
+                continue;
+            }
+
             $sliceAngle = ($slice->value / $total) * 360;
             $currentAngle += $sliceAngle;
             $largeArcFlag = $sliceAngle > 180 ? 1 : 0;
@@ -53,12 +72,24 @@ class PieChart
 
             $pathData = "M $adjustedCx,$adjustedCy L $x1,$y1 A $radius,$radius 0 $largeArcFlag,1 $x2,$y2 Z";
 
-            $labelX = $adjustedCx + ($radius / 1.5) * cos($midAngle); // 1.5 factor to place label inside the slice
+            $labelX = $adjustedCx + ($radius / 1.5) * cos($midAngle);
             $labelY = $adjustedCy + ($radius / 1.5) * sin($midAngle);
 
             $percentage = round(($slice->value / $total) * 100, 2);
 
-            $svg .= $slice->render($pathData, $labelX, $labelY, $percentage);
+            $svg .= $slice->render($this, $pathData, $labelX, $labelY, $percentage);
+        }
+
+        if (count($this->slices) === 1) {
+            $slice = $this->slices[0];
+            $pathData = "M $cx,$cy m -$radius,0 a $radius,$radius 0 1,0 ".(2 * $radius).",0 a $radius,$radius 0 1,0 -".(2 * $radius).',0 Z';
+
+            $labelX = $cx;
+            $labelY = $cy - ($radius / 2);
+
+            $percentage = 100;
+
+            $svg = $slice->render($this, $pathData, $labelX, $labelY, $percentage);
         }
 
         return $svg;

@@ -2,24 +2,39 @@
 
 namespace Maantje\Charts\Pie;
 
-class Slice
+use Maantje\Charts\SVG\Fragment;
+use Maantje\Charts\SVG\Path;
+use Maantje\Charts\SVG\Text;
+
+readonly class Slice
 {
     public function __construct(
-        public readonly float $value,
-        public readonly string $color,
-        public readonly string $label,
-        public readonly string $labelColor = '#000',
-        public readonly float $explodeDistance = 0.0
+        public float $value,
+        public string $color,
+        public string $label,
+        public int $labelSize = 12,
+        public string $labelColor = '#000',
+        public float $explodeDistance = 0.0,
     ) {}
 
-    public function render(string $pathData, float $labelX, float $labelY, float $percentage): string
+    public function render(PieChart $chart, string $pathData, float $labelX, float $labelY, float $percentage): string
     {
-        $labelText = "$this->label ($percentage%)";
+        $labelText = $chart->formatter->call($chart, $this->label, $percentage);
 
-        return <<<SVG
-            <path d="$pathData" fill="$this->color" />
-            <text x="$labelX" y="$labelY" font-size="12" fill="$this->labelColor" text-anchor="middle" dominant-baseline="middle">$labelText</text>
-            SVG;
-
+        return new Fragment([
+            new Path(
+                d: $pathData,
+                fill: $this->color,
+            ),
+            new Text(
+                content: $labelText,
+                x: $labelX,
+                y: $labelY,
+                fontSize: $this->labelSize,
+                fill: $this->labelColor,
+                textAnchor: 'middle',
+                dominantBaseline: 'middle',
+            ),
+        ]);
     }
 }
