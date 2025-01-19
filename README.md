@@ -47,6 +47,9 @@ Below are some examples of the types of charts you can create using this library
 ![alt text](./examples/output/mixed-chart.svg)
 [View source](./examples/mixed-chart.php)
 
+### Pie chart
+![alt text](./examples/output/pie-chart.svg)
+[View source](./examples/pie-chart.php)
 
 ## Usage
 

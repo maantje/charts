@@ -4,7 +4,7 @@ namespace Maantje\Charts\SVG;
 
 use Stringable;
 
-class Text implements Stringable
+readonly class Text implements Stringable
 {
     public function __construct(
         private null|int|float|string $content,
@@ -20,9 +20,7 @@ class Text implements Stringable
         private string $alignmentBaseline = 'auto',
         private ?string $transform = null
     ) {
-        if (is_null($this->content)) {
-            $this->content = '';
-        }
+        //
     }
 
     public function __toString(): string
