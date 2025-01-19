@@ -3,6 +3,7 @@
 namespace Maantje\Charts\Pie;
 
 use Closure;
+use Maantje\Charts\SVG\Rect;
 
 class PieChart
 {
@@ -14,6 +15,9 @@ class PieChart
     public function __construct(
         private readonly int $size = 400,
         private readonly array $slices = [],
+        public ?string $background = 'white',
+        public int $fontSize = 14,
+        public string $fontFamily = 'arial',
         ?Closure $formatter = null
     ) {
         $this->formatter = $formatter ?? fn (string $label, float $percentage) => "$label - $percentage%";
@@ -22,7 +26,8 @@ class PieChart
     public function render(): string
     {
         return <<<SVG
-            <svg width="{$this->size}" height="{$this->size}" xmlns="http://www.w3.org/2000/svg">
+            <svg width="$this->size" height="$this->size" xmlns="http://www.w3.org/2000/svg">
+                {$this->background()}
                 {$this->renderSlices()}
             </svg>
             SVG;
@@ -93,5 +98,18 @@ class PieChart
         }
 
         return $svg;
+    }
+
+    protected function background(): string
+    {
+        if (is_null($this->background)) {
+            return '';
+        }
+
+        return new Rect(
+            width: $this->size,
+            height: $this->size,
+            fill: $this->background,
+        );
     }
 }
