@@ -12,7 +12,7 @@ readonly class Slice
         public float $value,
         public string $color,
         public string $label,
-        public int $labelSize = 12,
+        public ?int $fontSize = null,
         public string $labelColor = '#000',
         public float $explodeDistance = 0.0,
     ) {}
@@ -30,7 +30,8 @@ readonly class Slice
                 content: $labelText,
                 x: $labelX,
                 y: $labelY,
-                fontSize: $this->labelSize,
+                fontFamily: $chart->fontFamily,
+                fontSize: $this->fontSize ?? $chart->fontSize,
                 fill: $this->labelColor,
                 textAnchor: 'middle',
                 dominantBaseline: 'middle',
