@@ -11,7 +11,7 @@ readonly class Polyline implements Stringable
      */
     public function __construct(
         private array $points = [],
-        private string $fill = 'none',
+        private string $fill = 'black',
         private string $stroke = 'black',
         private float $strokeWidth = 1,
         private ?string $transform = null

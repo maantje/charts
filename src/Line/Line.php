@@ -5,18 +5,19 @@ namespace Maantje\Charts\Line;
 use Maantje\Charts\Chart;
 use Maantje\Charts\Renderable;
 use Maantje\Charts\SVG\Fragment;
-use Maantje\Charts\SVG\Polyline;
+use Maantje\Charts\SVG\Path;
 
-class Line implements Renderable
+readonly class Line implements Renderable
 {
     /**
      * @param  Point[]  $points
      */
     public function __construct(
-        public readonly array $points = [],
-        public readonly int $size = 5,
-        public readonly ?string $yAxis = null,
-        public readonly string $lineColor = 'black',
+        public array $points = [],
+        public int $size = 5,
+        public ?string $yAxis = null,
+        public string $lineColor = 'black',
+        public ?float $curve = null
     ) {}
 
     public function render(Chart $chart): string
@@ -25,8 +26,7 @@ class Line implements Renderable
 
         $pointsSvg = '';
         $points = [];
-
-        $minY = $chart->yForAxis($chart->minValue($this->yAxis), $this->yAxis); // Get the minimum Y-axis value
+        $minY = $chart->yForAxis($chart->minValue($this->yAxis), $this->yAxis);
 
         foreach ($this->points as $index => $point) {
             $x = $chart->left() + $index * $xSpacing;
@@ -36,13 +36,58 @@ class Line implements Renderable
             $pointsSvg .= $point->render($x, $y);
         }
 
+        $d = $this->generateSmoothPath($points, $this->curve);
+
         return new Fragment([
-            new Polyline(
-                points: $points,
+            new Path(
+                d: $d,
+                fill: 'none',
                 stroke: $this->lineColor,
                 strokeWidth: $this->size
             ),
             $pointsSvg,
         ]);
+    }
+
+    /**
+     * @param  array{float, float}[]  $points
+     */
+    public function generateSmoothPath(array $points, ?float $curveFactor = null): string
+    {
+        if (count($points) < 2) {
+            return '';
+        }
+
+        $d = "M {$points[0][0]},{$points[0][1]}";
+
+        if ($curveFactor === null) {
+            for ($i = 1; $i < count($points); $i++) {
+                $d .= " L {$points[$i][0]},{$points[$i][1]}";
+            }
+
+            return $d;
+        }
+
+        for ($i = 0; $i < count($points) - 1; $i++) {
+            $p0 = $points[$i - 1] ?? $points[$i];
+            $p1 = $points[$i];
+            $p2 = $points[$i + 1];
+            $p3 = $points[$i + 2] ?? $points[$i + 1];
+
+            $cp1x = $p1[0] + ($p2[0] - $p0[0]) / $curveFactor;
+            $cp1y = $p1[1] + ($p2[1] - $p0[1]) / $curveFactor;
+
+            $cp2x = $p2[0] - ($p3[0] - $p1[0]) / $curveFactor;
+            $cp2y = $p2[1] - ($p3[1] - $p1[1]) / $curveFactor;
+
+            $d .= sprintf(
+                ' C %.2f,%.2f %.2f,%.2f %.2f,%.2f',
+                $cp1x, $cp1y,
+                $cp2x, $cp2y,
+                $p2[0], $p2[1]
+            );
+        }
+
+        return $d;
     }
 }
