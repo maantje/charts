@@ -17,7 +17,8 @@ readonly class Line implements Renderable
         public int $size = 5,
         public ?string $yAxis = null,
         public string $lineColor = 'black',
-        public ?float $curve = null
+        public ?float $curve = null,
+        public bool $stepLine = false,
     ) {}
 
     public function render(Chart $chart): string
@@ -36,7 +37,9 @@ readonly class Line implements Renderable
             $pointsSvg .= $point->render($x, $y);
         }
 
-        $d = $this->generateSmoothPath($points, $this->curve);
+        $d = $this->stepLine
+            ? $this->generateStepPath($points)
+            : $this->generateSmoothPath($points, $this->curve);
 
         return new Fragment([
             new Path(
@@ -86,6 +89,28 @@ readonly class Line implements Renderable
                 $cp2x, $cp2y,
                 $p2[0], $p2[1]
             );
+        }
+
+        return $d;
+    }
+
+    /**
+     * @param  array{float, float}[]  $points
+     */
+    public function generateStepPath(array $points): string
+    {
+        if (count($points) < 2) {
+            return '';
+        }
+
+        $d = "M {$points[0][0]},{$points[0][1]}";
+
+        for ($i = 1; $i < count($points); $i++) {
+            $current = $points[$i];
+
+            $d .= " H {$current[0]}";
+
+            $d .= " V {$current[1]}";
         }
 
         return $d;
