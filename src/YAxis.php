@@ -43,14 +43,14 @@ class YAxis implements Renderable
 
         $chart->incrementLeftMargin($labelWidth + $titleMargin);
 
-        $minValue = $chart->minValue($this->name); // Get min value
-        $maxValue = $chart->maxValue($this->name); // Get max value
+        $minValue = $chart->minValue($this->name);
+        $maxValue = $chart->maxValue($this->name);
 
-        $valueRange = $maxValue - $minValue; // Calculate the range between min and max
-        $valueStep = $valueRange / $numLines; // Calculate the step for each line
+        $valueRange = $maxValue - $minValue;
+        $valueStep = $valueRange / $numLines;
 
         for ($i = 0; $i <= $numLines; $i++) {
-            $value = $minValue + ($valueStep * $i); // Adjust value calculation to start from min value
+            $value = $minValue + ($valueStep * $i);
 
             $labelText = $this->formatter->call($this, $value);
             $labelX = $chart->left() - 10;
