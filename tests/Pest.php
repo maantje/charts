@@ -12,3 +12,15 @@
 */
 
 // uses(Tests\TestCase::class)->in('Feature');
+
+function pretty(string $svg): string
+{
+    $dom = new \DOMDocument;
+
+    $dom->preserveWhiteSpace = false;
+    $dom->formatOutput = true;
+
+    $dom->loadXML($svg, LIBXML_NOBLANKS);
+
+    return $dom->saveXML($dom->documentElement) ?: '';
+}

@@ -18,6 +18,8 @@ class XAxis implements Renderable
     public function __construct(
         public array $data = [],
         public string $title = '',
+        public ?float $minValue = null,
+        public ?float $maxValue = null,
         public array $annotations = [],
         ?Closure $formatter = null
     ) {
@@ -26,11 +28,27 @@ class XAxis implements Renderable
 
     public function maxValue(): float
     {
+        if ($this->maxValue !== null) {
+            return $this->maxValue;
+        }
+
+        if (count($this->data) === 0) {
+            return 0;
+        }
+
         return max(array_map(fn (float $data) => $data, $this->data));
     }
 
     public function minValue(): float
     {
+        if ($this->minValue !== null) {
+            return $this->minValue;
+        }
+
+        if (count($this->data) === 0) {
+            return 0;
+        }
+
         return min(array_map(fn (float $data) => $data, $this->data));
     }
 

@@ -19,11 +19,19 @@ class Bars extends Serie
 
     public function maxValue(): float
     {
+        if (count($this->bars) === 0) {
+            return 0;
+        }
+
         return max(array_map(fn (BarContract $data) => $data->value(), $this->bars));
     }
 
     public function minValue(): float
     {
+        if (count($this->bars) === 0) {
+            return 0;
+        }
+
         return min(array_map(fn (BarContract $data) => $data->value(), $this->bars));
     }
 
@@ -31,7 +39,11 @@ class Bars extends Serie
     {
         $numBars = count($this->bars);
 
-        $maxBarWidth = $chart->availableWidth() / $numBars;
+        $maxBarWidth = 0;
+
+        if ($numBars > 0) {
+            $maxBarWidth = $chart->availableWidth() / $numBars;
+        }
 
         $x = $chart->left();
 

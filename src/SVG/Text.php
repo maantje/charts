@@ -17,7 +17,7 @@ class Text implements Stringable
         private float $strokeWidth = 0,
         private string $textAnchor = 'start',
         private string $dominantBaseline = 'alphabetic',
-        private string $alignmentBaseline = '',
+        private string $alignmentBaseline = 'auto',
         private ?string $transform = null
     ) {
         if (is_null($this->content)) {

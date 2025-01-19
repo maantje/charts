@@ -63,7 +63,7 @@ class Chart
     public function render(): string
     {
         return <<<SVG
-            <svg width="$this->width" height="$this->height"  xmlns="http://www.w3.org/2000/svg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="$this->width" height="$this->height">
                 {$this->background()}
                 {$this->renderYAxis()}
                 {$this->xAxis->render($this)}
@@ -88,12 +88,28 @@ class Chart
 
     public function xFor(float $x): float
     {
-        return $this->leftMargin + (($x - $this->xAxis->minValue()) / ($this->xAxis->maxValue() - $this->xAxis->minValue())) * ($this->width - $this->leftMargin - $this->rightMargin);
+        $minValue = $this->xAxis->minValue();
+        $maxValue = $this->xAxis->maxValue();
+        $range = $maxValue - $minValue;
+
+        if ($range === 0.0) {
+            return $this->leftMargin;
+        }
+
+        return $this->leftMargin + (($x - $minValue) / $range) * ($this->width - $this->leftMargin - $this->rightMargin);
     }
 
     public function yForAxis(float $y, ?string $axis = null): float
     {
-        return $this->topMargin + $this->availableHeight() - (($y - $this->minValue($axis)) / ($this->maxValue($axis) - $this->minValue($axis))) * ($this->availableHeight());
+        $minValue = $this->minValue($axis);
+        $maxValue = $this->maxValue($axis);
+        $range = $maxValue - $minValue;
+
+        if ($range === 0.0) {
+            return $this->topMargin;
+        }
+
+        return $this->topMargin + $this->availableHeight() - (($y - $minValue) / $range) * $this->availableHeight();
     }
 
     protected function renderSeries(): string
@@ -139,6 +155,10 @@ class Chart
 
         $filtered = array_filter($this->series, fn ($element) => ($element->yAxis ?? 'default') === $yAxis);
 
+        if (count($filtered) === 0) {
+            return 0;
+        }
+
         return $this->maxValue[$yAxis] = max(array_map(fn ($element) => $element->maxValue(), $filtered));
     }
 
@@ -155,6 +175,10 @@ class Chart
         }
 
         $filtered = array_filter($this->series, fn ($element) => ($element->yAxis ?? 'default') === $yAxis);
+
+        if (count($filtered) === 0) {
+            return 0;
+        }
 
         return $this->minValue[$yAxis] = min(array_map(fn ($element) => $element->minValue(), $filtered));
     }
@@ -215,7 +239,7 @@ class Chart
 
         $firstSeries = $this->series[0];
 
-        if ($firstSeries instanceof Lines) {
+        if ($firstSeries instanceof Lines && count($firstSeries->lines) > 0) {
             $this->xAxis->data = array_map(fn (Point $point) => $point->x, $firstSeries->lines[0]->points);
         }
     }

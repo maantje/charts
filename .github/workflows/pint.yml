@@ -1,0 +1,38 @@
+name: Pint
+
+on:
+  push:
+    paths:
+      - '**.php'
+  pull_request:
+    paths:
+      - '**.php'
+
+jobs:
+  pint:
+    name: Pint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          coverage: none
+          tools: composer
+
+      - name: Cache Composer Dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Dependencies
+        run: composer install --no-progress --prefer-dist --no-interaction
+
+      - name: Run Pint
+        run: ./vendor/bin/pint --test
