@@ -31,6 +31,10 @@ readonly class Circle
             $attributes .= sprintf(' transform="%s"', htmlspecialchars($this->transform, ENT_QUOTES));
         }
 
+        if ($this->title === '') {
+            return sprintf('<circle %s></circle>', $attributes);
+        }
+
         return sprintf('<circle %s><title>%s</title></circle>', $attributes, htmlspecialchars($this->title, ENT_QUOTES));
     }
 }

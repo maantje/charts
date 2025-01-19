@@ -27,6 +27,10 @@ Below are some examples of the types of charts you can create using this library
 ![alt text](./examples/output/simple-line-chart.svg)  
 [View source](./examples/simple-line-chart.php)
 
+### Curved line chart
+![alt text](./examples/output/simple-curved-chart.svg)  
+[View source](./examples/simple-curved-chart.php)
+
 ### Simple bar chart
 ![alt text](./examples/output/simple-bar-chart.svg)  
 [View source](./examples/simple-bar-chart.php)
