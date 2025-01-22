@@ -9,7 +9,7 @@
 - Supports various chart types: line charts, bar charts, stacked charts, and mixed charts
 - Fully customizable and extendable
 - Outputs pure SVG, allowing for:
-  - Embedding in PDFs, [view example PDF report](./examples/output/report.pdf)
+  - Embedding in PDFs, [view example PDF report](https://raw.githubusercontent.com/maantje/charts/refs/heads/main/examples/output/report.pdf)
 
 ## Installation
 
