@@ -43,6 +43,7 @@ class Chart
         protected float $rightMargin = 30,
         protected float $bottomMargin = 50,
         protected float $topMargin = 25,
+        protected ?string $viewBox = null,
     ) {
         $this->yAxis = is_array($yAxis) ? $yAxis : [$yAxis];
         $this->yAxis = array_reduce($this->yAxis, function (array $carry, YAxis $yAxis) {
@@ -58,12 +59,16 @@ class Chart
         if (count($this->xAxis->data) === 0) {
             $this->guessXAxisData();
         }
+
+        if (is_null($this->viewBox)) {
+            $this->viewBox = "0 0 $this->width $this->height";
+        }
     }
 
     public function render(): string
     {
         return <<<SVG
-            <svg xmlns="http://www.w3.org/2000/svg" width="$this->width" height="$this->height">
+            <svg xmlns="http://www.w3.org/2000/svg" width="$this->width" height="$this->height" viewBox="$this->viewBox">
                 {$this->background()}
                 {$this->renderYAxis()}
                 {$this->xAxis->render($this)}
