@@ -23,31 +23,47 @@ composer require maantje/charts
 
 Below are some examples of the types of charts you can create using this library. Click on the links to view the source code for each example.
 
-### Simple line chart
-![alt text](./examples/output/simple-line-chart.svg)  
-[View source](./examples/simple-line-chart.php)
+- [Simple Line Chart](#simple-line-chart)
+- [Curved Line Chart](#curved-line-chart)
+- [Step Line Chart](#step-line-chart)
+- [Bar Chart](#bar-chart)
+- [Stacked Bar Chart](#stacked-bar-chart)
+- [Grouped Bar Chart](#grouped-bar-chart)
+- [Advanced Line Chart](#advanced-line-chart)
+- [Advanced Bar Chart](#advanced-bar-chart)
+- [Mixed Chart](#mixed-chart)
+- [Pie Chart](#pie-chart)
 
-### Curved line chart
-![alt text](./examples/output/simple-curved-chart.svg)  
-[View source](./examples/simple-curved-chart.php)
+
+### Simple Line Chart
+![alt text](./examples/output/line-chart.svg)  
+[View source](./examples/line-chart.php)
+
+### Curved Line Chart
+![alt text](./examples/output/curved-line-chart.svg)  
+[View source](./examples/curved-line-chart.php)
 
 ### Step line chart
-![alt text](./examples/output/simple-step-chart.svg)  
-[View source](./examples/simple-step-chart.php)
+![alt text](./examples/output/step-line-chart.svg)  
+[View source](./examples/step-line-chart.php)
 
-### Simple bar chart
-![alt text](./examples/output/simple-bar-chart.svg)  
-[View source](./examples/simple-bar-chart.php)
+### Bar Chart
+![alt text](./examples/output/bar-chart.svg)  
+[View source](./examples/bar-chart.php)
 
-### Simple stacked chart
-![alt text](./examples/output/simple-stacked-bar-chart.svg)  
-[View source](./examples/simple-stacked-bar-chart.php)
+### Stacked Bar Chart
+![alt text](./examples/output/stacked-bar-chart.svg)  
+[View source](./examples/stacked-bar-chart.php)
 
-### Advanced line charts
+### Grouped Bar Chart
+![alt text](./examples/output/grouped-bar-chart.svg)  
+[View source](./examples/grouped-bar-chart.php)
+
+### Advanced Line Chart
 ![alt text](./examples/output/advanced-line-chart.svg)  
 [View source](./examples/advanced-line-chart.php)
 
-### Advanced bar chart
+### Advanced Bar Chart
 ![alt text](./examples/output/advanced-bar-chart.svg)  
 [View source](./examples/advanced-bar-chart.php)
 

@@ -7,7 +7,7 @@ use Stringable;
 readonly class Fragment implements Stringable
 {
     /**
-     * @param  string[]  $children
+     * @param  (string|null)[]  $children
      */
     public function __construct(public array $children)
     {
@@ -16,6 +16,6 @@ readonly class Fragment implements Stringable
 
     public function __toString(): string
     {
-        return implode(PHP_EOL, $this->children);
+        return implode(PHP_EOL, array_filter($this->children, fn (?string $item) => $item !== null));
     }
 }

@@ -10,13 +10,14 @@ use Maantje\Charts\SVG\Text;
 class Bar implements BarContract
 {
     public function __construct(
-        public string $name,
-        public float $value,
+        public ?string $name = null,
+        public float $value = 0,
         public ?string $yAxis = null,
         public string $color = '#3498db',
         public ?float $width = 100,
         public string $labelColor = '#333',
-        public int $labelMarginY = 30
+        public int $labelMarginY = 30,
+        public ?int $radius = null,
     ) {}
 
     public function render(Chart $chart, float $x, float $maxBarWidth): string
@@ -37,9 +38,11 @@ class Bar implements BarContract
                 width: $width,
                 height: $chart->bottom() - $y,
                 fill: $this->color,
-                title: $this->value
+                rx: $this->radius ?? 0,
+                ry: $this->radius ?? 0,
+                title: $this->value,
             ),
-            new Text(
+            $this->name ? new Text(
                 content: $this->name,
                 x: $labelX,
                 y: $chart->bottom() + $this->labelMarginY,
@@ -47,7 +50,7 @@ class Bar implements BarContract
                 fontSize: $chart->fontSize,
                 fill: $this->labelColor,
                 textAnchor: 'middle'
-            ),
+            ) : null,
         ]);
     }
 
