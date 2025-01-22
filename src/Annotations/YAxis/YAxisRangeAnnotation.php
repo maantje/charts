@@ -31,6 +31,7 @@ class YAxisRangeAnnotation implements Renderable, RendersAfterSeries, YAxisAnnot
         public int $labelOffsetX = 10,
         public int $labelPaddingX = 20,
         public int $textLeftMargin = 0,
+        public int $radius = 0,
     ) {
         //
     }
@@ -64,6 +65,8 @@ class YAxisRangeAnnotation implements Renderable, RendersAfterSeries, YAxisAnnot
                 rectFill: $labelColor,
                 rectStroke: $this->labelBorderColor,
                 rectStrokeWidth: $this->labelBorderWidth,
+                rectRx: $this->radius,
+                rectRy: $this->radius,
                 fill: $this->labelColor,
                 labelLeftMargin: $this->textLeftMargin,
                 textAnchor: 'start'

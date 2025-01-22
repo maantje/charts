@@ -23,7 +23,7 @@ $chart = new Chart(
                         new Point(y: 25, x: 350),
                         new Point(y: 35, x: 400),
                     ],
-                    lineColor: 'red',
+                    color: 'red',
                     curve: 8
                 ),
 
@@ -38,7 +38,7 @@ $chart = new Chart(
                         new Point(y: 96, x: 350),
                         new Point(y: 128, x: 400),
                     ],
-                    lineColor: 'blue',
+                    color: 'blue',
                     curve: 6
                 ),
 
@@ -54,7 +54,7 @@ $chart = new Chart(
                         new Point(y: 5, x: 350),
                         new Point(y: 0, x: 400),
                     ],
-                    lineColor: 'green',
+                    color: 'green',
                     curve: 5
                 ),
 
@@ -69,7 +69,7 @@ $chart = new Chart(
                         new Point(y: 35, x: 350),
                         new Point(y: 50, x: 400),
                     ],
-                    lineColor: 'purple',
+                    color: 'purple',
                     curve: 7
                 ),
             ]

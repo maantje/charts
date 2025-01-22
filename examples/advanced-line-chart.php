@@ -110,7 +110,7 @@ $chart = new Chart(
                         new Point(y: 42.2, x: 1725331334 + 3600 + 3600 + 3600),
                     ],
                     yAxis: 'celsius',
-                    lineColor: '#FF0000',
+                    color: '#FF0000',
                 ),
                 new Line(
                     [

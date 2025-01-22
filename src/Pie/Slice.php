@@ -11,7 +11,7 @@ readonly class Slice
     public function __construct(
         public float $value,
         public string $color,
-        public string $label,
+        public string $label = '',
         public ?int $fontSize = null,
         public string $labelColor = '#000',
         public float $explodeDistance = 0.0,

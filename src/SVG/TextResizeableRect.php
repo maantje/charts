@@ -20,6 +20,7 @@ readonly class TextResizeableRect implements Stringable
         private string $fill = 'white',
         public int $labelPaddingX = 20,
         public int $labelLeftMargin = 0,
+        public int $labelTopMargin = 0,
         public string $textAnchor = 'middle'
     ) {}
 
@@ -54,7 +55,7 @@ readonly class TextResizeableRect implements Stringable
             new Text(
                 content: $this->content,
                 x: $this->x + $this->labelLeftMargin,
-                y: $this->y,
+                y: $this->y + $this->labelTopMargin,
                 fontFamily: $this->fontFamily,
                 fontSize: $this->fontSize,
                 fill: $this->fill,

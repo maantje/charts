@@ -10,7 +10,7 @@ class Point
     public function __construct(
         public readonly float $y,
         public readonly float $x,
-        public readonly string $color = 'rgba(0, 0, 0, 0)',
+        public readonly string $color = 'transparent',
         public int $size = 10,
     ) {}
 
