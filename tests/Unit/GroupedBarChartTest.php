@@ -109,7 +109,7 @@ it('renders grouped bar chart', function () {
     echo $chart->render();
 
     expect(pretty($chart->render()))->toBe(<<<'SVG'
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
   <rect x="0" y="0" width="800" height="600" fill="white" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0">
     <title/>
   </rect>
@@ -206,7 +206,7 @@ it('renders empty grouped bar chart', function () {
     );
 
     expect(pretty($chart->render()))->toBe(<<<'SVG'
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
   <rect x="0" y="0" width="800" height="600" fill="white" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0">
     <title/>
   </rect>
