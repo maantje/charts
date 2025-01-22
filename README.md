@@ -36,7 +36,7 @@ Below are some examples of the types of charts you can create using this library
 - [Pie Chart](#pie-chart)
 
 ### Example Usage With mPDF
-[📄 View PDF document](./examples/output/report.pdf)  
+[📄 View PDF document](https://raw.githubusercontent.com/maantje/charts/refs/heads/main/examples/output/report.pdf)  
 [View source](./examples/pdf/mpdf.php)
 
 ### Simple Line Chart
