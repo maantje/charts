@@ -23,8 +23,9 @@ class XAxisLineAnnotation implements Renderable, RendersAfterSeries
         public string $labelBorderColor = '',
         public int $labelBorderWidth = 0,
         public int $labelOffsetX = 20,
-        public int $labelPaddingX = 20,
         public int $textLeftMargin = 0,
+        public int $textTopMargin = 0,
+        public int $radius = 0,
     ) {}
 
     public function render(Chart $chart): string
@@ -53,8 +54,11 @@ class XAxisLineAnnotation implements Renderable, RendersAfterSeries
                 rectFill: $labelColor,
                 rectStroke: $this->labelBorderColor,
                 rectStrokeWidth: $this->labelBorderWidth,
+                rectRx: $this->radius,
+                rectRy: $this->radius,
                 fill: $this->labelColor,
                 labelLeftMargin: $this->textLeftMargin,
+                labelTopMargin: $this->textTopMargin,
                 textAnchor: 'start'
             ),
         ]);

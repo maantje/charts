@@ -16,7 +16,7 @@ readonly class Line implements Renderable
         public array $points = [],
         public int $size = 5,
         public ?string $yAxis = null,
-        public string $lineColor = 'black',
+        public string $color = 'black',
         public ?float $curve = null,
         public bool $stepLine = false,
     ) {}
@@ -45,7 +45,7 @@ readonly class Line implements Renderable
             new Path(
                 d: $d,
                 fill: 'none',
-                stroke: $this->lineColor,
+                stroke: $this->color,
                 strokeWidth: $this->size
             ),
             $pointsSvg,

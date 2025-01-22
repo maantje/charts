@@ -26,7 +26,7 @@ $chart = new Chart(
                         new Point(y: 24, x: 200),
                         new Point(y: 7, x: 300),
                     ],
-                    lineColor: 'blue'
+                    color: 'blue'
                 ),
             ]
         ),

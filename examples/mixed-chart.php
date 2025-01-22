@@ -67,7 +67,7 @@ $chart = new Chart(
                         new Point(y: 14000, x: 200),
                         new Point(y: 7000, x: 300),
                     ],
-                    lineColor: 'blue'
+                    color: 'blue'
                 ),
             ]
         ),

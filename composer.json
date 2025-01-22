@@ -17,6 +17,9 @@
     "scripts": {
         "examples": [
             "cd examples && for example in *.php; do php \"$example\" > \"./output/$(basename \"${example%.php}.svg\")\"; done"
+        ],
+        "pdf": [
+            "cd examples/pdf && php mpdf.php >> ../output/report.pdf"
         ]
     },
     "require-dev": {

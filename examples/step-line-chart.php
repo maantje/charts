@@ -25,7 +25,7 @@ $chart = new Chart(
                         new Point(y: 110, x: 450),
                     ],
                     size: 4,
-                    lineColor: 'purple',
+                    color: 'purple',
                     stepLine: true
                 ),
             ]

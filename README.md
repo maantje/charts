@@ -9,7 +9,7 @@
 - Supports various chart types: line charts, bar charts, stacked charts, and mixed charts
 - Fully customizable and extendable
 - Outputs pure SVG, allowing for:
-  - Embedding in PDFs (ideal for reports)
+  - Embedding in PDFs, [view example PDF report](./examples/output/report.pdf)
 
 ## Installation
 
@@ -23,6 +23,7 @@ composer require maantje/charts
 
 Below are some examples of the types of charts you can create using this library. Click on the links to view the source code for each example.
 
+- [Example Usage With mPDF](#example-usage-with-mpdf)
 - [Simple Line Chart](#simple-line-chart)
 - [Curved Line Chart](#curved-line-chart)
 - [Step Line Chart](#step-line-chart)
@@ -34,6 +35,9 @@ Below are some examples of the types of charts you can create using this library
 - [Mixed Chart](#mixed-chart)
 - [Pie Chart](#pie-chart)
 
+### Example Usage With mPDF
+[📄 View PDF document](./examples/output/report.pdf)  
+[View source](./examples/pdf/mpdf.php)
 
 ### Simple Line Chart
 ![alt text](./examples/output/line-chart.svg)  
