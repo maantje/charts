@@ -13,7 +13,7 @@ readonly class TextResizeableRect implements Stringable
         private string $fontFamily = 'Arial',
         private int $fontSize = 16,
         private string $rectFill = 'black',
-        private string $rectStroke = '',
+        private string $rectStroke = 'none',
         private int $rectStrokeWidth = 0,
         private int $rectRx = 0,
         private int $rectRy = 0,
