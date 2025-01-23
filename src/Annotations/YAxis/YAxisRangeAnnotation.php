@@ -25,7 +25,7 @@ class YAxisRangeAnnotation implements Renderable, RendersAfterSeries, YAxisAnnot
         public string $label = '',
         public string $labelColor = 'white',
         public string $labelBackgroundColor = '',
-        public string $labelBorderColor = '',
+        public string $labelBorderColor = 'none',
         public int $labelBorderWidth = 0,
         public int $labelOffsetY = 8,
         public int $labelOffsetX = 10,

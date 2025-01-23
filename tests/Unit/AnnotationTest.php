@@ -72,19 +72,19 @@ it('renders annotations', function () {
               <circle cx="60" cy="550" r="10" fill="white" stroke="red" stroke-width="4">
                 <title>0</title>
               </circle>
-              <rect x="27.727272727273" y="502.63636363636" width="64.545454545455" height="22" fill="red" fill-opacity="1" stroke="" stroke-width="0" rx="0" ry="0">
+              <rect x="27.727272727273" y="502.63636363636" width="64.545454545455" height="22" fill="red" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0">
                 <title/>
               </rect>
               <text x="60" y="520" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Point 1</text>
-              <line x1="60" y1="287.5" x2="770" y2="287.5" stroke="blue" stroke-dasharray="" stroke-width="3"/>
-              <rect x="60" y="262.13636363636" width="128.18181818182" height="22" fill="blue" fill-opacity="1" stroke="" stroke-width="0" rx="0" ry="0">
+              <line x1="60" y1="287.5" x2="770" y2="287.5" stroke="blue" stroke-dasharray="none" stroke-width="3"/>
+              <rect x="60" y="262.13636363636" width="128.18181818182" height="22" fill="blue" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0">
                 <title/>
               </rect>
               <text x="70" y="279.5" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="start" dominant-baseline="alphabetic" alignment-baseline="auto">Y Axis annotation</text>
               <rect x="415" y="25" width="355" height="525" fill="pink" fill-opacity="0.2" stroke="none" stroke-width="0" rx="0" ry="0">
                 <title/>
               </rect>
-              <rect x="425" y="517.63636363636" width="166.36363636364" height="22" fill="pink" fill-opacity="1" stroke="" stroke-width="0" rx="0" ry="0">
+              <rect x="425" y="517.63636363636" width="166.36363636364" height="22" fill="pink" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0">
                 <title/>
               </rect>
               <text x="435" y="535" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="start" dominant-baseline="alphabetic" alignment-baseline="auto">X Axis range annotation</text>

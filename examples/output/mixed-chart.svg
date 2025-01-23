@@ -21,10 +21,10 @@
 <text x="654.16666666667" y="390" font-family="Arial" font-size="16" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">43%</text>
 <text x="654.16666666667" y="580" font-family="arial" font-size="14" fill="#333" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">March</text>
     <circle cx="538.33333333333" cy="100" r="10" fill="white" stroke="red" stroke-width="4"><title>12000</title></circle>
-<rect x="477.42424242424" y="52.636363636364" width="121.81818181818" height="22" fill="red" fill-opacity="1" stroke="" stroke-width="0" rx="0" ry="0"><title></title></rect>
-<text x="538.33333333333" y="70" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Point annotation</text><line x1="75" y1="235" x2="770" y2="235" stroke="blue" stroke-dasharray="" stroke-width="3" />
-<rect x="75" y="209.63636363636" width="128.18181818182" height="22" fill="blue" fill-opacity="1" stroke="" stroke-width="0" rx="0" ry="0"><title></title></rect>
+<rect x="477.42424242424" y="52.636363636364" width="121.81818181818" height="22" fill="red" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title></title></rect>
+<text x="538.33333333333" y="70" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Point annotation</text><line x1="75" y1="235" x2="770" y2="235" stroke="blue" stroke-dasharray="none" stroke-width="3" />
+<rect x="75" y="209.63636363636" width="128.18181818182" height="22" fill="blue" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title></title></rect>
 <text x="85" y="227" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="start" dominant-baseline="alphabetic" alignment-baseline="auto">Y Axis annotation</text><rect x="306.66666666667" y="25" width="231.66666666667" height="525" fill="pink" fill-opacity="0.2" stroke="none" stroke-width="0" rx="0" ry="0"><title></title></rect>
-<rect x="316.66666666667" y="517.63636363636" width="166.36363636364" height="22" fill="pink" fill-opacity="1" stroke="" stroke-width="0" rx="0" ry="0"><title></title></rect>
+<rect x="316.66666666667" y="517.63636363636" width="166.36363636364" height="22" fill="pink" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title></title></rect>
 <text x="326.66666666667" y="535" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="start" dominant-baseline="alphabetic" alignment-baseline="auto">X Axis range annotation</text>
 </svg>

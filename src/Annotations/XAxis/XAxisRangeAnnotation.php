@@ -20,7 +20,7 @@ class XAxisRangeAnnotation implements Renderable, RendersAfterSeries
         public string $label = '',
         public string $labelColor = 'white',
         public string $labelBackgroundColor = '',
-        public string $labelBorderColor = '',
+        public string $labelBorderColor = 'none',
         public int $labelBorderWidth = 0,
         public int $labelOffsetX = 20,
         public int $labelPaddingX = 20,

@@ -531,7 +531,6 @@ $advancedLineChart = new Chart(
                 new YAxisLineAnnotation(
                     y: 57,
                     color: $red,
-                    dash: '0', // mpdf?
                     label: 'Halfway',
                     textLeftMargin: -2,
                     textTopMargin: -2,
@@ -561,7 +560,6 @@ $advancedLineChart = new Chart(
             new XAxisLineAnnotation(
                 x: 225,
                 color: $green,
-                dash: '0', // mpdf?
                 label: 'Halfway',
                 textLeftMargin: -2,
                 textTopMargin: -2,
