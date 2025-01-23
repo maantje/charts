@@ -1,7 +1,5 @@
 <?php
 
-// Requires `composer require mpdf/mpdf`
-
 use Maantje\Charts\Annotations\XAxis\XAxisLineAnnotation;
 use Maantje\Charts\Annotations\YAxis\YAxisLineAnnotation;
 use Maantje\Charts\Annotations\YAxis\YAxisRangeAnnotation;
