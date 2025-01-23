@@ -41,6 +41,10 @@ readonly class Rect implements Stringable
             $attributes .= sprintf(' transform="%s"', htmlspecialchars($this->transform, ENT_QUOTES));
         }
 
+        if ($this->title === '') {
+            return sprintf('<rect %s/>', $attributes);
+        }
+
         return sprintf('<rect %s><title>%s</title></rect>', $attributes, htmlspecialchars($this->title, ENT_QUOTES));
     }
 }
