@@ -43,6 +43,10 @@ readonly class Text implements Stringable
             $attributes .= sprintf(' transform="%s"', htmlspecialchars($this->transform, ENT_QUOTES));
         }
 
+        if ($this->content === null || $this->content === '') {
+            return '';
+        }
+
         return sprintf('<text %s>%s</text>', $attributes, htmlspecialchars((string) $this->content, ENT_QUOTES));
     }
 }
