@@ -41,47 +41,47 @@ Below are some examples of the types of charts you can create using this library
 [View source](./examples/pdf/mpdf.php)
 
 ### Simple Line Chart
-![alt text](./examples/output/line-chart.svg)  
+![Simple Line Chart](./examples/output/line-chart.svg)  
 [View source](./examples/line-chart.php)
 
 ### Curved Line Chart
-![alt text](./examples/output/curved-line-chart.svg)  
+![Curved Line Chart](./examples/output/curved-line-chart.svg)  
 [View source](./examples/curved-line-chart.php)
 
 ### Step line chart
-![alt text](./examples/output/step-line-chart.svg)  
+![Step line chart](./examples/output/step-line-chart.svg)  
 [View source](./examples/step-line-chart.php)
 
 ### Area line chart
-![alt text](./examples/output/area-line-chart.svg)  
+![Area line chart](./examples/output/area-line-chart.svg)  
 [View source](./examples/area-line-chart.php)
 
 ### Bar Chart
-![alt text](./examples/output/bar-chart.svg)  
+![Bar Chart](./examples/output/bar-chart.svg)  
 [View source](./examples/bar-chart.php)
 
 ### Stacked Bar Chart
-![alt text](./examples/output/stacked-bar-chart.svg)  
+![Stacked Bar Chart](./examples/output/stacked-bar-chart.svg)  
 [View source](./examples/stacked-bar-chart.php)
 
 ### Grouped Bar Chart
-![alt text](./examples/output/grouped-bar-chart.svg)  
+![Grouped Bar Chart](./examples/output/grouped-bar-chart.svg)  
 [View source](./examples/grouped-bar-chart.php)
 
 ### Advanced Line Chart
-![alt text](./examples/output/advanced-line-chart.svg)  
+![Advanced Line Chart](./examples/output/advanced-line-chart.svg)  
 [View source](./examples/advanced-line-chart.php)
 
 ### Advanced Bar Chart
-![alt text](./examples/output/advanced-bar-chart.svg)  
+![Advanced Bar Chart](./examples/output/advanced-bar-chart.svg)  
 [View source](./examples/advanced-bar-chart.php)
 
 ### Mixed chart
-![alt text](./examples/output/mixed-chart.svg)  
+![Mixed chart](./examples/output/mixed-chart.svg)  
 [View source](./examples/mixed-chart.php)
 
 ### Pie chart
-![alt text](./examples/output/pie-chart.svg)  
+![Pie chart](./examples/output/pie-chart.svg)  
 [View source](./examples/pie-chart.php)
 
 ## Usage
