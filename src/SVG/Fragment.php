@@ -4,7 +4,7 @@ namespace Maantje\Charts\SVG;
 
 use Stringable;
 
-readonly class Fragment implements Stringable
+class Fragment implements Stringable
 {
     /**
      * @param  (string|null)[]  $children

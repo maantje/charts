@@ -4,7 +4,7 @@ namespace Maantje\Charts;
 
 use Maantje\Charts\SVG\Line;
 
-readonly class Grid implements Renderable
+class Grid implements Renderable
 {
     public function __construct(
         public int $lines = 5,

@@ -8,9 +8,9 @@ use Maantje\Charts\SVG\Fragment;
 class Point
 {
     public function __construct(
-        public readonly float $y,
-        public readonly float $x,
-        public readonly string $color = 'transparent',
+        public float $y,
+        public float $x,
+        public string $color = 'transparent',
         public int $size = 10,
     ) {}
 

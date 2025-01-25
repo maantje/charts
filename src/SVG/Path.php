@@ -2,13 +2,13 @@
 
 namespace Maantje\Charts\SVG;
 
-readonly class Path
+class Path
 {
     public function __construct(
-        private string $d = '',
-        private string $fill = 'black',
-        private string $stroke = 'none',
-        private int $strokeWidth = 0,
+        protected string $d = '',
+        protected string $fill = 'black',
+        protected string $stroke = 'none',
+        protected int $strokeWidth = 0,
     ) {}
 
     public function __toString(): string

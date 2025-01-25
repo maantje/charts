@@ -4,21 +4,21 @@ namespace Maantje\Charts\SVG;
 
 use Stringable;
 
-readonly class Rect implements Stringable
+class Rect implements Stringable
 {
     public function __construct(
-        private float $x = 0,
-        private float $y = 0,
-        private float $width = 100,
-        private float $height = 100,
-        private string $fill = 'black',
-        private float $fillOpacity = 1,
-        private string $stroke = 'none',
-        private float $strokeWidth = 0,
-        private float $rx = 0,
-        private float $ry = 0,
+        protected float $x = 0,
+        protected float $y = 0,
+        protected float $width = 100,
+        protected float $height = 100,
+        protected string $fill = 'black',
+        protected float $fillOpacity = 1,
+        protected string $stroke = 'none',
+        protected float $strokeWidth = 0,
+        protected float $rx = 0,
+        protected float $ry = 0,
         public mixed $title = '',
-        private ?string $transform = null
+        protected ?string $transform = null
     ) {}
 
     public function __toString(): string

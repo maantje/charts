@@ -11,7 +11,7 @@ class Bars extends Serie
      * @param  BarContract[]  $bars
      */
     public function __construct(
-        private readonly array $bars = [],
+        protected array $bars = [],
         public ?string $yAxis = null,
     ) {
         parent::__construct($yAxis);

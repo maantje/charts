@@ -21,6 +21,8 @@ class Chart
      */
     public array $yAxis = [];
 
+    protected float $initialLeftMargin;
+
     /**
      * @param  Serie[]  $series
      * @param  Renderable[]  $annotations
@@ -32,7 +34,7 @@ class Chart
         public ?string $background = 'white',
         public int $fontSize = 14,
         public string $fontFamily = 'arial',
-        public readonly Grid $grid = new Grid,
+        public Grid $grid = new Grid,
         YAxis|array $yAxis = new YAxis(
             minValue: 0,
         ),
@@ -45,6 +47,8 @@ class Chart
         protected float $topMargin = 25,
         protected ?string $viewBox = null,
     ) {
+        $this->initialLeftMargin = $this->leftMargin;
+
         $this->yAxis = is_array($yAxis) ? $yAxis : [$yAxis];
         $this->yAxis = array_reduce($this->yAxis, function (array $carry, YAxis $yAxis) {
             $carry[$yAxis->name ?? 'default'] = $yAxis;
@@ -67,6 +71,8 @@ class Chart
 
     public function render(): string
     {
+        $this->leftMargin = $this->initialLeftMargin;
+
         return <<<SVG
             <svg xmlns="http://www.w3.org/2000/svg" width="$this->width" height="$this->height" viewBox="$this->viewBox">
                 {$this->background()}

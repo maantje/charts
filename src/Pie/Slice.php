@@ -6,7 +6,7 @@ use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Path;
 use Maantje\Charts\SVG\Text;
 
-readonly class Slice
+class Slice
 {
     public function __construct(
         public float $value,
