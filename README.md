@@ -27,6 +27,7 @@ Below are some examples of the types of charts you can create using this library
 - [Simple Line Chart](#simple-line-chart)
 - [Curved Line Chart](#curved-line-chart)
 - [Step Line Chart](#step-line-chart)
+- [Area Line Chart](#area-line-chart)
 - [Bar Chart](#bar-chart)
 - [Stacked Bar Chart](#stacked-bar-chart)
 - [Grouped Bar Chart](#grouped-bar-chart)
@@ -50,6 +51,10 @@ Below are some examples of the types of charts you can create using this library
 ### Step line chart
 ![alt text](./examples/output/step-line-chart.svg)  
 [View source](./examples/step-line-chart.php)
+
+### Area line chart
+![alt text](./examples/output/area-line-chart.svg)  
+[View source](./examples/area-line-chart.php)
 
 ### Bar Chart
 ![alt text](./examples/output/bar-chart.svg)  
