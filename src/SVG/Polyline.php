@@ -4,17 +4,17 @@ namespace Maantje\Charts\SVG;
 
 use Stringable;
 
-readonly class Polyline implements Stringable
+class Polyline implements Stringable
 {
     /**
      * @param  array<int, array{float, float}>  $points
      */
     public function __construct(
-        private array $points = [],
-        private string $fill = 'black',
-        private string $stroke = 'black',
-        private float $strokeWidth = 1,
-        private ?string $transform = null
+        protected array $points = [],
+        protected string $fill = 'black',
+        protected string $stroke = 'black',
+        protected float $strokeWidth = 1,
+        protected ?string $transform = null
     ) {}
 
     public function __toString(): string

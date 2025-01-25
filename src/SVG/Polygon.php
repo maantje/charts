@@ -4,18 +4,18 @@ namespace Maantje\Charts\SVG;
 
 use Stringable;
 
-readonly class Polygon implements Stringable
+class Polygon implements Stringable
 {
     /**
      * @param  array<int, array{float, float}>  $points
      */
     public function __construct(
-        private array $points = [],
-        private string $fill = 'black',
-        private string $stroke = 'none',
-        private float $strokeWidth = 0,
-        private string $pointerEvents = 'none',
-        private ?string $transform = null
+        protected array $points = [],
+        protected string $fill = 'black',
+        protected string $stroke = 'none',
+        protected float $strokeWidth = 0,
+        protected string $pointerEvents = 'none',
+        protected ?string $transform = null
     ) {}
 
     public function __toString(): string

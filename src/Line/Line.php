@@ -7,7 +7,7 @@ use Maantje\Charts\Renderable;
 use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Path;
 
-readonly class Line implements Renderable
+class Line implements Renderable
 {
     /**
      * @param  Point[]  $points

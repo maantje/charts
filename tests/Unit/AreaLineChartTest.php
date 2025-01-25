@@ -11,7 +11,6 @@ it('renders area line chart', function () {
         series: [
             new Lines(
                 lines: [
-
                     new Line(
                         points: [
                             new Point(y: 20, x: 0),

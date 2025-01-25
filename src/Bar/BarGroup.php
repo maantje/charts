@@ -13,10 +13,10 @@ class BarGroup implements BarContract
      * @param  Bar[]  $bars
      */
     public function __construct(
-        private readonly string $name,
-        private readonly int $margin = 5,
-        private readonly int $width = 100,
-        private readonly array $bars = [],
+        protected string $name,
+        protected int $margin = 5,
+        protected int $width = 100,
+        protected array $bars = [],
         public string $labelColor = '#333',
         public int $labelMarginY = 30,
         public ?int $fontSize = null,

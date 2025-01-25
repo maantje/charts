@@ -32,7 +32,7 @@ class Chart
         public ?string $background = 'white',
         public int $fontSize = 14,
         public string $fontFamily = 'arial',
-        public readonly Grid $grid = new Grid,
+        public Grid $grid = new Grid,
         YAxis|array $yAxis = new YAxis(
             minValue: 0,
         ),

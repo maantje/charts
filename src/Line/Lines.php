@@ -11,7 +11,7 @@ class Lines extends Serie
      * @param  Line[]  $lines
      */
     public function __construct(
-        public readonly array $lines,
+        public array $lines,
         public ?string $yAxis = null,
     ) {
         parent::__construct($yAxis);

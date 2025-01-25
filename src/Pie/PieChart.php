@@ -13,8 +13,8 @@ class PieChart
      * @param  Slice[]  $slices
      */
     public function __construct(
-        private readonly int $size = 400,
-        private readonly array $slices = [],
+        protected int $size = 400,
+        protected array $slices = [],
         public ?string $background = 'white',
         public int $fontSize = 14,
         public string $fontFamily = 'arial',
@@ -33,7 +33,7 @@ class PieChart
             SVG;
     }
 
-    private function renderSlices(): string
+    protected function renderSlices(): string
     {
         if (empty($this->slices)) {
             return '';
