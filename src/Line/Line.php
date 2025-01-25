@@ -113,7 +113,7 @@ class Line implements Renderable
     {
         $path = '';
         for ($i = 0; $i < count($points) - 1; $i++) {
-            [$cp1x, $cp1y, $cp2x, $cp2y] = $this->getControlPoints($points, $i);
+            [$cp1x, $cp1y, $cp2x, $cp2y] = $this->curveControlPoints($points, $i);
             $p2 = $points[$i + 1];
             $path .= sprintf(' C %.2f,%.2f %.2f,%.2f %.2f,%.2f',
                 $cp1x, $cp1y, $cp2x, $cp2y, $p2[0], $p2[1]);
@@ -126,7 +126,7 @@ class Line implements Renderable
      * @param  array{float, float}[]  $points
      * @return array{float, float, float, float}
      */
-    protected function getControlPoints(array $points, int $i): array
+    protected function curveControlPoints(array $points, int $i): array
     {
         $p0 = $points[$i - 1] ?? $points[$i];
         $p1 = $points[$i];
