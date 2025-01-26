@@ -13,15 +13,15 @@ $chart = new Chart(
             lines: [
                 new Line(
                     points: [
-                        new Point(y: 0, x: 0),
-                        new Point(y: 20, x: 50),
-                        new Point(y: 5, x: 100),
-                        new Point(y: 25, x: 150),
-                        new Point(y: 10, x: 200),
-                        new Point(y: 30, x: 250),
-                        new Point(y: 15, x: 300),
-                        new Point(y: 25, x: 350),
-                        new Point(y: 35, x: 400),
+                        new Point(x: 0, y: 0),
+                        new Point(x: 50, y: 20),
+                        new Point(x: 100, y: 5),
+                        new Point(x: 150, y: 25),
+                        new Point(x: 200, y: 10),
+                        new Point(x: 250, y: 30),
+                        new Point(x: 300, y: 15),
+                        new Point(x: 350, y: 25),
+                        new Point(x: 400, y: 35),
                     ],
                     color: 'red',
                     curve: 8
@@ -29,14 +29,15 @@ $chart = new Chart(
 
                 new Line(
                     points: [
-                        new Point(y: 2, x: 0),
-                        new Point(y: 4, x: 50),
-                        new Point(y: 8, x: 100),
-                        new Point(y: 16, x: 150),
-                        new Point(y: 32, x: 200),
-                        new Point(y: 64, x: 300),
-                        new Point(y: 96, x: 350),
-                        new Point(y: 128, x: 400),
+                        new Point(x: 0, y: 2),
+                        new Point(x: 50, y: 4),
+                        new Point(x: 100, y: 8),
+                        new Point(x: 150, y: 16),
+                        new Point(x: 200, y: 32),
+                        new Point(x: 250, y: 32),
+                        new Point(x: 300, y: 64),
+                        new Point(x: 350, y: 96),
+                        new Point(x: 400, y: 128),
                     ],
                     color: 'blue',
                     curve: 6
@@ -44,15 +45,15 @@ $chart = new Chart(
 
                 new Line(
                     points: [
-                        new Point(y: 10, x: 0),
-                        new Point(y: 20, x: 50),
-                        new Point(y: 10, x: 100),
-                        new Point(y: 0, x: 150),
-                        new Point(y: 10, x: 200),
-                        new Point(y: 20, x: 250),
-                        new Point(y: 10, x: 300),
-                        new Point(y: 5, x: 350),
-                        new Point(y: 0, x: 400),
+                        new Point(x: 0, y: 10),
+                        new Point(x: 50, y: 20),
+                        new Point(x: 100, y: 10),
+                        new Point(x: 150, y: 0),
+                        new Point(x: 200, y: 10),
+                        new Point(x: 250, y: 20),
+                        new Point(x: 300, y: 10),
+                        new Point(x: 350, y: 5),
+                        new Point(x: 400, y: 0),
                     ],
                     color: 'green',
                     curve: 5
@@ -60,14 +61,15 @@ $chart = new Chart(
 
                 new Line(
                     points: [
-                        new Point(y: 5, x: 0),
-                        new Point(y: 15, x: 50),
-                        new Point(y: 30, x: 120),
-                        new Point(y: 10, x: 180),
-                        new Point(y: 40, x: 250),
-                        new Point(y: 20, x: 320),
-                        new Point(y: 35, x: 350),
-                        new Point(y: 50, x: 400),
+                        new Point(x: 0, y: 5),
+                        new Point(x: 50, y: 15),
+                        new Point(x: 100, y: 30),
+                        new Point(x: 150, y: 30),
+                        new Point(x: 200, y: 20),
+                        new Point(x: 250, y: 40),
+                        new Point(x: 300, y: 20),
+                        new Point(x: 350, y: 35),
+                        new Point(x: 400, y: 50),
                     ],
                     color: 'purple',
                     curve: 7

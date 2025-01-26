@@ -13,7 +13,7 @@ class Slice
         public string $color,
         public string $label = '',
         public ?int $fontSize = null,
-        public string $labelColor = '#000',
+        public ?string $labelColor = null,
         public float $explodeDistance = 0.0,
     ) {}
 
@@ -32,7 +32,7 @@ class Slice
                 y: $labelY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $this->fontSize ?? $chart->fontSize,
-                fill: $this->labelColor,
+                fill: $this->labelColor ?? $chart->color,
                 textAnchor: 'middle',
                 dominantBaseline: 'middle',
             ),

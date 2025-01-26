@@ -115,14 +115,13 @@ it('renders grouped bar chart', function () {
   <text x="60" y="240" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">600</text>
   <text x="60" y="135" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">800</text>
   <text x="60" y="30" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">1,000</text>
-  <line x1="70" y1="550" x2="770" y2="550" stroke="black" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="550" x2="770" y2="550" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="445" x2="770" y2="445" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="340" x2="770" y2="340" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="235" x2="770" y2="235" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="130" x2="770" y2="130" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="25" x2="770" y2="25" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="550" x2="70" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1"/>
+  <line x1="70" y1="550" x2="770" y2="550" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
+  <line x1="70" y1="445" x2="770" y2="445" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="340" x2="770" y2="340" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="235" x2="770" y2="235" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="130" x2="770" y2="130" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="25" x2="770" y2="25" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="550" x2="70" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
   <rect x="129.16666666667" y="496.975" width="20" height="53.025" fill="#1E90FF" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
     <title>101</title>
   </rect>
@@ -138,9 +137,9 @@ it('renders grouped bar chart', function () {
   <rect x="229.16666666667" y="234.475" width="20" height="315.525" fill="#FF4500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
     <title>601</title>
   </rect>
-  <line x1="303.33333333333" y1="550" x2="303.33333333333" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1"/>
-  <text x="186.66666666667" y="580" font-family="arial" font-size="14" fill="#333" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">January</text>
-  <line x1="303.33333333333" y1="550" x2="303.33333333333" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1"/>
+  <line x1="303.33333333333" y1="550" x2="303.33333333333" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
+  <text x="186.66666666667" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">January</text>
+  <line x1="303.33333333333" y1="550" x2="303.33333333333" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
   <rect x="362.5" y="511.675" width="20" height="38.325" fill="#1E90FF" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
     <title>73</title>
   </rect>
@@ -156,9 +155,9 @@ it('renders grouped bar chart', function () {
   <rect x="462.5" y="207.175" width="20" height="342.825" fill="#FF4500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
     <title>653</title>
   </rect>
-  <line x1="536.66666666667" y1="550" x2="536.66666666667" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1"/>
-  <text x="420" y="580" font-family="arial" font-size="14" fill="#333" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">February</text>
-  <line x1="536.66666666667" y1="550" x2="536.66666666667" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1"/>
+  <line x1="536.66666666667" y1="550" x2="536.66666666667" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
+  <text x="420" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">February</text>
+  <line x1="536.66666666667" y1="550" x2="536.66666666667" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
   <rect x="595.83333333333" y="490.675" width="20" height="59.325" fill="#1E90FF" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
     <title>113</title>
   </rect>
@@ -174,8 +173,8 @@ it('renders grouped bar chart', function () {
   <rect x="695.83333333333" y="165.175" width="20" height="384.825" fill="#FF4500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
     <title>733</title>
   </rect>
-  <line x1="770" y1="550" x2="770" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1"/>
-  <text x="653.33333333333" y="580" font-family="arial" font-size="14" fill="#333" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">March</text>
+  <line x1="770" y1="550" x2="770" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
+  <text x="653.33333333333" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">March</text>
 </svg>
 SVG
     );
@@ -208,16 +207,15 @@ it('renders empty grouped bar chart', function () {
   <text x="60" y="240" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">600</text>
   <text x="60" y="135" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">800</text>
   <text x="60" y="30" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">1,000</text>
-  <line x1="70" y1="550" x2="770" y2="550" stroke="black" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="550" x2="770" y2="550" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="445" x2="770" y2="445" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="340" x2="770" y2="340" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="235" x2="770" y2="235" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="130" x2="770" y2="130" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="25" x2="770" y2="25" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="70" y1="550" x2="70" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1"/>
-  <line x1="770" y1="550" x2="770" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1"/>
-  <text x="420" y="580" font-family="arial" font-size="14" fill="#333" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">January</text>
+  <line x1="70" y1="550" x2="770" y2="550" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
+  <line x1="70" y1="445" x2="770" y2="445" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="340" x2="770" y2="340" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="235" x2="770" y2="235" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="130" x2="770" y2="130" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="25" x2="770" y2="25" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+  <line x1="70" y1="550" x2="70" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
+  <line x1="770" y1="550" x2="770" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
+  <text x="420" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">January</text>
 </svg>
 SVG
     );

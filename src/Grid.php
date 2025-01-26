@@ -8,8 +8,9 @@ class Grid implements Renderable
 {
     public function __construct(
         public int $lines = 5,
-        public string $lineColor = '#ccc',
-        public string $labelColor = '#333',
+        public ?string $lineColor = null,
+        public float $thickness = 1,
+        public float $opacity = 0.2,
     ) {
         //
     }
@@ -21,7 +22,7 @@ class Grid implements Renderable
 
         $svg = '';
 
-        for ($i = 0; $i <= $numLines; $i++) {
+        for ($i = 1; $i <= $numLines; $i++) {
             $y = $chart->bottom() - ($i * $lineSpacing);
 
             $line = new Line(
@@ -29,8 +30,9 @@ class Grid implements Renderable
                 y1: $y,
                 x2: $chart->right(),
                 y2: $y,
-                stroke: $this->lineColor,
-                strokeWidth: 1
+                stroke: $this->lineColor ?? $chart->color,
+                strokeWidth: $this->thickness,
+                strokeOpacity: $this->opacity,
             );
             $svg .= $line;
         }

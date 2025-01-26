@@ -18,6 +18,7 @@ class PieChart
         public ?string $background = 'white',
         public int $fontSize = 14,
         public string $fontFamily = 'arial',
+        public string $color = 'black',
         ?Closure $formatter = null
     ) {
         $this->formatter = $formatter ?? fn (string $label, float $percentage) => "$label - $percentage%";

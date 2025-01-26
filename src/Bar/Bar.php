@@ -15,7 +15,9 @@ class Bar implements BarContract
         public ?string $yAxis = null,
         public string $color = '#3498db',
         public ?float $width = 100,
-        public string $labelColor = '#333',
+        public ?string $labelColor = null,
+        public ?int $fontSize = null,
+        public ?string $fontFamily = null,
         public int $labelMarginY = 30,
         public ?int $radius = null,
     ) {}
@@ -46,9 +48,9 @@ class Bar implements BarContract
                 content: $this->name,
                 x: $labelX,
                 y: $chart->bottom() + $this->labelMarginY,
-                fontFamily: $chart->fontFamily,
-                fontSize: $chart->fontSize,
-                fill: $this->labelColor,
+                fontFamily: $this->fontFamily ?? $chart->fontFamily,
+                fontSize: $this->fontSize ?? $chart->fontSize,
+                fill: $this->labelColor ?? $chart->color,
                 textAnchor: 'middle'
             ) : null,
         ]);

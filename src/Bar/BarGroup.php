@@ -17,7 +17,7 @@ class BarGroup implements BarContract
         protected int $margin = 5,
         protected int $width = 100,
         protected array $bars = [],
-        public string $labelColor = '#333',
+        public ?string $labelColor = null,
         public int $labelMarginY = 30,
         public ?int $fontSize = null,
         public ?int $radius = null,
@@ -70,6 +70,7 @@ class BarGroup implements BarContract
                 y1: $chart->bottom(),
                 x2: $startX,
                 y2: $chart->bottom() + 10,
+                stroke: $this->labelColor ?? $chart->color,
             ),
             ...array_map(function (BarContract $bar) use ($barWidth, &$x, $chart) {
                 $svg = $bar->render($chart, $x + $this->margin, $barWidth);
@@ -82,6 +83,7 @@ class BarGroup implements BarContract
                 y1: $chart->bottom(),
                 x2: $startX + $maxGroupWidth,
                 y2: $chart->bottom() + 10,
+                stroke: $this->labelColor ?? $chart->color,
             ),
             new Text(
                 content: $this->name,
@@ -89,7 +91,7 @@ class BarGroup implements BarContract
                 y: $chart->bottom() + $this->labelMarginY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $this->fontSize ?? $chart->fontSize,
-                fill: $this->labelColor,
+                fill: $this->labelColor ?? $chart->color,
                 textAnchor: 'middle'
             ),
         ]);

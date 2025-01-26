@@ -54,18 +54,18 @@ $chart = new Chart(
             lines: [
                 new Line(
                     points: [
-                        new Point(y: 0, x: 0),
-                        new Point(y: 4000, x: 100),
-                        new Point(y: 12000, x: 200),
-                        new Point(y: 8000, x: 300),
+                        new Point(x: 0, y: 0),
+                        new Point(x: 100, y: 4000),
+                        new Point(x: 200, y: 12000),
+                        new Point(x: 300, y: 8000),
                     ],
                 ),
                 new Line(
                     points: [
-                        new Point(y: 0, x: 0),
-                        new Point(y: 12000, x: 100),
-                        new Point(y: 14000, x: 200),
-                        new Point(y: 7000, x: 300),
+                        new Point(x: 0, y: 0),
+                        new Point(x: 100, y: 12000),
+                        new Point(x: 200, y: 14000),
+                        new Point(x: 300, y: 7000),
                     ],
                     color: 'blue'
                 ),

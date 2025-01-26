@@ -14,13 +14,13 @@ $chart = new Chart(
 
                 new Line(
                     points: [
-                        new Point(y: 20, x: 0),
-                        new Point(y: 35, x: 100),
-                        new Point(y: 50, x: 200),
-                        new Point(y: 30, x: 300),
-                        new Point(y: 50, x: 400),
-                        new Point(y: 45, x: 500),
-                        new Point(y: 30, x: 600),
+                        new Point(x: 0, y: 20),
+                        new Point(x: 100, y: 35),
+                        new Point(x: 200, y: 50),
+                        new Point(x: 300, y: 30),
+                        new Point(x: 400, y: 50),
+                        new Point(x: 500, y: 45),
+                        new Point(x: 600, y: 30),
                     ],
                     color: 'rgb(75, 192, 192)',
                     areaColor: 'rgba(75, 192, 192, 0.3)',
@@ -29,13 +29,13 @@ $chart = new Chart(
 
                 new Line(
                     points: [
-                        new Point(y: 10, x: 0),
-                        new Point(y: 20, x: 100),
-                        new Point(y: 15, x: 200),
-                        new Point(y: 25, x: 300),
-                        new Point(y: 20, x: 400),
-                        new Point(y: 35, x: 500),
-                        new Point(y: 35, x: 600),
+                        new Point(x: 0, y: 10),
+                        new Point(x: 100, y: 20),
+                        new Point(x: 200, y: 15),
+                        new Point(x: 300, y: 25),
+                        new Point(x: 400, y: 20),
+                        new Point(x: 500, y: 35),
+                        new Point(x: 600, y: 35),
                     ],
                     color: 'rgb(255, 99, 132)',
                     areaColor: 'rgba(255, 99, 132, 0.3)',
@@ -44,13 +44,13 @@ $chart = new Chart(
 
                 new Line(
                     points: [
-                        new Point(y: 10, x: 0),
-                        new Point(y: 40, x: 100),
-                        new Point(y: 20, x: 200),
-                        new Point(y: 50, x: 300),
-                        new Point(y: 30, x: 400),
-                        new Point(y: 60, x: 500),
-                        new Point(y: 40, x: 600),
+                        new Point(x: 0, y: 10),
+                        new Point(x: 100, y: 40),
+                        new Point(x: 200, y: 20),
+                        new Point(x: 300, y: 50),
+                        new Point(x: 400, y: 30),
+                        new Point(x: 500, y: 60),
+                        new Point(x: 600, y: 40),
                     ],
                     color: 'rgb(54, 162, 235)',
                     areaColor: 'rgba(54, 162, 235, 0.3)',

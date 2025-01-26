@@ -30,29 +30,19 @@ class Lines extends Serie
 
     public function maxValue(): float
     {
-        $maxValue = 0;
-
-        foreach ($this->lines as $dataSet) {
-            $dataSetMax = max(array_map(fn (Point $point) => $point->y, $dataSet->points));
-            if ($dataSetMax > $maxValue) {
-                $maxValue = $dataSetMax;
-            }
+        if (empty($this->lines)) {
+            return 0;
         }
 
-        return $maxValue;
+        return max(array_map(fn (Line $line) => $line->maxYValue(), $this->lines));
     }
 
     public function minValue(): float
     {
-        $minValue = 0;
-
-        foreach ($this->lines as $dataSet) {
-            $dataSetMin = min(array_map(fn (Point $point) => $point->y, $dataSet->points));
-            if ($dataSetMin < $minValue) {
-                $minValue = $dataSetMin;
-            }
+        if (empty($this->lines)) {
+            return 0;
         }
 
-        return $minValue;
+        return min(array_map(fn (Line $line) => $line->minYValue(), $this->lines));
     }
 }
