@@ -15,7 +15,7 @@ class XAxisRangeAnnotation implements Renderable, RendersAfterSeries
         public float $x1 = 0,
         public float $x2 = 0,
         public string $color = 'yellow',
-        public int $fontSize = 14,
+        public ?int $fontSize = null,
         public float $opacity = 0.2,
         public string $label = '',
         public string $labelColor = 'white',

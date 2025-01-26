@@ -58,19 +58,18 @@ it('renders annotations', function () {
               <text x="50" y="240" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">60</text>
               <text x="50" y="135" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">80</text>
               <text x="50" y="30" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">100</text>
-              <line x1="60" y1="550" x2="770" y2="550" stroke="black" stroke-dasharray="none" stroke-width="1"/>
-              <line x1="60" y1="550" x2="770" y2="550" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-              <line x1="60" y1="445" x2="770" y2="445" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-              <line x1="60" y1="340" x2="770" y2="340" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-              <line x1="60" y1="235" x2="770" y2="235" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-              <line x1="60" y1="130" x2="770" y2="130" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
-              <line x1="60" y1="25" x2="770" y2="25" stroke="#ccc" stroke-dasharray="none" stroke-width="1"/>
+              <line x1="60" y1="550" x2="770" y2="550" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
+              <line x1="60" y1="445" x2="770" y2="445" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+              <line x1="60" y1="340" x2="770" y2="340" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+              <line x1="60" y1="235" x2="770" y2="235" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+              <line x1="60" y1="130" x2="770" y2="130" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
+              <line x1="60" y1="25" x2="770" y2="25" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
               <circle cx="60" cy="550" r="10" fill="white" stroke="red" stroke-width="4">
                 <title>0</title>
               </circle>
               <rect x="27.727272727273" y="502.63636363636" width="64.545454545455" height="22" fill="red" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"/>
               <text x="60" y="520" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Point 1</text>
-              <line x1="60" y1="287.5" x2="770" y2="287.5" stroke="blue" stroke-dasharray="none" stroke-width="3"/>
+              <line x1="60" y1="287.5" x2="770" y2="287.5" stroke="blue" stroke-dasharray="none" stroke-width="3" stroke-opacity="1.000000"/>
               <rect x="60" y="262.13636363636" width="128.18181818182" height="22" fill="blue" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"/>
               <text x="70" y="279.5" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="start" dominant-baseline="alphabetic" alignment-baseline="auto">Y Axis annotation</text>
               <rect x="415" y="25" width="355" height="525" fill="pink" fill-opacity="0.2" stroke="none" stroke-width="0" rx="0" ry="0"/>

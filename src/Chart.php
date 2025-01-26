@@ -5,7 +5,6 @@ namespace Maantje\Charts;
 use Maantje\Charts\Annotations\RendersAfterSeries;
 use Maantje\Charts\Annotations\RendersBeforeSeries;
 use Maantje\Charts\Line\Lines;
-use Maantje\Charts\Line\Point;
 use Maantje\Charts\SVG\Rect;
 
 class Chart
@@ -32,6 +31,7 @@ class Chart
         protected float $width = 800,
         protected float $height = 600,
         public ?string $background = 'white',
+        public string $color = 'black',
         public int $fontSize = 14,
         public string $fontFamily = 'arial',
         public Grid $grid = new Grid,
@@ -248,10 +248,14 @@ class Chart
             return;
         }
 
-        $firstSeries = $this->series[0];
-
-        if ($firstSeries instanceof Lines && count($firstSeries->lines) > 0) {
-            $this->xAxis->data = array_map(fn (Point $point) => $point->x, $firstSeries->lines[0]->points);
+        foreach ($this->series as $series) {
+            if ($series instanceof Lines) {
+                foreach ($series->lines as $line) {
+                    if (count($line->xPoints()) > count($this->xAxis->data)) {
+                        $this->xAxis->data = $line->xPoints();
+                    }
+                }
+            }
         }
     }
 }

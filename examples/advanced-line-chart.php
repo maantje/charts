@@ -20,9 +20,9 @@ $chart = new Chart(
         new YAxis(
             name: 'celsius',
             title: 'Temperature',
-            color: 'red',
             minValue: 30,
             maxValue: 50,
+            color: 'red',
             annotations: [
                 new YAxisLineAnnotation(
                     y: 48,
@@ -65,7 +65,6 @@ $chart = new Chart(
             title: 'Elevation',
             minValue: 0,
             maxValue: 3000,
-            labelMargin: 10,
             annotations: [
                 new PointAnnotation(
                     x: 1725331334 + 3600,
@@ -77,6 +76,7 @@ $chart = new Chart(
                     label: 'Point annotation',
                 ),
             ],
+            labelMargin: 10,
             formatter: Formatter::template(':value m')
 
         ),
@@ -104,20 +104,20 @@ $chart = new Chart(
             lines: [
                 new Line(
                     [
-                        new Point(y: 37.3, x: 1725331334),
-                        new Point(y: 37.8, x: 1725331334 + 3600),
-                        new Point(y: 38, x: 1725331334 + 3600 + 3600),
-                        new Point(y: 42.2, x: 1725331334 + 3600 + 3600 + 3600),
+                        new Point(x: 1725331334, y: 37.3),
+                        new Point(x: 1725331334 + 3600, y: 37.8),
+                        new Point(x: 1725331334 + 3600 + 3600, y: 38),
+                        new Point(x: 1725331334 + 3600 + 3600 + 3600, y: 42.2),
                     ],
                     yAxis: 'celsius',
                     color: '#FF0000',
                 ),
                 new Line(
                     [
-                        new Point(y: 0, x: 1725331334),
-                        new Point(y: 900, x: 1725331334 + 3600),
-                        new Point(y: 1800, x: 1725331334 + 3600 + 3600),
-                        new Point(y: 2200, x: 1725331334 + 3600 + 3600 + 3600),
+                        new Point(x: 1725331334, y: 0),
+                        new Point(x: 1725331334 + 3600, y: 900),
+                        new Point(x: 1725331334 + 3600 + 3600, y: 1800),
+                        new Point(x: 1725331334 + 3600 + 3600 + 3600, y: 2200),
                     ],
                     yAxis: 'elevation',
                 ),

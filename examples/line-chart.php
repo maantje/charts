@@ -13,18 +13,18 @@ $chart = new Chart(
             lines: [
                 new Line(
                     points: [
-                        new Point(y: 0, x: 0),
-                        new Point(y: 4, x: 100),
-                        new Point(y: 12, x: 200),
-                        new Point(y: 8, x: 300),
-                    ],
+                        [0, 0],
+                        [100, 4],
+                        [200, 12],
+                        [300, 8],
+                    ]
                 ),
                 new Line(
                     points: [
-                        new Point(y: 4, x: 0),
-                        new Point(y: 12, x: 100),
-                        new Point(y: 24, x: 200),
-                        new Point(y: 7, x: 300),
+                        new Point(x: 0, y: 4, color: 'red', size: 5),
+                        new Point(x: 100, y: 12, color: 'red', size: 5),
+                        new Point(x: 200, y: 24, color: 'red', size: 5),
+                        new Point(x: 300, y: 7, color: 'red', size: 5),
                     ],
                     color: 'blue'
                 ),

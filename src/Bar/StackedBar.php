@@ -19,7 +19,7 @@ class StackedBar implements BarContract
         public ?string $yAxis = null,
         public string $color = '#3498db',
         public ?float $width = 100,
-        public string $labelColor = '#333',
+        public ?string $labelColor = null,
         public int $labelMarginY = 30,
         public bool $percentage = false,
         public ?Closure $formatter = null
@@ -59,7 +59,9 @@ class StackedBar implements BarContract
                             : $this->formatter?->call($this, $segment->value),
                         x: $x + $width / 2,
                         y: $currentY + $segmentHeight - 10,
-                        fill: $segment->labelColor,
+                        fontFamily: $chart->fontFamily,
+                        fontSize: $chart->fontSize,
+                        fill: $segment->labelColor ?? $chart->color,
                         textAnchor: 'middle'
                     ),
                 ]);
@@ -70,7 +72,7 @@ class StackedBar implements BarContract
                 y: $chart->bottom() + $this->labelMarginY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $chart->fontSize,
-                fill: $this->labelColor,
+                fill: $this->labelColor ?? $chart->color,
                 textAnchor: 'middle'
             ),
         ]);

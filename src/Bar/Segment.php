@@ -7,6 +7,6 @@ class Segment
     public function __construct(
         public float $value,
         public string $color,
-        public string $labelColor = 'black',
+        public ?string $labelColor = null,
     ) {}
 }

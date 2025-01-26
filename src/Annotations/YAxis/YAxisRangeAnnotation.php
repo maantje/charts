@@ -20,7 +20,7 @@ class YAxisRangeAnnotation implements Renderable, RendersAfterSeries, YAxisAnnot
         public float $y2 = 0,
         public ?string $yAxis = null,
         public string $color = 'yellow',
-        public int $fontSize = 14,
+        public ?int $fontSize = null,
         public float $opacity = 0.2,
         public string $label = '',
         public string $labelColor = 'white',
