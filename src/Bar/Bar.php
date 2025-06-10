@@ -14,11 +14,11 @@ class Bar implements BarContract
         public float $value = 0,
         public ?string $yAxis = null,
         public string $color = '#3498db',
-        public ?float $width = 100,
+        public ?float $width = 60,
         public ?string $labelColor = null,
         public ?int $fontSize = null,
         public ?string $fontFamily = null,
-        public int $labelMarginY = 30,
+        public int $labelMarginY = 10,
         public ?int $radius = null,
     ) {}
 
