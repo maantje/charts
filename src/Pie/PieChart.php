@@ -21,7 +21,8 @@ class PieChart
         public string $color = 'black',
         ?Closure $formatter = null
     ) {
-        $this->formatter = $formatter ?? fn (string $label, float $percentage) => "$label - $percentage%";
+        $this->formatter = $formatter ?? fn (string $label, float $percentage) => 
+            empty(trim($label)) ? "$percentage%" : "$label - $percentage%";
     }
 
     public function render(): string
