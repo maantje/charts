@@ -16,7 +16,7 @@ it('renders pie chart with empty label without dash', function () {
     );
 
     $rendered = $chart->render();
-    
+
     expect($rendered)->toContain('100%');
     expect($rendered)->not->toContain('- 100%');
 });
@@ -34,7 +34,7 @@ it('renders pie chart with whitespace-only label without dash', function () {
     );
 
     $rendered = $chart->render();
-    
+
     expect($rendered)->toContain('100%');
     expect($rendered)->not->toContain('- 100%');
 });
@@ -52,6 +52,6 @@ it('renders pie chart with label including dash', function () {
     );
 
     $rendered = $chart->render();
-    
+
     expect($rendered)->toContain('Test - 100%');
 });
