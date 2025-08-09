@@ -23,7 +23,7 @@ class Bars extends Serie
             return 0;
         }
 
-        return max(array_map(fn (BarContract $data) => $data->value(), $this->bars));
+        return max(array_map(fn (BarContract $data) => $data->maxValue(), $this->bars));
     }
 
     public function minValue(): float
@@ -32,7 +32,7 @@ class Bars extends Serie
             return 0;
         }
 
-        return min(array_map(fn (BarContract $data) => $data->value(), $this->bars));
+        return min(array_map(fn (BarContract $data) => $data->minValue(), $this->bars));
     }
 
     public function render(Chart $chart): string

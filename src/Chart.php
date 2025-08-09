@@ -35,9 +35,7 @@ class Chart
         public int $fontSize = 14,
         public string $fontFamily = 'arial',
         public Grid $grid = new Grid,
-        YAxis|array $yAxis = new YAxis(
-            minValue: 0,
-        ),
+        YAxis|array $yAxis = new YAxis,
         public XAxis $xAxis = new XAxis,
         public array $annotations = [],
         public array $series = [],
@@ -120,7 +118,7 @@ class Chart
             return $this->topMargin;
         }
 
-        return $this->topMargin + $this->availableHeight() - (($y - $minValue) / $range) * $this->availableHeight();
+        return max($this->topMargin, $this->topMargin + $this->availableHeight() - (($y - $minValue) / $range) * $this->availableHeight());
     }
 
     protected function renderSeries(): string
@@ -170,7 +168,7 @@ class Chart
             return 0;
         }
 
-        return $this->maxValue[$yAxis] = max(array_map(fn ($element) => $element->maxValue(), $filtered));
+        return $this->maxValue[$yAxis] = max(0, ...array_map(fn ($element) => $element->maxValue(), $filtered));
     }
 
     public function minValue(?string $yAxis = null): float
@@ -191,7 +189,9 @@ class Chart
             return 0;
         }
 
-        return $this->minValue[$yAxis] = min(array_map(fn ($element) => $element->minValue(), $filtered));
+        $dataMin = min(array_map(fn ($element) => $element->minValue(), $filtered));
+
+        return $this->minValue[$yAxis] = $dataMin < 0 ? $dataMin : min(0, $dataMin);
     }
 
     protected function background(): string
@@ -240,6 +240,11 @@ class Chart
     public function incrementLeftMargin(float $value): void
     {
         $this->leftMargin += $value;
+    }
+
+    public function zeroLineY(?string $axis = null): float
+    {
+        return $this->yForAxis(0, $axis);
     }
 
     protected function guessXAxisData(): void

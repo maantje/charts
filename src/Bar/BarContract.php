@@ -8,5 +8,9 @@ interface BarContract
 {
     public function value(): float;
 
+    public function maxValue(): float;
+
+    public function minValue(): float;
+
     public function render(Chart $chart, float $x, float $maxBarWidth): string;
 }

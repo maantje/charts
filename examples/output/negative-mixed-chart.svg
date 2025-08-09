@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="770" height="350" viewBox="0 0 770 350">
+    <rect x="0" y="0" width="770" height="350" fill="white" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"/>
+    <text x="50" y="305" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">-400</text><text x="50" y="259.16666666667" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">-267</text><text x="50" y="213.33333333333" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">-133</text><text x="50" y="167.5" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">0</text><text x="50" y="121.66666666667" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">133</text><text x="50" y="75.833333333333" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">267</text><text x="50" y="30" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">400</text>
+    <line x1="60" y1="300" x2="740" y2="300" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="60" y1="300" x2="60" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="135.55555555556" y1="300" x2="135.55555555556" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="211.11111111111" y1="300" x2="211.11111111111" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="286.66666666667" y1="300" x2="286.66666666667" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="362.22222222222" y1="300" x2="362.22222222222" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="437.77777777778" y1="300" x2="437.77777777778" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="513.33333333333" y1="300" x2="513.33333333333" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="588.88888888889" y1="300" x2="588.88888888889" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="664.44444444444" y1="300" x2="664.44444444444" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<line x1="740" y1="300" x2="740" y2="295" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+    <line x1="60" y1="254.16666666667" x2="740" y2="254.16666666667" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000" /><line x1="60" y1="208.33333333333" x2="740" y2="208.33333333333" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000" /><line x1="60" y1="162.5" x2="740" y2="162.5" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000" /><line x1="60" y1="116.66666666667" x2="740" y2="116.66666666667" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000" /><line x1="60" y1="70.833333333333" x2="740" y2="70.833333333333" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000" /><line x1="60" y1="25" x2="740" y2="25" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000" />
+    
+    <path d="M 60,93.75 L 135.55555555556,214.0625 L 211.11111111111,282.8125 L 286.66666666667,128.125 L 362.22222222222,76.5625 L 437.77777777778,231.25 L 513.33333333333,42.1875 L 588.88888888889,196.875 L 664.44444444444,25 L 740,248.4375" fill="none" stroke="#E74C3C" stroke-width="3" />
+<path d="M 60,248.4375 L 135.55555555556,196.875 L 211.11111111111,93.75 L 286.66666666667,59.375 L 362.22222222222,231.25 L 437.77777777778,282.8125 L 513.33333333333,110.9375 L 588.88888888889,179.6875 L 664.44444444444,42.1875 L 740,214.0625" fill="none" stroke="#2980B9" stroke-width="3" />
+<rect x="95" y="162.5" width="100" height="34.375" fill="#E74C3C" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>-100</title></rect>
+
+<rect x="95" y="196.875" width="100" height="13.75" fill="#27AE60" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>-40</title></rect>
+
+<rect x="95" y="210.625" width="100" height="17.1875" fill="#2980B9" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>-50</title></rect>
+
+<rect x="95" y="227.8125" width="100" height="34.375" fill="#F39C12" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>-100</title></rect>
+
+<text x="145" y="330" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Jan</text><rect x="265" y="162.5" width="100" height="34.375" fill="#27AE60" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>-100</title></rect>
+<text x="315" y="330" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Feb</text><rect x="435" y="93.75" width="100" height="68.75" fill="#F39C12" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>200</title></rect>
+<text x="485" y="330" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Mar</text><line x1="570" y1="300" x2="570" y2="310" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<rect x="600" y="162.5" width="25" height="34.71875" fill="#E74C3C" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>-101</title></rect>
+<rect x="630" y="76.21875" width="25" height="86.28125" fill="#27AE60" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>251</title></rect>
+<rect x="660" y="162.5" width="25" height="137.5" fill="#2980B9" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>-400</title></rect>
+<rect x="690" y="25" width="25" height="137.5" fill="#F39C12" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>400</title></rect>
+<line x1="740" y1="300" x2="740" y2="310" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000" />
+<text x="655" y="330" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">May</text>
+    
+</svg>

@@ -1,6 +1,9 @@
 <?php
 
+use Maantje\Charts\Bar\Bar;
+use Maantje\Charts\Bar\Bars;
 use Maantje\Charts\Chart;
+use Maantje\Charts\YAxis;
 
 it('renders empty chart', function () {
     $chart = new Chart;
@@ -23,4 +26,108 @@ it('renders empty chart', function () {
 </svg>
 SVG
     );
+});
+
+it('calculates zeroLineY for negative scenarios', function () {
+    $positiveChart = new Chart(
+        series: [
+            new Bars(
+                bars: [
+                    new Bar(name: 'A', value: 100),
+                    new Bar(name: 'B', value: 200),
+                ],
+            ),
+        ],
+    );
+
+    $positiveZeroY = $positiveChart->zeroLineY();
+    expect($positiveZeroY)->toBe($positiveChart->bottom());
+
+    $negativeChart = new Chart(
+        series: [
+            new Bars(
+                bars: [
+                    new Bar(name: 'A', value: -100),
+                    new Bar(name: 'B', value: -200),
+                ],
+            ),
+        ],
+    );
+
+    $negativeZeroY = $negativeChart->zeroLineY();
+    expect($negativeZeroY)->toBe($negativeChart->top());
+
+    $mixedChart = new Chart(
+        series: [
+            new Bars(
+                bars: [
+                    new Bar(name: 'A', value: 100),
+                    new Bar(name: 'B', value: -100),
+                ],
+            ),
+        ],
+    );
+
+    $mixedZeroY = $mixedChart->zeroLineY();
+    expect($mixedZeroY)->toBeLessThan($positiveZeroY)
+        ->and($mixedZeroY)->toBeGreaterThan($negativeZeroY);
+});
+
+it('calculates yForAxis for negatives', function () {
+    $chart = new Chart(
+        series: [
+            new Bars(
+                bars: [
+                    new Bar(name: 'A', value: 100),
+                    new Bar(name: 'B', value: -100),
+                ],
+            ),
+        ],
+    );
+
+    $zeroY = $chart->zeroLineY();
+    $positiveY = $chart->yForAxis(100);
+    $negativeY = $chart->yForAxis(-100);
+
+    expect($positiveY)->toBeLessThan($zeroY)
+        ->and($negativeY)->toBeGreaterThan($zeroY);
+});
+
+it('handles zero in negative context', function () {
+    $chart = new Chart(
+        series: [
+            new Bars(
+                bars: [
+                    new Bar(name: 'Zero', value: 0),
+                    new Bar(name: 'Negative', value: -100),
+                ],
+            ),
+        ],
+    );
+
+    $zeroY = $chart->zeroLineY();
+    $zeroValueY = $chart->yForAxis(0);
+    $negativeY = $chart->yForAxis(-100);
+
+    expect($zeroValueY)->toBe($zeroY)
+        ->and($negativeY)->toBeGreaterThan($zeroY);
+});
+
+it('renders negatives with maxValue 0', function () {
+    $chart = new Chart(
+        yAxis: new YAxis(maxValue: 0),
+        series: [
+            new Bars(
+                bars: [
+                    new Bar(name: 'A', value: -50),
+                    new Bar(name: 'B', value: -100),
+                ],
+            ),
+        ],
+    );
+
+    $svg = $chart->render();
+    $zeroY = $chart->zeroLineY();
+
+    expect($zeroY)->toBe($chart->top());
 });

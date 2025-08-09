@@ -12,6 +12,11 @@ class Formatter
         return fn (mixed $value) => str_replace(':value', $value, $template);
     }
 
+    public static function hidden(): Closure
+    {
+        return function (): void {};
+    }
+
     public static function number(string $locale, int $precision = 0): Closure
     {
         return function (float $value) use ($locale, $precision) {

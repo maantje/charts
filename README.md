@@ -34,6 +34,7 @@ Below are some examples of the types of charts you can create using this library
 - [Advanced Line Chart](#advanced-line-chart)
 - [Advanced Bar Chart](#advanced-bar-chart)
 - [Mixed Chart](#mixed-chart)
+- [Negative Values Chart](#negative-values-chart)
 - [Pie Chart](#pie-chart)
 
 ### Example Usage With mPDF
@@ -79,6 +80,10 @@ Below are some examples of the types of charts you can create using this library
 ### Mixed chart
 ![Mixed chart](./examples/output/mixed-chart.svg)  
 [View source](./examples/mixed-chart.php)
+
+### Negative Values Chart
+![Negative Values Chart](./examples/output/negative-values-chart.svg)  
+[View source](./examples/negative-values-chart.php)
 
 ### Pie chart
 ![Pie chart](./examples/output/pie-chart.svg)  

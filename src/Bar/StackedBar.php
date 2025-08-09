@@ -8,46 +8,48 @@ use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Rect;
 use Maantje\Charts\SVG\Text;
 
-class StackedBar implements BarContract
+class StackedBar extends AbstractBar
 {
     /**
      * @param  Segment[]  $segments
      */
     public function __construct(
-        public string $name,
+        string $name,
         public array $segments = [],
-        public ?string $yAxis = null,
-        public string $color = '#3498db',
-        public ?float $width = 100,
-        public ?string $labelColor = null,
-        public int $labelMarginY = 30,
+        ?string $yAxis = null,
+        string $color = '#3498db',
+        ?float $width = 100,
+        ?string $labelColor = null,
+        int $labelMarginY = 30,
         public bool $percentage = false,
         public ?Closure $formatter = null
     ) {
-        //
+        parent::__construct($name, $yAxis, $color, $width, $labelColor, $labelMarginY);
     }
 
     public function render(Chart $chart, float $x, float $maxBarWidth): string
     {
-        $width = min($this->width ?? $maxBarWidth, $maxBarWidth);
+        $width = $this->calculateWidth($maxBarWidth);
+        $x = $this->calculateX($x, $width, $maxBarWidth);
+        $labelX = $this->calculateLabelX($x, $width);
+
         $initialY = $chart->yForAxis($this->value(), $this->yAxis);
-        $currentY = $chart->bottom();
-
-        if (! is_null($this->width)) {
-            $x += ($maxBarWidth - $width) / 2;
-        }
-
-        $labelX = $x + $width / 2;
+        $zeroY = $chart->zeroLineY($this->yAxis);
+        $currentY = $zeroY;
 
         return new Fragment([
-            ...array_map(function (Segment $segment) use ($width, $x, $initialY, $chart, &$currentY) {
-                $segmentHeight = $segment->value * ($chart->bottom() - $initialY) / $this->value();
-                $currentY -= $segmentHeight;
+            ...array_map(function (Segment $segment) use ($width, $x, $initialY, $chart, &$currentY, $zeroY) {
+                $totalBarHeight = abs($initialY - $zeroY);
+                $segmentHeight = abs($segment->value) * $totalBarHeight / abs($this->value());
+
+                $nextY = $this->value() < 0 ? $currentY + $segmentHeight : $currentY - $segmentHeight;
+                $rectY = min($currentY, $nextY);
+                $currentY = $nextY;
 
                 return new Fragment([
                     new Rect(
                         x: $x,
-                        y: $currentY,
+                        y: $rectY,
                         width: $width,
                         height: $segmentHeight,
                         fill: $segment->color ?? $this->color,
@@ -58,7 +60,7 @@ class StackedBar implements BarContract
                             ? number_format(($segment->value / $this->value()) * 100).'%'
                             : $this->formatter?->call($this, $segment->value),
                         x: $x + $width / 2,
-                        y: $currentY + $segmentHeight - 10,
+                        y: $rectY + $segmentHeight - 10,
                         fontFamily: $chart->fontFamily,
                         fontSize: $chart->fontSize,
                         fill: $segment->labelColor ?? $chart->color,
@@ -66,20 +68,22 @@ class StackedBar implements BarContract
                     ),
                 ]);
             }, $this->segments),
-            new Text(
-                content: $this->name,
-                x: $labelX,
-                y: $chart->bottom() + $this->labelMarginY,
-                fontFamily: $chart->fontFamily,
-                fontSize: $chart->fontSize,
-                fill: $this->labelColor ?? $chart->color,
-                textAnchor: 'middle'
-            ),
+            $this->renderLabel($chart, $labelX),
         ]);
     }
 
     public function value(): float
     {
         return array_sum(array_map(fn (Segment $segment) => $segment->value, $this->segments));
+    }
+
+    public function maxValue(): float
+    {
+        return $this->value();
+    }
+
+    public function minValue(): float
+    {
+        return $this->value();
     }
 }

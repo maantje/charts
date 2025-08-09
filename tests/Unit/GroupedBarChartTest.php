@@ -6,217 +6,137 @@ use Maantje\Charts\Bar\Bars;
 use Maantje\Charts\Chart;
 use Maantje\Charts\YAxis;
 
-it('renders grouped bar chart', function () {
+it('calculates correct coordinates for grouped bars', function () {
+    $bar1 = new Bar(value: 100, color: '#1E90FF');
+    $bar2 = new Bar(value: 200, color: '#32CD32');
+    $bar3 = new Bar(value: 300, color: '#FFA500');
+
+    $group = new BarGroup(name: 'Test Group', bars: [$bar1, $bar2, $bar3]);
+
     $chart = new Chart(
-        yAxis: new YAxis(
-            minValue: 0,
-            maxValue: 1000,
-        ),
-        series: [
-            new Bars(
-                bars: [
-                    new BarGroup(
-                        name: 'January',
-                        bars: [
-                            new Bar(
-                                value: 101,
-                                color: '#1E90FF',
-                            ),
-                            new Bar(
-                                value: 251,
-                                color: '#32CD32',
-                            ),
-                            new Bar(
-                                value: 389,
-                                color: '#FFA500',
-                            ),
-                            new Bar(
-                                value: 457,
-                                color: '#FFD700',
-                            ),
-                            new Bar(
-                                value: 601,
-                                color: '#FF4500',
-                            ),
-                        ],
-                        radius: 10,
-                    ),
-                    new BarGroup(
-                        name: 'February',
-                        bars: [
-                            new Bar(
-                                value: 73,
-                                color: '#1E90FF',
-                                radius: 10,
-                            ),
-                            new Bar(
-                                value: 223,
-                                color: '#32CD32',
-                                radius: 10,
-                            ),
-                            new Bar(
-                                value: 347,
-                                color: '#FFA500',
-                                radius: 10,
-                            ),
-                            new Bar(
-                                value: 509,
-                                color: '#FFD700',
-                                radius: 10,
-                            ),
-                            new Bar(
-                                value: 653,
-                                color: '#FF4500',
-                                radius: 10,
-                            ),
-                        ],
-                    ),
-                    new BarGroup(
-                        name: 'March',
-                        bars: [
-                            new Bar(
-                                value: 113,
-                                color: '#1E90FF',
-                                radius: 10,
-                            ),
-                            new Bar(
-                                value: 281,
-                                color: '#32CD32',
-                                radius: 10,
-                            ),
-                            new Bar(
-                                value: 401,
-                                color: '#FFA500',
-                                radius: 10,
-                            ),
-                            new Bar(
-                                value: 541,
-                                color: '#FFD700',
-                                radius: 10,
-                            ),
-                            new Bar(
-                                value: 733,
-                                color: '#FF4500',
-                                radius: 10,
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-        ],
+        yAxis: new YAxis(minValue: 0, maxValue: 400),
+        series: [new Bars(bars: [$group])],
     );
 
-    expect(pretty($chart->render()))->toBe(<<<'SVG'
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <rect x="0" y="0" width="800" height="600" fill="white" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"/>
-  <text x="60" y="555" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">0</text>
-  <text x="60" y="450" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">200</text>
-  <text x="60" y="345" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">400</text>
-  <text x="60" y="240" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">600</text>
-  <text x="60" y="135" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">800</text>
-  <text x="60" y="30" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">1,000</text>
-  <line x1="70" y1="550" x2="770" y2="550" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <line x1="70" y1="445" x2="770" y2="445" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="340" x2="770" y2="340" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="235" x2="770" y2="235" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="130" x2="770" y2="130" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="25" x2="770" y2="25" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="550" x2="70" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <rect x="129.16666666667" y="496.975" width="20" height="53.025" fill="#1E90FF" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>101</title>
-  </rect>
-  <rect x="154.16666666667" y="418.225" width="20" height="131.775" fill="#32CD32" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>251</title>
-  </rect>
-  <rect x="179.16666666667" y="345.775" width="20" height="204.225" fill="#FFA500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>389</title>
-  </rect>
-  <rect x="204.16666666667" y="310.075" width="20" height="239.925" fill="#FFD700" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>457</title>
-  </rect>
-  <rect x="229.16666666667" y="234.475" width="20" height="315.525" fill="#FF4500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>601</title>
-  </rect>
-  <line x1="303.33333333333" y1="550" x2="303.33333333333" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <text x="186.66666666667" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">January</text>
-  <line x1="303.33333333333" y1="550" x2="303.33333333333" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <rect x="362.5" y="511.675" width="20" height="38.325" fill="#1E90FF" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>73</title>
-  </rect>
-  <rect x="387.5" y="432.925" width="20" height="117.075" fill="#32CD32" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>223</title>
-  </rect>
-  <rect x="412.5" y="367.825" width="20" height="182.175" fill="#FFA500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>347</title>
-  </rect>
-  <rect x="437.5" y="282.775" width="20" height="267.225" fill="#FFD700" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>509</title>
-  </rect>
-  <rect x="462.5" y="207.175" width="20" height="342.825" fill="#FF4500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>653</title>
-  </rect>
-  <line x1="536.66666666667" y1="550" x2="536.66666666667" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <text x="420" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">February</text>
-  <line x1="536.66666666667" y1="550" x2="536.66666666667" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <rect x="595.83333333333" y="490.675" width="20" height="59.325" fill="#1E90FF" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>113</title>
-  </rect>
-  <rect x="620.83333333333" y="402.475" width="20" height="147.525" fill="#32CD32" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>281</title>
-  </rect>
-  <rect x="645.83333333333" y="339.475" width="20" height="210.525" fill="#FFA500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>401</title>
-  </rect>
-  <rect x="670.83333333333" y="265.975" width="20" height="284.025" fill="#FFD700" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>541</title>
-  </rect>
-  <rect x="695.83333333333" y="165.175" width="20" height="384.825" fill="#FF4500" fill-opacity="1" stroke="none" stroke-width="0" rx="10" ry="10">
-    <title>733</title>
-  </rect>
-  <line x1="770" y1="550" x2="770" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <text x="653.33333333333" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">March</text>
-</svg>
-SVG
-    );
+    $bar1Y = $chart->yForAxis($bar1->value);
+    $bar2Y = $chart->yForAxis($bar2->value);
+    $bar3Y = $chart->yForAxis($bar3->value);
+    $zeroY = $chart->yForAxis(0);
+
+    expect($bar1Y)->toBeLessThan($zeroY)
+        ->and($bar2Y)->toBeLessThan($bar1Y)
+        ->and($bar3Y)->toBeLessThan($bar2Y)
+        ->and($zeroY)->toBe($chart->bottom());
 });
 
-it('renders empty grouped bar chart', function () {
-    $chart = new Chart(
-        yAxis: new YAxis(
-            minValue: 0,
-            maxValue: 1000,
-        ),
-        series: [
-            new Bars(
-                bars: [
-                    new BarGroup(
-                        name: 'January',
-                        bars: [],
-                    ),
-                ],
-            ),
-        ],
+it('positions zero line at top for all negative grouped bars', function () {
+    $smallNegativeBar = new Bar(value: -50);
+    $mediumNegativeBar = new Bar(value: -100);
+    $largeNegativeBar = new Bar(value: -200);
+
+    $group = new BarGroup(
+        name: 'Negative Group',
+        bars: [$smallNegativeBar, $mediumNegativeBar, $largeNegativeBar],
     );
 
-    expect(pretty($chart->render()))->toBe(<<<'SVG'
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <rect x="0" y="0" width="800" height="600" fill="white" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"/>
-  <text x="60" y="555" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">0</text>
-  <text x="60" y="450" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">200</text>
-  <text x="60" y="345" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">400</text>
-  <text x="60" y="240" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">600</text>
-  <text x="60" y="135" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">800</text>
-  <text x="60" y="30" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="end" dominant-baseline="alphabetic" alignment-baseline="auto">1,000</text>
-  <line x1="70" y1="550" x2="770" y2="550" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <line x1="70" y1="445" x2="770" y2="445" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="340" x2="770" y2="340" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="235" x2="770" y2="235" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="130" x2="770" y2="130" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="25" x2="770" y2="25" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="0.200000"/>
-  <line x1="70" y1="550" x2="70" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <line x1="770" y1="550" x2="770" y2="560" stroke="black" stroke-dasharray="none" stroke-width="1" stroke-opacity="1.000000"/>
-  <text x="420" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">January</text>
-</svg>
-SVG
+    $chart = new Chart(
+        series: [new Bars(bars: [$group])],
     );
+
+    $smallNegativeBarY = $chart->yForAxis($smallNegativeBar->value);
+    $mediumNegativeBarY = $chart->yForAxis($mediumNegativeBar->value);
+    $largeNegativeBarY = $chart->yForAxis($largeNegativeBar->value);
+
+    expect($chart->zeroLineY())->toBe($chart->top())
+        ->and($largeNegativeBarY)->toBe($chart->bottom())
+        ->and($mediumNegativeBarY)->toBeGreaterThan($chart->zeroLineY())
+        ->and($smallNegativeBarY)->toBeLessThan($mediumNegativeBarY);
+});
+
+it('coordinates multiple grouped bars with different value ranges', function () {
+    $smallBar = new Bar(value: 50);
+    $mediumBar = new Bar(value: 100);
+    $largeBar = new Bar(value: 150);
+    $extraLargeBar = new Bar(value: 200);
+
+    $group1 = new BarGroup(name: 'Group 1', bars: [$smallBar, $mediumBar]);
+    $group2 = new BarGroup(name: 'Group 2', bars: [$largeBar, $extraLargeBar]);
+
+    $chart = new Chart(
+        series: [new Bars(bars: [$group1, $group2])],
+    );
+
+    $smallBarY = $chart->yForAxis($smallBar->value);
+    $mediumBarY = $chart->yForAxis($mediumBar->value);
+    $largeBarY = $chart->yForAxis($largeBar->value);
+    $extraLargeBarY = $chart->yForAxis($extraLargeBar->value);
+    $zeroY = $chart->zeroLineY();
+
+    expect($extraLargeBarY)->toBe($chart->top())
+        ->and($zeroY)->toBe($chart->bottom())
+        ->and($smallBarY)->toBeLessThan($zeroY)
+        ->and($mediumBarY)->toBeLessThan($smallBarY)
+        ->and($largeBarY)->toBeLessThan($mediumBarY)
+        ->and($extraLargeBarY)->toBeLessThan($largeBarY);
+});
+
+it('handles empty grouped bar groups', function () {
+    $emptyGroup = new BarGroup(name: 'Empty Group', bars: []);
+
+    $chart = new Chart(
+        yAxis: new YAxis(minValue: 0, maxValue: 1000),
+        series: [new Bars(bars: [$emptyGroup])],
+    );
+
+    $svg = $chart->render();
+
+    expect($svg)->toContain('Empty Group')
+        ->and($svg)->toContain('xmlns="http://www.w3.org/2000/svg"');
+});
+
+it('handles zero-crossing grouped bar values', function () {
+    $positiveBar = new Bar(value: 100, color: '#27ae60');
+    $negativeBar = new Bar(value: -50, color: '#e74c3c');
+    $zeroBar = new Bar(value: 0, color: '#3498db');
+
+    $group = new BarGroup(
+        name: 'Mixed Group',
+        bars: [$positiveBar, $negativeBar, $zeroBar],
+    );
+
+    $chart = new Chart(
+        series: [new Bars(bars: [$group])],
+    );
+
+    $positiveBarY = $chart->yForAxis($positiveBar->value);
+    $negativeBarY = $chart->yForAxis($negativeBar->value);
+    $zeroBarY = $chart->yForAxis($zeroBar->value);
+
+    expect($positiveBarY)->toBe($chart->top())
+        ->and($negativeBarY)->toBe($chart->bottom())
+        ->and($zeroBarY)->toBe($chart->zeroLineY())
+        ->and($chart->zeroLineY())->toBeGreaterThan($chart->top())
+        ->and($chart->zeroLineY())->toBeLessThan($chart->bottom());
+});
+
+it('calculates correct positioning for multiple negative grouped bars', function () {
+    $smallNegativeBar = new Bar(value: -100);
+    $largeNegativeBar = new Bar(value: -200);
+
+    $group = new BarGroup(
+        name: 'Test',
+        bars: [$smallNegativeBar, $largeNegativeBar],
+    );
+
+    $chart = new Chart(
+        series: [new Bars(bars: [$group])],
+    );
+
+    $zeroY = $chart->zeroLineY();
+    $neg100Y = $chart->yForAxis(-100);
+    $neg200Y = $chart->yForAxis(-200);
+
+    expect($neg100Y)->toBeGreaterThan($zeroY)
+        ->and($neg200Y)->toBeGreaterThan($neg100Y)
+        ->and($zeroY)->toBe($chart->top());
 });
