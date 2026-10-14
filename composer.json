@@ -1,5 +1,5 @@
 {
-    "name": "maantje/charts",
+    "name": "lennyrouanet/charts",
     "description": "SVG Charts in PHP",
     "type": "library",
     "license": "MIT",
@@ -12,6 +12,10 @@
         {
             "name": "Jamie Schouten",
             "email": "j4mie@hey.com"
+        },
+        {
+            "name": "Lenny Rouanet",
+            "email": "lenny.rouanet@example.com"
         }
     ],
     "scripts": {

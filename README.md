@@ -16,7 +16,7 @@
 To get started, install the package via composer:
 
 ```bash
-composer require maantje/charts
+composer require lennyrouanet/charts
 ```
 
 ## Usage Examples
