@@ -188,31 +188,35 @@ The library does not compute quartiles: pass the five statistics already calcula
 A `Boxplot` is a bar like any other, so it can also be placed in `Bars`, next to `Bar`, `StackedBar` or `BarGroup`.
 To draw boxplots on a secondary Y axis, pass the same `yAxis` name to `Boxplots` (it drives the axis range) and to each `Boxplot` (it drives the drawing), as with `Bars` and `Bar`.
 
-#### Line over boxplots or bars
+#### Line over bars
 
-Boxplots and bars sit in equal slots across the chart, while a `Line` places its points on the X axis scale.
-To put a point in the middle of each slot, set the X axis range to the number of slots and give the points `x` values of `0.5`, `1.5`, `2.5`, and so on.
-A formatter returning an empty string hides the X axis labels of the line.
+A `BarLine` draws a line through the middle of each bar of a `Bars` series. It works with every kind of bar: `Bar`, `StackedBar`, `BarGroup` and `Boxplot`.
 
 ```php
-use Maantje\Charts\Line\Line;
-use Maantje\Charts\Line\Lines;
-use Maantje\Charts\XAxis;
+use Maantje\Charts\Bar\Bar;
+use Maantje\Charts\Bar\BarLine;
+use Maantje\Charts\Bar\Bars;
+
+$bars = new Bars(bars: [
+    new Bar(name: 'Jan', value: 42000),
+    new Bar(name: 'Feb', value: 51000),
+    new Bar(name: 'Mar', value: 47000),
+]);
 
 $chart = new Chart(
-    xAxis: new XAxis(minValue: 0, maxValue: 3, formatter: fn () => ''),
     series: [
-        new Boxplots(boxplots: [/* three boxplots */]),
-        new Lines(
-            lines: [
-                new Line(points: [[0.5, 48], [1.5, 56], [2.5, 41]], color: 'red'),
-            ],
-        ),
+        $bars,
+        new BarLine(bars: $bars, values: [45000, null, 50000], color: 'red', pointColor: 'red'),
     ],
 );
 ```
 
-List the `Lines` after the boxplots or bars so the line is drawn on top.
+- `values` holds one value per bar, in order. `null` leaves a gap, so a line can cover only some of the bars.
+- Without `values`, the line goes through the value of each bar: its height, the total of a stacked bar, the highest bar of a group or the median of a boxplot.
+- The line uses the Y axis of its bars; pass `yAxis` to draw it on another one.
+- `BarLine` accepts the same `size`, `color`, `areaColor`, `curve` and `stepLine` options as `Line`; points are drawn only when `pointColor` is set.
+
+List the `BarLine` after its bars so the line is drawn on top.
 
 #### Annotations
 
