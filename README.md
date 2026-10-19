@@ -185,34 +185,34 @@ echo $chart->render();
 The `values` of a boxplot are given in order: min, Q1, median, Q3, max. Any value after the fifth is an outlier and is drawn as a point.
 The library does not compute quartiles: pass the five statistics already calculated.
 
-Two things to keep in mind:
-
-- To draw boxplots on a secondary Y axis, pass the same `yAxis` name to `Boxplots` (it drives the axis range) and to each `Boxplot` (it drives the drawing), as with `Bars` and `Bar`.
-- The default Y axis starts at 0. For negative values, give the chart its own axis, e.g. `yAxis: new YAxis`.
+A `Boxplot` is a bar like any other, so it can also be placed in `Bars`, next to `Bar`, `StackedBar` or `BarGroup`.
+To draw boxplots on a secondary Y axis, pass the same `yAxis` name to `Boxplots` (it drives the axis range) and to each `Boxplot` (it drives the drawing), as with `Bars` and `Bar`.
 
 #### Line over boxplots or bars
 
-A regular `Line` places its points on the numeric X axis scale, so they do not line up with boxplots or bars, which sit in equal slots.
-Use a `SlotLine` instead: it takes one value per slot, in order, places each one at the centre of its slot and adds no scale to the X axis.
+Boxplots and bars sit in equal slots across the chart, while a `Line` places its points on the X axis scale.
+To put a point in the middle of each slot, set the X axis range to the number of slots and give the points `x` values of `0.5`, `1.5`, `2.5`, and so on.
+A formatter returning an empty string hides the X axis labels of the line.
 
 ```php
+use Maantje\Charts\Line\Line;
 use Maantje\Charts\Line\Lines;
-use Maantje\Charts\Line\SlotLine;
+use Maantje\Charts\XAxis;
 
 $chart = new Chart(
+    xAxis: new XAxis(minValue: 0, maxValue: 3, formatter: fn () => ''),
     series: [
         new Boxplots(boxplots: [/* three boxplots */]),
         new Lines(
             lines: [
-                new SlotLine(values: [48, 56, 41], color: 'red', pointColor: 'red'),
+                new Line(points: [[0.5, 48], [1.5, 56], [2.5, 41]], color: 'red'),
             ],
         ),
     ],
 );
 ```
 
-Give it as many values as there are boxplots or bars, and list the `Lines` after them so the line is drawn on top.
-`SlotLine` accepts the same `size`, `yAxis`, `color`, `areaColor`, `curve` and `stepLine` options as `Line`; points are drawn only when `pointColor` is set.
+List the `Lines` after the boxplots or bars so the line is drawn on top.
 
 #### Annotations
 

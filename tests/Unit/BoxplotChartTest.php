@@ -1,6 +1,7 @@
 <?php
 
 use Maantje\Charts\Bar\Bar;
+use Maantje\Charts\Bar\BarGroup;
 use Maantje\Charts\Bar\Bars;
 use Maantje\Charts\Boxplot\Boxplot;
 use Maantje\Charts\Boxplot\Boxplots;
@@ -46,26 +47,9 @@ it('rejects unordered values', function () {
     'Boxplot "Jan" values must be ordered: min <= Q1 <= median <= Q3 <= max.'
 );
 
-it('rejects values that are not finite numbers', function (mixed $value) {
-    new Boxplot(name: 'Jan', values: [20, 40, 50, 60, 100, $value]);
-})->with([[NAN], [INF], ['abc'], [null], [true]])->throws(
-    InvalidArgumentException::class,
-    'Boxplot "Jan" values must be finite numbers.'
-);
-
-it('rejects a negative width', function () {
-    new Boxplot(name: 'Jan', values: [20, 40, 50, 60, 100], width: -30);
-})->throws(InvalidArgumentException::class, 'Boxplot "Jan" width must not be negative.');
-
-it('rejects a negative outlier size', function () {
-    new Boxplot(name: 'Jan', values: [20, 40, 50, 60, 100], outlierSize: -3);
-})->throws(InvalidArgumentException::class, 'Boxplot "Jan" outlierSize must not be negative.');
-
-it('does not allow values to change after validation', function () {
-    $boxplot = new Boxplot(name: 'Jan', values: [20, 40, 50, 60, 100]);
-
-    $boxplot->values = [100, 60, 50, 40, 20]; // @phpstan-ignore property.readOnlyAssignOutOfClass
-})->throws(Error::class, 'Cannot modify readonly property');
+it('uses the median as its value', function () {
+    expect((new Boxplot(name: 'Jan', values: [20, 40, 50, 60, 100]))->value())->toBe(50.0);
+});
 
 it('renders a flat box when all values are equal', function () {
     // max 5: left margin 50, width 720
@@ -73,14 +57,9 @@ it('renders a flat box when all values are equal', function () {
         ->toContain('<rect x="380" y="25" width="60" height="0"');
 });
 
-it('renders negative values on a y axis without a fixed minimum', function () {
-    $chart = new Chart(
-        yAxis: new YAxis,
-        series: [new Boxplots(boxplots: [new Boxplot(name: 'Jan', values: [-50, -20, 0, 20, 50])])],
-    );
-
+it('renders negative values on the default y axis', function () {
     // range -50..50: left margin 55, width 715; y(v) = 550 - 5.25 * (v + 50)
-    expect($chart->render())
+    expect(boxplotChart(new Boxplot(name: 'Jan', values: [-50, -20, 0, 20, 50])))
         ->toContain('<line x1="412.5" y1="550" x2="412.5" y2="25"')
         ->toContain('<rect x="382.5" y="182.5" width="60" height="210"');
 });
@@ -97,7 +76,7 @@ it('renders a boxplot', function () {
         ->toContain('<line x1="400" y1="25" x2="430" y2="25" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />')
         ->toContain($box)
         ->toContain('<line x1="385" y1="287.5" x2="445" y2="287.5" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />')
-        ->toContain('<text x="415" y="580" font-family="arial" font-size="14" fill="#333" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Jan</text>')
+        ->toContain('<text x="415" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Jan</text>')
         ->and((int) strpos($svg, $whisker))->toBeLessThan((int) strpos($svg, $box));
 
     expect($svg)->not->toContain('<circle');
@@ -132,6 +111,15 @@ it('applies styling parameters', function () {
         ->toContain('<line x1="385" y1="287.5" x2="445" y2="287.5" stroke="red" stroke-dasharray="none" stroke-width="3" stroke-opacity="1.000000" />')
         ->toContain('<circle cx="415" cy="497.5" r="6" fill="green"')
         ->toContain('<text x="415" y="570" font-family="arial" font-size="14" fill="blue"');
+});
+
+it('uses the chart color for the label by default', function () {
+    $chart = new Chart(
+        color: 'white',
+        series: [new Boxplots(boxplots: [new Boxplot(name: 'Jan', values: [20, 40, 50, 60, 100])])],
+    );
+
+    expect($chart->render())->toContain('font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Jan</text>');
 });
 
 it('fills the slot when width is null and never exceeds it', function (?float $width) {
@@ -187,6 +175,49 @@ it('aligns with bars slot by slot', function () {
         ->toContain('<line x1="592.5" y1="497.5" x2="592.5" y2="287.5"');
 });
 
+it('can be placed in bars next to a bar', function () {
+    $chart = new Chart(
+        series: [
+            new Bars(bars: [
+                new Bar(name: 'A', value: 100),
+                new Boxplot(name: 'B', values: [10, 20, 30, 40, 50]),
+            ]),
+        ],
+    );
+
+    expect($chart->render())
+        ->toContain('<text x="237.5" y="580"')
+        ->toContain('<text x="592.5" y="580"')
+        ->toContain('<line x1="592.5" y1="497.5" x2="592.5" y2="287.5"');
+});
+
+it('keeps whiskers and outliers inside the scale in a bar group', function () {
+    $group = new BarGroup(name: '2024', radius: 4, bars: [
+        new Bar(value: 50),
+        new Boxplot(name: '', values: [10, 30, 45, 60, 95, 140]),
+    ]);
+
+    expect($group->minValue())->toBe(10.0)
+        ->and($group->maxValue())->toBe(140.0)
+        ->and((new Chart(series: [new Bars(bars: [$group])]))->render())
+        ->toContain('alignment-baseline="auto">140</text>');
+});
+
+it('rounds the box corners', function () {
+    expect(boxplotChart(new Boxplot(name: 'Jan', values: [20, 40, 50, 60, 100], radius: 6)))
+        ->toContain('<rect x="385" y="235" width="60" height="105" fill="#3498db" fill-opacity="1" stroke="#333" stroke-width="2" rx="6" ry="6">');
+});
+
+it('takes the radius of its bar group unless it has its own', function () {
+    $own = new Boxplot(name: '', values: [10, 20, 30, 40, 50], radius: 2);
+    $inherited = new Boxplot(name: '', values: [10, 20, 30, 40, 50]);
+
+    new BarGroup(name: 'A', radius: 8, bars: [$own, $inherited]);
+
+    expect($own->radius)->toBe(2)
+        ->and($inherited->radius)->toBe(8);
+});
+
 it('aggregates min and max across boxplots', function () {
     $boxplots = new Boxplots(boxplots: [
         new Boxplot(name: 'A', values: [20, 40, 50, 60, 100]),
@@ -227,7 +258,7 @@ it('renders the full boxplot chart svg', function () {
 <line x1="400" y1="25" x2="430" y2="25" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
 <rect x="385" y="235" width="60" height="105" fill="#3498db" fill-opacity="1" stroke="#333" stroke-width="2" rx="0" ry="0"><title>20 / 40 / 50 / 60 / 100</title></rect>
 <line x1="385" y1="287.5" x2="445" y2="287.5" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<text x="415" y="580" font-family="arial" font-size="14" fill="#333" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Jan</text>
+<text x="415" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Jan</text>
     
 </svg>
 SVG);

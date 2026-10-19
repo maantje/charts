@@ -5,10 +5,17 @@ require '../vendor/autoload.php';
 use Maantje\Charts\Boxplot\Boxplot;
 use Maantje\Charts\Boxplot\Boxplots;
 use Maantje\Charts\Chart;
+use Maantje\Charts\Line\Line;
 use Maantje\Charts\Line\Lines;
-use Maantje\Charts\Line\SlotLine;
+use Maantje\Charts\Line\Point;
+use Maantje\Charts\XAxis;
 
 $chart = new Chart(
+    xAxis: new XAxis(
+        minValue: 0,
+        maxValue: 3,
+        formatter: fn () => '',
+    ),
     series: [
         new Boxplots(
             boxplots: [
@@ -28,11 +35,14 @@ $chart = new Chart(
         ),
         new Lines(
             lines: [
-                new SlotLine(
-                    values: [48, 56, 41],
+                new Line(
+                    points: [
+                        new Point(x: 0.5, y: 48, color: '#e74c3c', size: 5),
+                        new Point(x: 1.5, y: 56, color: '#e74c3c', size: 5),
+                        new Point(x: 2.5, y: 41, color: '#e74c3c', size: 5),
+                    ],
                     size: 2,
                     color: '#e74c3c',
-                    pointColor: '#e74c3c',
                 ),
             ],
         ),

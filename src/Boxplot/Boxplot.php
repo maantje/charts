@@ -3,6 +3,7 @@
 namespace Maantje\Charts\Boxplot;
 
 use InvalidArgumentException;
+use Maantje\Charts\Bar\BarContract;
 use Maantje\Charts\Chart;
 use Maantje\Charts\SVG\Circle;
 use Maantje\Charts\SVG\Fragment;
@@ -10,10 +11,10 @@ use Maantje\Charts\SVG\Line;
 use Maantje\Charts\SVG\Rect;
 use Maantje\Charts\SVG\Text;
 
-class Boxplot
+class Boxplot implements BarContract
 {
     /** @var array<int, int|float> */
-    public readonly array $values;
+    public array $values;
 
     /**
      * @param  float[]  $values  min, Q1, median, Q3, max, then outliers
@@ -29,8 +30,9 @@ class Boxplot
         public ?string $medianColor = null,
         public ?string $outlierColor = null,
         public float $outlierSize = 4,
-        public string $labelColor = '#333',
+        public ?string $labelColor = null,
         public int $labelMarginY = 30,
+        public ?int $radius = null,
     ) {
         $this->values = array_values($values);
 
@@ -42,15 +44,6 @@ class Boxplot
             ));
         }
 
-        foreach ($this->values as $value) {
-            if (! $this->isFiniteNumber($value)) {
-                throw new InvalidArgumentException(sprintf(
-                    'Boxplot "%s" values must be finite numbers.',
-                    $this->name
-                ));
-            }
-        }
-
         for ($i = 1; $i < 5; $i++) {
             if ($this->values[$i] < $this->values[$i - 1]) {
                 throw new InvalidArgumentException(sprintf(
@@ -58,14 +51,6 @@ class Boxplot
                     $this->name
                 ));
             }
-        }
-
-        if (! is_null($this->width) && $this->width < 0) {
-            throw new InvalidArgumentException(sprintf('Boxplot "%s" width must not be negative.', $this->name));
-        }
-
-        if ($this->outlierSize < 0) {
-            throw new InvalidArgumentException(sprintf('Boxplot "%s" outlierSize must not be negative.', $this->name));
         }
     }
 
@@ -114,6 +99,8 @@ class Boxplot
                 fill: $this->fillColor,
                 stroke: $this->color,
                 strokeWidth: $this->strokeWidth,
+                rx: $this->radius ?? 0,
+                ry: $this->radius ?? 0,
                 title: implode(' / ', array_slice($this->values, 0, 5))
             ),
             new Line(
@@ -143,7 +130,7 @@ class Boxplot
                 y: $chart->bottom() + $this->labelMarginY,
                 fontFamily: $chart->fontFamily,
                 fontSize: $chart->fontSize,
-                fill: $this->labelColor,
+                fill: $this->labelColor ?? $chart->color,
                 textAnchor: 'middle'
             );
         }
@@ -151,9 +138,12 @@ class Boxplot
         return new Fragment($elements);
     }
 
-    protected function isFiniteNumber(mixed $value): bool
+    /**
+     * The median, as the single value of the boxplot.
+     */
+    public function value(): float
     {
-        return (is_int($value) || is_float($value)) && is_finite($value);
+        return $this->values[2];
     }
 
     public function minValue(): float

@@ -19,21 +19,7 @@
 <text x="654.16666666667" y="540" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">57%</text>
 <rect x="604.16666666667" y="287.5" width="100" height="112.5" fill="red" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"><title>3000</title></rect>
 <text x="654.16666666667" y="390" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">43%</text>
-<text x="654.16666666667" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">March</text><line x1="190.83333333333" y1="355" x2="190.83333333333" y2="137.5" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<line x1="180.83333333333" y1="355" x2="200.83333333333" y2="355" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<line x1="180.83333333333" y1="137.5" x2="200.83333333333" y2="137.5" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<rect x="170.83333333333" y="212.5" width="40" height="105" fill="white" fill-opacity="1" stroke="#333" stroke-width="2" rx="0" ry="0"><title>5200 / 6200 / 7500 / 9000 / 11000</title></rect>
-<line x1="170.83333333333" y1="268.75" x2="210.83333333333" y2="268.75" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<circle cx="190.83333333333" cy="43.75" r="4" fill="#333" stroke="none" stroke-width="0"><title>13500</title></circle><line x1="422.5" y1="362.5" x2="422.5" y2="100" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<line x1="412.5" y1="362.5" x2="432.5" y2="362.5" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<line x1="412.5" y1="100" x2="432.5" y2="100" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<rect x="402.5" y="175" width="40" height="112.5" fill="white" fill-opacity="1" stroke="#333" stroke-width="2" rx="0" ry="0"><title>5000 / 7000 / 8500 / 10000 / 12000</title></rect>
-<line x1="402.5" y1="231.25" x2="442.5" y2="231.25" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" /><line x1="654.16666666667" y1="355" x2="654.16666666667" y2="156.25" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<line x1="644.16666666667" y1="355" x2="664.16666666667" y2="355" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<line x1="644.16666666667" y1="156.25" x2="664.16666666667" y2="156.25" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<rect x="634.16666666667" y="231.25" width="40" height="93.75" fill="white" fill-opacity="1" stroke="#333" stroke-width="2" rx="0" ry="0"><title>5200 / 6000 / 7200 / 8500 / 10500</title></rect>
-<line x1="634.16666666667" y1="280" x2="674.16666666667" y2="280" stroke="#333" stroke-dasharray="none" stroke-width="2" stroke-opacity="1.000000" />
-<circle cx="654.16666666667" cy="62.5" r="4" fill="#333" stroke="none" stroke-width="0"><title>13000</title></circle>
+<text x="654.16666666667" y="580" font-family="arial" font-size="14" fill="black" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">March</text>
     <circle cx="538.33333333333" cy="100" r="10" fill="white" stroke="red" stroke-width="4"><title>12000</title></circle>
 <rect x="477.42424242424" y="52.636363636364" width="121.81818181818" height="22" fill="red" fill-opacity="1" stroke="none" stroke-width="0" rx="0" ry="0"/>
 <text x="538.33333333333" y="70" font-family="arial" font-size="14" fill="white" stroke="none" stroke-width="0" text-anchor="middle" dominant-baseline="alphabetic" alignment-baseline="auto">Point annotation</text><line x1="75" y1="235" x2="770" y2="235" stroke="blue" stroke-dasharray="none" stroke-width="3" stroke-opacity="1.000000" />
