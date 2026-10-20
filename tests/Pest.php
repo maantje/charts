@@ -15,7 +15,7 @@
 
 function pretty(string $svg): string
 {
-    $dom = new \DOMDocument;
+    $dom = new DOMDocument;
 
     $dom->preserveWhiteSpace = false;
     $dom->formatOutput = true;
