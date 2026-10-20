@@ -2,6 +2,7 @@
 
 namespace Maantje\Charts\Bar;
 
+use Maantje\Charts\Boxplot\Boxplot;
 use Maantje\Charts\Chart;
 use Maantje\Charts\SVG\Fragment;
 use Maantje\Charts\SVG\Line;
@@ -10,7 +11,7 @@ use Maantje\Charts\SVG\Text;
 class BarGroup implements BarContract
 {
     /**
-     * @param  Bar[]  $bars
+     * @param  (Bar|Boxplot)[]  $bars
      */
     public function __construct(
         protected string $name,
@@ -39,7 +40,7 @@ class BarGroup implements BarContract
             return 0;
         }
 
-        return max(array_map(fn (BarContract $bar) => $bar->value(), $this->bars));
+        return max(array_map(fn (BarContract $bar) => $bar->maxValue(), $this->bars));
     }
 
     public function minValue(): float
@@ -48,7 +49,7 @@ class BarGroup implements BarContract
             return 0;
         }
 
-        return min(array_map(fn (BarContract $bar) => $bar->value(), $this->bars));
+        return min(array_map(fn (BarContract $bar) => $bar->minValue(), $this->bars));
     }
 
     public function render(Chart $chart, float $x, float $maxGroupWidth): string

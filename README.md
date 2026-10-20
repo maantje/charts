@@ -6,7 +6,7 @@
 
 - Simple, intuitive API for chart creation
 - Lightweight, with no external dependencies
-- Supports various chart types: line charts, bar charts, stacked charts, and mixed charts
+- Supports various chart types: line charts, bar charts, stacked charts, boxplots, and mixed charts
 - Fully customizable and extendable
 - Outputs pure SVG, allowing for:
   - Embedding in PDFs, [view example PDF report](https://raw.githubusercontent.com/maantje/charts/refs/heads/main/examples/output/report.pdf)
@@ -85,6 +85,14 @@ Below are some examples of the types of charts you can create using this library
 ![Negative Values Chart](./examples/output/negative-values-chart.svg)  
 [View source](./examples/negative-values-chart.php)
 
+### Simple boxplot chart
+![Boxplot chart](./examples/output/simple-boxplot-chart.svg)
+[View source](./examples/simple-boxplot-chart.php)
+
+### Boxplot chart with a line
+![Boxplot chart with a line](./examples/output/boxplot-line-chart.svg)
+[View source](./examples/boxplot-line-chart.php)
+
 ### Pie chart
 ![Pie chart](./examples/output/pie-chart.svg)  
 [View source](./examples/pie-chart.php)
@@ -152,6 +160,63 @@ $chart = new Chart(
 
 echo $chart->render();
 ```
+
+#### Simple Boxplot Chart
+
+```php
+use Maantje\Charts\Boxplot\Boxplot;
+use Maantje\Charts\Boxplot\Boxplots;
+use Maantje\Charts\Chart;
+
+$chart = new Chart(
+    series: [
+        new Boxplots(
+            boxplots: [
+                new Boxplot(name: 'Jan', values: [12, 30, 45, 60, 88]),
+                new Boxplot(name: 'Feb', values: [20, 35, 50, 70, 95, 130, 4]),
+            ],
+        ),
+    ],
+);
+
+echo $chart->render();
+```
+
+The `values` of a boxplot are given in order: min, Q1, median, Q3, max. Any value after the fifth is an outlier and is drawn as a point.
+The library does not compute quartiles: pass the five statistics already calculated.
+
+A `Boxplot` is a bar like any other, so it can also be placed in `Bars`, next to `Bar`, `StackedBar` or `BarGroup`.
+To draw boxplots on a secondary Y axis, pass the same `yAxis` name to `Boxplots` (it drives the axis range) and to each `Boxplot` (it drives the drawing), as with `Bars` and `Bar`.
+
+#### Line over bars
+
+A `BarLine` draws a line through the middle of each bar of a `Bars` series. It works with every kind of bar: `Bar`, `StackedBar`, `BarGroup` and `Boxplot`.
+
+```php
+use Maantje\Charts\Bar\Bar;
+use Maantje\Charts\Bar\BarLine;
+use Maantje\Charts\Bar\Bars;
+
+$bars = new Bars(bars: [
+    new Bar(name: 'Jan', value: 42000),
+    new Bar(name: 'Feb', value: 51000),
+    new Bar(name: 'Mar', value: 47000),
+]);
+
+$chart = new Chart(
+    series: [
+        $bars,
+        new BarLine(bars: $bars, values: [45000, null, 50000], color: 'red', pointColor: 'red'),
+    ],
+);
+```
+
+- `values` holds one value per bar, in order. `null` leaves a gap, so a line can cover only some of the bars.
+- Without `values`, the line goes through the value of each bar: its height, the total of a stacked bar, the highest bar of a group or the median of a boxplot.
+- The line uses the Y axis of its bars; pass `yAxis` to draw it on another one.
+- `BarLine` accepts the same `size`, `color`, `areaColor`, `curve` and `stepLine` options as `Line`; points are drawn only when `pointColor` is set.
+
+List the `BarLine` after its bars so the line is drawn on top.
 
 #### Annotations
 

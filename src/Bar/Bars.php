@@ -37,24 +37,44 @@ class Bars extends Serie
 
     public function render(Chart $chart): string
     {
-        $numBars = count($this->bars);
-
-        $maxBarWidth = 0;
-
-        if ($numBars > 0) {
-            $maxBarWidth = $chart->availableWidth() / $numBars;
-        }
-
-        $x = $chart->left();
-
         $svg = '';
 
-        foreach ($this->bars as $bar) {
-            $svg .= $bar->render($chart, $x, $maxBarWidth);
-
-            $x += $maxBarWidth;
+        foreach (array_values($this->bars) as $index => $bar) {
+            $svg .= $bar->render($chart, $this->slotX($chart, $index), $this->slotWidth($chart));
         }
 
         return $svg;
+    }
+
+    public function count(): int
+    {
+        return count($this->bars);
+    }
+
+    /**
+     * @return float[]
+     */
+    public function values(): array
+    {
+        return array_map(fn (BarContract $bar) => $bar->value(), array_values($this->bars));
+    }
+
+    public function slotWidth(Chart $chart): float
+    {
+        if ($this->count() === 0) {
+            return 0;
+        }
+
+        return $chart->availableWidth() / $this->count();
+    }
+
+    public function slotX(Chart $chart, int $index): float
+    {
+        return $chart->left() + $index * $this->slotWidth($chart);
+    }
+
+    public function slotCenter(Chart $chart, int $index): float
+    {
+        return $this->slotX($chart, $index) + $this->slotWidth($chart) / 2;
     }
 }
